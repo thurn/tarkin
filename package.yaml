@@ -1,0 +1,37 @@
+name: tarkin
+
+library:
+  source-dirs: src
+  dependencies:
+    - base
+    - microlens
+    - proto-lens
+    - proto-lens-runtime
+    - scotty
+
+  exposed-modules:
+    - Core
+
+executables:
+  tarkin-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - base
+      - tarkin
+
+tests:
+  tarkin-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - base
+      - tarkin
