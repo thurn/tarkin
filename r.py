@@ -13,6 +13,10 @@ parser.add_argument("command", choices=COMMANDS)
 args = parser.parse_args()
 command = args.command
 
+DIR = os.path.dirname(os.path.realpath(__file__))
+SERVER_DIR = os.path.join(DIR, "server")
+CLIENT_DIR = os.path.join(DIR, "client")
+
 def call(args, failure_message = None):
   """Wrapper around subprocess.check_call"""
   result = subprocess.call(args)
@@ -21,14 +25,20 @@ def call(args, failure_message = None):
       print(failure_message)
     exit(result)
 
+def stack(args):
+  cwd = os.getcwd()
+  os.chdir(SERVER_DIR)
+  call(["stack"] + args)
+  os.chdir(cwd)
+
 def protos():
   print("Generating Protos")
-  call(["stack", "scripts/GenerateProtos.hs"])
+  stack(["scripts/GenerateProtos.hs"])
 
 def build():
   protos()
   print("Building")
-  call(["stack", "build", "--fast", "--haddock-deps"])
+  stack(["build", "--fast", "--haddock-deps"])
 
 if command == "protos":
   protos()
@@ -37,23 +47,23 @@ elif command == "build":
 elif command == "run":
   build()
   print("Running")
-  call(["stack", "exec", "tarkin-exe"])
+  stack(["exec", "tarkin-exe"])
 elif command == "test":
   print("Testing")
-  call(["stack", "test"])
+  stack(["test"])
 elif command == "clean":
   print("Cleaning")
-  call(["stack", "clean"])
+  stack(["clean"])
 elif command == "docs":
   print("Generating Haddock")
-  call(["stack", "haddock"])
+  stack(["haddock"])
   print("Generating Hoogle")
-  call(["stack", "hoogle", "--", "generate", "--local"])
+  stack(["hoogle", "--", "generate", "--local"])
 elif command == "hoogle":
   print("Running Hoogle Server")
-  call(["stack", "hoogle", "--", "server", "--local", "--port=8080"])
+  stack(["hoogle", "--", "server", "--local", "--port=8080"])
 elif command == "fixgmp":
-  # This works around a crazy bug in GHC, see the README at
+  # This works around a crazy bug in GHC OSX, see the README at
   # https://github.com/haskell/haskell-ide-engine
   print("Fixing gmp")
   call([

@@ -9,3 +9,4 @@ message Response {
   int32 other_number = 1;
   string last_name = 2;
 }
+
