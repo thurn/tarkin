@@ -1,11 +1,11 @@
-{- This file was auto-generated from person.proto by the proto-lens-protoc program. -}
+{- This file was auto-generated from data.proto by the proto-lens-protoc program. -}
 {-# LANGUAGE ScopedTypeVariables, DataKinds, TypeFamilies,
   UndecidableInstances, GeneralizedNewtypeDeriving,
   MultiParamTypeClasses, FlexibleContexts, FlexibleInstances,
   PatternSynonyms, MagicHash, NoImplicitPrelude, DataKinds #-}
 {-# OPTIONS_GHC -fno-warn-unused-imports#-}
 {-# OPTIONS_GHC -fno-warn-duplicate-exports#-}
-module Proto.Person_Fields where
+module Proto.Data_Fields where
 import qualified Data.ProtoLens.Runtime.Prelude as Prelude
 import qualified Data.ProtoLens.Runtime.Data.Int as Data.Int
 import qualified Data.ProtoLens.Runtime.Data.Word as Data.Word
@@ -29,38 +29,31 @@ import qualified Data.ProtoLens.Runtime.Data.ByteString.Char8
 import qualified Data.ProtoLens.Runtime.Lens.Labels as Lens.Labels
 import qualified Data.ProtoLens.Runtime.Text.Read as Text.Read
 
-addresses ::
+firstName ::
           forall f s a .
-            (Prelude.Functor f, Lens.Labels.HasLens' s "addresses" a) =>
+            (Prelude.Functor f, Lens.Labels.HasLens' s "firstName" a) =>
             Lens.Family2.LensLike' f s a
-addresses
+firstName
   = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "addresses")
-age ::
-    forall f s a .
-      (Prelude.Functor f, Lens.Labels.HasLens' s "age" a) =>
-      Lens.Family2.LensLike' f s a
-age
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "firstName")
+firstNumber ::
+            forall f s a .
+              (Prelude.Functor f, Lens.Labels.HasLens' s "firstNumber" a) =>
+              Lens.Family2.LensLike' f s a
+firstNumber
   = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "age")
-name ::
-     forall f s a .
-       (Prelude.Functor f, Lens.Labels.HasLens' s "name" a) =>
-       Lens.Family2.LensLike' f s a
-name
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "firstNumber")
+lastName ::
+         forall f s a .
+           (Prelude.Functor f, Lens.Labels.HasLens' s "lastName" a) =>
+           Lens.Family2.LensLike' f s a
+lastName
   = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "name")
-street ::
-       forall f s a .
-         (Prelude.Functor f, Lens.Labels.HasLens' s "street" a) =>
-         Lens.Family2.LensLike' f s a
-street
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "lastName")
+otherNumber ::
+            forall f s a .
+              (Prelude.Functor f, Lens.Labels.HasLens' s "otherNumber" a) =>
+              Lens.Family2.LensLike' f s a
+otherNumber
   = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "street")
-zipCode ::
-        forall f s a .
-          (Prelude.Functor f, Lens.Labels.HasLens' s "zipCode" a) =>
-          Lens.Family2.LensLike' f s a
-zipCode
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "zipCode")
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "otherNumber")

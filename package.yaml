@@ -4,6 +4,7 @@ library:
   source-dirs: src
   dependencies:
     - base
+    - bytestring
     - microlens
     - proto-lens
     - proto-lens-runtime

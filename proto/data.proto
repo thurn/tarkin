@@ -1,0 +1,11 @@
+syntax="proto3";
+
+message Request {
+  int32 first_number = 1;
+  string first_name = 2;
+}
+
+message Response {
+  int32 other_number = 1;
+  string last_name = 2;
+}
