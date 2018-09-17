@@ -50,6 +50,7 @@ elif command == "run":
   stack(["exec", "tarkin-exe"])
 elif command == "test":
   print("Testing")
+  protos()
   stack(["test"])
 elif command == "clean":
   print("Cleaning")
