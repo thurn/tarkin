@@ -63,7 +63,7 @@ instance Lens.Labels.HasLens' Request "firstName" (Data.Text.Text)
                  (\ x__ y__ -> x__{_Request'firstName = y__}))
               Prelude.id
 instance Data.ProtoLens.Message Request where
-        messageName _ = Data.Text.pack "Request"
+        messageName _ = Data.Text.pack "tarkin.data.Request"
         fieldsByTag
           = let firstNumber__field_descriptor
                   = Data.ProtoLens.FieldDescriptor "first_number"
@@ -128,7 +128,7 @@ instance Lens.Labels.HasLens' Response "lastName" (Data.Text.Text)
                  (\ x__ y__ -> x__{_Response'lastName = y__}))
               Prelude.id
 instance Data.ProtoLens.Message Response where
-        messageName _ = Data.Text.pack "Response"
+        messageName _ = Data.Text.pack "tarkin.data.Response"
         fieldsByTag
           = let otherNumber__field_descriptor
                   = Data.ProtoLens.FieldDescriptor "other_number"

@@ -3,10 +3,14 @@
 import argparse
 import subprocess
 import os
+import pwd
 
 COMMANDS = [
-  "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos"
+  "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos",
+  "lock", "unlock"
 ]
+
+EXPECTED_PROGRAMS = ["stack", "protoc"]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("command", choices=COMMANDS)
@@ -16,6 +20,24 @@ command = args.command
 DIR = os.path.dirname(os.path.realpath(__file__))
 SERVER_DIR = os.path.join(DIR, "server")
 CLIENT_DIR = os.path.join(DIR, "client")
+THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
+
+def which(program):
+  """Returns the location of a program on the PATH if it can be found, or None
+  if it does not exist."""
+  def is_exe(fpath):
+    return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+  fpath, fname = os.path.split(program)
+  if fpath:
+    if is_exe(program):
+      return program
+  else:
+    for path in os.environ["PATH"].split(os.pathsep):
+      path = path.strip('"')
+      exe_file = os.path.join(path, program)
+      if is_exe(exe_file):
+        return exe_file
+  return None
 
 def call(args, failure_message = None):
   """Wrapper around subprocess.check_call"""
@@ -34,11 +56,30 @@ def stack(args):
 def protos():
   print("Generating Protos")
   stack(["scripts/GenerateProtos.hs"])
+  call(["protoc", "server/proto/data.proto", "--csharp_out=client/Assets/Proto"])
 
 def build():
   protos()
   print("Building")
   stack(["build", "--fast", "--haddock-deps"])
+
+def require_sudo():
+  if os.getuid() != 0:
+    print("Error: This command must be run as root.")
+    exit(1)
+
+def chown(base_path, uid, gid):
+  os.chown(base_path, uid, gid)
+  for root, dirs, files in os.walk(base_path):
+    for d in dirs:
+      os.chown(os.path.join(root, d), uid, gid)
+    for f in files:
+      os.chown(os.path.join(root, f), uid, gid)
+
+for program in EXPECTED_PROGRAMS:
+  if not which(program):
+    print("Program " + program + " not found on path. Please install.")
+    exit(1)
 
 if command == "protos":
   protos()
@@ -74,3 +115,13 @@ elif command == "fixgmp":
 elif command == "commands":
   print("Commands:")
   print(COMMANDS)
+elif command == "lock":
+  require_sudo()
+  print("Locking ThirdParty")
+  chown(THIRD_PARTY, 0, 0)
+elif command == "unlock":
+  require_sudo()
+  uid = pwd.getpwnam(os.getlogin()).pw_uid
+  gid = pwd.getpwnam(os.getlogin()).pw_gid
+  print("Unlocking ThirdParty for user " + str(uid))
+  chown(THIRD_PARTY, uid, gid)
