@@ -5,4 +5,4 @@ module GenerateProtos where
 
 import Data.ProtoLens.Setup
 
-main = generateProtos "proto" "src" ["proto/data.proto"]
+main = generateProtos "../proto" "src" ["../proto/data.proto"]

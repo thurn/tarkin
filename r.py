@@ -56,7 +56,7 @@ def stack(args):
 def protos():
   print("Generating Protos")
   stack(["scripts/GenerateProtos.hs"])
-  call(["protoc", "server/proto/data.proto", "--csharp_out=client/Assets/Proto"])
+  call(["protoc", "proto/data.proto", "--csharp_out=client/Assets/Proto"])
 
 def build():
   protos()
