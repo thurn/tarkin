@@ -24,20 +24,287 @@ namespace Tarkin.Data {
     static DataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChBwcm90by9kYXRhLnByb3RvEgt0YXJraW4uZGF0YSIzCgdSZXF1ZXN0EhQK",
-            "DGZpcnN0X251bWJlchgBIAEoBRISCgpmaXJzdF9uYW1lGAIgASgJIjMKCFJl",
-            "c3BvbnNlEhQKDG90aGVyX251bWJlchgBIAEoBRIRCglsYXN0X25hbWUYAiAB",
-            "KAliBnByb3RvMw=="));
+            "ChBwcm90by9kYXRhLnByb3RvEgt0YXJraW4uZGF0YRoeZ29vZ2xlL3Byb3Rv",
+            "YnVmL3dyYXBwZXJzLnByb3RvIjMKB1JlcXVlc3QSFAoMZmlyc3RfbnVtYmVy",
+            "GAEgASgFEhIKCmZpcnN0X25hbWUYAiABKAkiMwoIUmVzcG9uc2USFAoMb3Ro",
+            "ZXJfbnVtYmVyGAEgASgFEhEKCWxhc3RfbmFtZRgCIAEoCSIgCghaVmVjdG9y",
+            "MhIJCgF4GAEgASgCEgkKAXkYAiABKAIiKwoIWlZlY3RvcjMSCQoBeBgBIAEo",
+            "AhIJCgF5GAIgASgCEgkKAXoYAyABKAIiNAoGWkNvbG9yEgkKAXIYASABKAIS",
+            "CQoBZxgCIAEoAhIJCgFiGAMgASgCEgkKAWEYBCABKAIiJQoLWkdhbWVPYmpl",
+            "Y3QSFgoOZ2FtZV9vYmplY3RfaWQYASABKA0iHAoHWlByZWZhYhIRCglwcmVm",
+            "YWJfaWQYASABKA0iHAoHWlNwcml0ZRIRCglzcHJpdGVfaWQYASABKA0iIAoJ",
+            "Wk1hdGVyaWFsEhMKC21hdGVyaWFsX2lkGAEgASgNIhgKBVpGb250Eg8KB2Zv",
+            "bnRfaWQYASABKA0itwEKDlpSZWN0VHJhbnNmb3JtEikKCnNpemVfZGVsdGEY",
+            "ASABKAsyFS50YXJraW4uZGF0YS5aVmVjdG9yMhIpCgphbmNob3JfbWluGAIg",
+            "ASgLMhUudGFya2luLmRhdGEuWlZlY3RvcjISKQoKYW5jaG9yX21heBgDIAEo",
+            "CzIVLnRhcmtpbi5kYXRhLlpWZWN0b3IyEiQKBXBpdm90GAQgASgLMhUudGFy",
+            "a2luLmRhdGEuWlZlY3RvcjIi3gEKClpUcmFuc2Zvcm0SNQoOcmVjdF90cmFu",
+            "c2Zvcm0YASABKAsyGy50YXJraW4uZGF0YS5aUmVjdFRyYW5zZm9ybUgAEi0K",
+            "DmxvY2FsX3Bvc2l0aW9uGAIgASgLMhUudGFya2luLmRhdGEuWlZlY3RvcjMS",
+            "MQoSbG9jYWxfZXVsZXJfYW5nbGVzGAMgASgLMhUudGFya2luLmRhdGEuWlZl",
+            "Y3RvcjMSKgoLbG9jYWxfc2NhbGUYBCABKAsyFS50YXJraW4uZGF0YS5aVmVj",
+            "dG9yM0ILCgl0cmFuc2Zvcm0ipgIKB1pDYW52YXMSLQoLcmVuZGVyX21vZGUY",
+            "ASABKA4yGC50YXJraW4uZGF0YS5aUmVuZGVyTW9kZRIxCg1waXhlbF9wZXJm",
+            "ZWN0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRIyCg1zb3J0",
+            "aW5nX29yZGVyGAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUS",
+            "MwoOdGFyZ2V0X2Rpc3BsYXkYBCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
+            "MzJWYWx1ZRJQChphZGRpdGlvbmFsX3NoYWRlcl9jaGFubmVscxgFIAEoDjIs",
+            "LnRhcmtpbi5kYXRhLlpBZGRpdGlvbmFsQ2FudmFzU2hhZGVyQ2hhbm5lbHMi",
+            "tQIKDVpDYW52YXNTY2FsZXISOwoNdWlfc2NhbGVfbW9kZRgBIAEoDjIkLnRh",
+            "cmtpbi5kYXRhLlpDYW52YXNTY2FsZXIuU2NhbGVNb2RlEjEKDHNjYWxlX2Zh",
+            "Y3RvchgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEj4KGXJl",
+            "ZmVyZW5jZV9waXhlbHNfcGVyX3VuaXQYAyABKAsyGy5nb29nbGUucHJvdG9i",
+            "dWYuRmxvYXRWYWx1ZSJ0CglTY2FsZU1vZGUSFgoSVU5LTk9XTl9TQ0FMRV9N",
+            "T0RFEAASFwoTQ09OU1RBTlRfUElYRUxfU0laRRABEhoKFlNDQUxFX1dJVEhf",
+            "U0NSRUVOX1NJWkUQAhIaChZDT05TVEFOVF9QSFlTSUNBTF9TSVpFEAMi9wEK",
+            "EVpHcmFwaGljUmF5Y2FzdGVyEjwKGGlnbm9yZV9yZXZlcnNlZF9ncmFwaGlj",
+            "cxgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUSSAoQYmxvY2tp",
+            "bmdfb2JqZWN0cxgCIAEoDjIuLnRhcmtpbi5kYXRhLlpHcmFwaGljUmF5Y2Fz",
+            "dGVyLkJsb2NraW5nT2JqZWN0cyJaCg9CbG9ja2luZ09iamVjdHMSHAoYVU5L",
+            "Tk9XTl9CTE9DS0lOR19PQkpFQ1RTEAASCAoETk9ORRABEgkKBVRXT19EEAIS",
+            "CwoHVEhSRUVfRBADEgcKA0FMTBAEIkwKD1pDYW52YXNSZW5kZXJlchI5ChVj",
+            "dWxsX3RyYW5zcGFyZW50X21lc2gYASABKAsyGi5nb29nbGUucHJvdG9idWYu",
+            "Qm9vbFZhbHVlIsMBCgxaRXZlbnRTeXN0ZW0SPAoaZmlyc3Rfc2VsZWN0ZWRf",
+            "Z2FtZV9vYmplY3QYASABKAsyGC50YXJraW4uZGF0YS5aR2FtZU9iamVjdBI6",
+            "ChZzZW5kX25hdmlnYXRpb25fZXZlbnRzGAIgASgLMhouZ29vZ2xlLnByb3Rv",
+            "YnVmLkJvb2xWYWx1ZRI5ChRwaXhlbF9kcmFnX3RocmVzaG9sZBgDIAEoCzIb",
+            "Lmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlIpkDChZaU3RhbmRhbG9uZUlu",
+            "cHV0TW9kdWxlEjUKD2hvcml6b250YWxfYXhpcxgBIAEoCzIcLmdvb2dsZS5w",
+            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIzCg12ZXJ0aWNhbF9heGlzGAIgASgLMhwu",
+            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjMKDXN1Ym1pdF9idXR0b24Y",
+            "AyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNY2FuY2Vs",
+            "X2J1dHRvbhgEIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI9",
+            "ChhpbnB1dF9hY3Rpb25zX3Blcl9zZWNvbmQYBSABKAsyGy5nb29nbGUucHJv",
+            "dG9idWYuRmxvYXRWYWx1ZRIxCgxyZXBlYXRfZGVsYXkYBiABKAsyGy5nb29n",
+            "bGUucHJvdG9idWYuRmxvYXRWYWx1ZRI3ChNmb3JjZV9tb2R1bGVfYWN0aXZl",
+            "GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZSLSAQoIWkdyYXBo",
+            "aWMSOQoQbWFza2FibGVfZ3JhcGhpYxgBIAEoCzIdLnRhcmtpbi5kYXRhLlpN",
+            "YXNrYWJsZUdyYXBoaWNIABIiCgVjb2xvchgCIAEoCzITLnRhcmtpbi5kYXRh",
+            "LlpDb2xvchIoCghtYXRlcmlhbBgDIAEoCzIWLnRhcmtpbi5kYXRhLlpNYXRl",
+            "cmlhbBIyCg5yYXljYXN0X3RhcmdldBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1",
+            "Zi5Cb29sVmFsdWVCCQoHZ3JhcGhpYyKeAQoQWk1hc2thYmxlR3JhcGhpYxIk",
+            "CgVpbWFnZRgBIAEoCzITLnRhcmtpbi5kYXRhLlpJbWFnZUgAEiIKBHRleHQY",
+            "AiABKAsyEi50YXJraW4uZGF0YS5aVGV4dEgAEiwKCG1hc2thYmxlGAMgASgL",
+            "MhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZUISChBtYXNrYWJsZV9ncmFw",
+            "aGljIpQBCgZaSW1hZ2USJAoGc3ByaXRlGAEgASgLMhQudGFya2luLmRhdGEu",
+            "WlNwcml0ZRIzCg9wcmVzZXJ2ZV9hc3BlY3QYAiABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuQm9vbFZhbHVlEi8KC2ZpbGxfY2VudGVyGAMgASgLMhouZ29vZ2xl",
+            "LnByb3RvYnVmLkJvb2xWYWx1ZSI7CgdaQnV0dG9uEjAKDGludGVyYWN0YWJs",
+            "ZRgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUi1wYKBVpUZXh0",
+            "EioKBHRleHQYASABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUS",
+            "IAoEZm9udBgCIAEoCzISLnRhcmtpbi5kYXRhLlpGb250EjAKCmZvbnRfc3R5",
+            "bGUYAyABKA4yHC50YXJraW4uZGF0YS5aVGV4dC5Gb250U3R5bGUSLgoJZm9u",
+            "dF9zaXplGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSMQoM",
+            "bGluZV9zcGFjaW5nGAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs",
+            "dWUSNQoRc3VwcG9ydF9yaWNoX3RleHQYBiABKAsyGi5nb29nbGUucHJvdG9i",
+            "dWYuQm9vbFZhbHVlEisKCWFsaWdubWVudBgHIAEoDjIYLnRhcmtpbi5kYXRh",
+            "LlpUZXh0QW5jaG9yEjUKEWFsaWduX2J5X2dlb21ldHJ5GAggASgLMhouZ29v",
+            "Z2xlLnByb3RvYnVmLkJvb2xWYWx1ZRJCChNob3Jpem9udGFsX292ZXJmbG93",
+            "GAkgASgOMiUudGFya2luLmRhdGEuWlRleHQuSG9yaXpvbnRhbFdyYXBNb2Rl",
+            "Ej4KEXZlcnRpY2FsX292ZXJmbG93GAogASgOMiMudGFya2luLmRhdGEuWlRl",
+            "eHQuVmVydGljYWxXcmFwTW9kZRI8ChhyZXNpemVfdGV4dF9mb3JfYmVzdF9m",
+            "aXQYCyABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlIloKCUZvbnRT",
+            "dHlsZRIWChJVTktOT1dOX0ZPTlRfU1RZTEUQABIKCgZOT1JNQUwQARIICgRC",
+            "T0xEEAISCgoGSVRBTElDEAMSEwoPQk9MRF9BTkRfSVRBTElDEAQiWQoSSG9y",
+            "aXpvbnRhbFdyYXBNb2RlEiAKHFVOS05PV05fSE9SSVpPTlRBTF9XUkFQX01P",
+            "REUQABIICgRXUkFQEAESFwoTSE9SSVpPTlRBTF9PVkVSRkxPVxACIlcKEFZl",
+            "cnRpY2FsV3JhcE1vZGUSHgoaVU5LTk9XTl9WRVJUSUNBTF9XUkFQX01PREUQ",
+            "ABIMCghUUlVOQ0FURRABEhUKEVZFUlRJQ0FMX09WRVJGTE9XEAIirQMKClpC",
+            "ZWhhdmlvdXISKwoHZW5hYmxlZBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C",
+            "b29sVmFsdWUSJgoGY2FudmFzGAIgASgLMhQudGFya2luLmRhdGEuWkNhbnZh",
+            "c0gAEjMKDWNhbnZhc19zY2FsZXIYAyABKAsyGi50YXJraW4uZGF0YS5aQ2Fu",
+            "dmFzU2NhbGVySAASOwoRZ3JhcGhpY19yYXljYXN0ZXIYBCABKAsyHi50YXJr",
+            "aW4uZGF0YS5aR3JhcGhpY1JheWNhc3RlckgAEjEKDGV2ZW50X3N5c3RlbRgF",
+            "IAEoCzIZLnRhcmtpbi5kYXRhLlpFdmVudFN5c3RlbUgAEkYKF3N0YW5kYWxv",
+            "bmVfaW5wdXRfbW9kdWxlGAYgASgLMiMudGFya2luLmRhdGEuWlN0YW5kYWxv",
+            "bmVJbnB1dE1vZHVsZUgAEigKB2dyYXBoaWMYByABKAsyFS50YXJraW4uZGF0",
+            "YS5aR3JhcGhpY0gAEiYKBmJ1dHRvbhgIIAEoCzIULnRhcmtpbi5kYXRhLlpC",
+            "dXR0b25IAEILCgliZWhhdmlvdXIigAEKClpDb21wb25lbnQSLAoJYmVoYXZp",
+            "b3VyGAEgASgLMhcudGFya2luLmRhdGEuWkJlaGF2aW91ckgAEjcKD2NhbnZh",
+            "c19yZW5kZXJlchgCIAEoCzIcLnRhcmtpbi5kYXRhLlpDYW52YXNSZW5kZXJl",
+            "ckgAQgsKCWNvbXBvbmVudCLPAQoQTG9hZEFzc2V0UmVxdWVzdBISCgphc3Nl",
+            "dF9wYXRoGAEgASgJEiYKBnByZWZhYhgCIAEoCzIULnRhcmtpbi5kYXRhLlpQ",
+            "cmVmYWJIABImCgZzcHJpdGUYAyABKAsyFC50YXJraW4uZGF0YS5aU3ByaXRl",
+            "SAASKgoIbWF0ZXJpYWwYBCABKAsyFi50YXJraW4uZGF0YS5aTWF0ZXJpYWxI",
+            "ABIiCgRmb250GAUgASgLMhIudGFya2luLmRhdGEuWkZvbnRIAEIHCgVhc3Nl",
+            "dCIWChRTeXN0ZW1Db21tYW5kUmVxdWVzdCLNAQoXQ3JlYXRlR2FtZU9iamVj",
+            "dFJlcXVlc3QSFQoNbmV3X29iamVjdF9pZBgBIAEoDRIMCgRuYW1lGAIgASgJ",
+            "EjQKEnBhcmVudF9nYW1lX29iamVjdBgDIAEoCzIYLnRhcmtpbi5kYXRhLlpH",
+            "YW1lT2JqZWN0EisKCmNvbXBvbmVudHMYBCADKAsyFy50YXJraW4uZGF0YS5a",
+            "Q29tcG9uZW50EioKCXRyYW5zZm9ybRgFIAEoCzIXLnRhcmtpbi5kYXRhLlpU",
+            "cmFuc2Zvcm0ikgIKF1VwZGF0ZUdhbWVPYmplY3RSZXF1ZXN0Ei0KC2dhbWVf",
+            "b2JqZWN0GAEgASgLMhgudGFya2luLmRhdGEuWkdhbWVPYmplY3QSNAoScGFy",
+            "ZW50X2dhbWVfb2JqZWN0GAIgASgLMhgudGFya2luLmRhdGEuWkdhbWVPYmpl",
+            "Y3QSKwoKY29tcG9uZW50cxgDIAMoCzIXLnRhcmtpbi5kYXRhLlpDb21wb25l",
+            "bnQSOQoUY29tcG9uZW50c190b19yZW1vdmUYBCADKA4yGy50YXJraW4uZGF0",
+            "YS5aQ29tcG9uZW50VHlwZRIqCgl0cmFuc2Zvcm0YBSABKAsyFy50YXJraW4u",
+            "ZGF0YS5aVHJhbnNmb3JtIkkKGERlc3Ryb3lHYW1lT2JqZWN0UmVxdWVzdBIt",
+            "CgtnYW1lX29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2JqZWN0",
+            "IsgCChJVcGRhdGVTdGF0ZVJlcXVlc3QSMwoIY29tbWFuZHMYASADKAsyIS50",
+            "YXJraW4uZGF0YS5TeXN0ZW1Db21tYW5kUmVxdWVzdBIyCgtsb2FkX2Fzc2V0",
+            "cxgCIAMoCzIdLnRhcmtpbi5kYXRhLkxvYWRBc3NldFJlcXVlc3QSQQoTY3Jl",
+            "YXRlX2dhbWVfb2JqZWN0cxgDIAMoCzIkLnRhcmtpbi5kYXRhLkNyZWF0ZUdh",
+            "bWVPYmplY3RSZXF1ZXN0EkEKE3VwZGF0ZV9nYW1lX29iamVjdHMYBSADKAsy",
+            "JC50YXJraW4uZGF0YS5VcGRhdGVHYW1lT2JqZWN0UmVxdWVzdBJDChRkZXN0",
+            "cm95X2dhbWVfb2JqZWN0cxgGIAMoCzIlLnRhcmtpbi5kYXRhLkRlc3Ryb3lH",
+            "YW1lT2JqZWN0UmVxdWVzdCpqCgtaUmVuZGVyTW9kZRIXChNVTktOT1dOX1JF",
+            "TkRFUl9NT0RFEAASGAoUU0NSRUVOX1NQQUNFX09WRVJMQVkQARIXChNTQ1JF",
+            "RU5fU1BBQ0VfQ0FNRVJBEAISDwoLV09STERfU1BBQ0UQAyqmAQofWkFkZGl0",
+            "aW9uYWxDYW52YXNTaGFkZXJDaGFubmVscxItCilVTktOT1dOX0FERElUSU9O",
+            "QUxfQ0FOVkFTX1NIQURFUl9DSEFOTkVMUxAAEggKBE5PTkUQARIPCgtURVhf",
+            "Q09PUkRfMRACEg8KC1RFWF9DT09SRF8yEAMSDwoLVEVYX0NPT1JEXzMQBBIK",
+            "CgZOT1JNQUwQBRILCgdUQU5HRU5UEAYqwgEKC1pUZXh0QW5jaG9yEhcKE1VO",
+            "S05PV05fVEVYVF9BTkNIT1IQABIOCgpVUFBFUl9MRUZUEAESEAoMVVBQRVJf",
+            "Q0VOVEVSEAISDwoLVVBQRVJfUklHSFQQAxIPCgtNSURETEVfTEVGVBAEEhEK",
+            "DU1JRERMRV9DRU5URVIQBRIQCgxNSURETEVfUklHSFQQBhIOCgpMT1dFUl9M",
+            "RUZUEAcSEAoMTE9XRVJfQ0VOVEVSEAgSDwoLTE9XRVJfUklHSFQQCSq9AQoO",
+            "WkNvbXBvbmVudFR5cGUSEAoMVU5LTk9XTl9UWVBFEAASCgoGQ0FOVkFTEAES",
+            "EQoNQ0FOVkFTX1NDQUxFUhACEhMKD0NBTlZBU19SRU5ERVJFUhADEhUKEUdS",
+            "QVBISUNfUkFZQ0FTVEVSEAQSEAoMRVZFTlRfU1lTVEVNEAUSGwoXU1RBTkRB",
+            "TE9ORV9JTlBVVF9NT0RVTEUQBhIJCgVJTUFHRRAHEgoKBkJVVFRPThAIEggK",
+            "BFRFWFQQCWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Tarkin.Data.ZRenderMode), typeof(global::Tarkin.Data.ZAdditionalCanvasShaderChannels), typeof(global::Tarkin.Data.ZTextAnchor), typeof(global::Tarkin.Data.ZComponentType), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.Request), global::Tarkin.Data.Request.Parser, new[]{ "FirstNumber", "FirstName" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.Response), global::Tarkin.Data.Response.Parser, new[]{ "OtherNumber", "LastName" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.Response), global::Tarkin.Data.Response.Parser, new[]{ "OtherNumber", "LastName" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZVector2), global::Tarkin.Data.ZVector2.Parser, new[]{ "X", "Y" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZVector3), global::Tarkin.Data.ZVector3.Parser, new[]{ "X", "Y", "Z" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZColor), global::Tarkin.Data.ZColor.Parser, new[]{ "R", "G", "B", "A" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZGameObject), global::Tarkin.Data.ZGameObject.Parser, new[]{ "GameObjectId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZPrefab), global::Tarkin.Data.ZPrefab.Parser, new[]{ "PrefabId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZSprite), global::Tarkin.Data.ZSprite.Parser, new[]{ "SpriteId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZMaterial), global::Tarkin.Data.ZMaterial.Parser, new[]{ "MaterialId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZFont), global::Tarkin.Data.ZFont.Parser, new[]{ "FontId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZRectTransform), global::Tarkin.Data.ZRectTransform.Parser, new[]{ "SizeDelta", "AnchorMin", "AnchorMax", "Pivot" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZTransform), global::Tarkin.Data.ZTransform.Parser, new[]{ "RectTransform", "LocalPosition", "LocalEulerAngles", "LocalScale" }, new[]{ "Transform" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvas), global::Tarkin.Data.ZCanvas.Parser, new[]{ "RenderMode", "PixelPerfect", "SortingOrder", "TargetDisplay", "AdditionalShaderChannels" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvasScaler), global::Tarkin.Data.ZCanvasScaler.Parser, new[]{ "UiScaleMode", "ScaleFactor", "ReferencePixelsPerUnit" }, null, new[]{ typeof(global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZGraphicRaycaster), global::Tarkin.Data.ZGraphicRaycaster.Parser, new[]{ "IgnoreReversedGraphics", "BlockingObjects" }, null, new[]{ typeof(global::Tarkin.Data.ZGraphicRaycaster.Types.BlockingObjects) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvasRenderer), global::Tarkin.Data.ZCanvasRenderer.Parser, new[]{ "CullTransparentMesh" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZEventSystem), global::Tarkin.Data.ZEventSystem.Parser, new[]{ "FirstSelectedGameObject", "SendNavigationEvents", "PixelDragThreshold" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZStandaloneInputModule), global::Tarkin.Data.ZStandaloneInputModule.Parser, new[]{ "HorizontalAxis", "VerticalAxis", "SubmitButton", "CancelButton", "InputActionsPerSecond", "RepeatDelay", "ForceModuleActive" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZGraphic), global::Tarkin.Data.ZGraphic.Parser, new[]{ "MaskableGraphic", "Color", "Material", "RaycastTarget" }, new[]{ "Graphic" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZMaskableGraphic), global::Tarkin.Data.ZMaskableGraphic.Parser, new[]{ "Image", "Text", "Maskable" }, new[]{ "MaskableGraphic" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZImage), global::Tarkin.Data.ZImage.Parser, new[]{ "Sprite", "PreserveAspect", "FillCenter" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZButton), global::Tarkin.Data.ZButton.Parser, new[]{ "Interactable" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZText), global::Tarkin.Data.ZText.Parser, new[]{ "Text", "Font", "FontStyle", "FontSize", "LineSpacing", "SupportRichText", "Alignment", "AlignByGeometry", "HorizontalOverflow", "VerticalOverflow", "ResizeTextForBestFit" }, null, new[]{ typeof(global::Tarkin.Data.ZText.Types.FontStyle), typeof(global::Tarkin.Data.ZText.Types.HorizontalWrapMode), typeof(global::Tarkin.Data.ZText.Types.VerticalWrapMode) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZBehaviour), global::Tarkin.Data.ZBehaviour.Parser, new[]{ "Enabled", "Canvas", "CanvasScaler", "GraphicRaycaster", "EventSystem", "StandaloneInputModule", "Graphic", "Button" }, new[]{ "Behaviour" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZComponent), global::Tarkin.Data.ZComponent.Parser, new[]{ "Behaviour", "CanvasRenderer" }, new[]{ "Component" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.LoadAssetRequest), global::Tarkin.Data.LoadAssetRequest.Parser, new[]{ "AssetPath", "Prefab", "Sprite", "Material", "Font" }, new[]{ "Asset" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.SystemCommandRequest), global::Tarkin.Data.SystemCommandRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.CreateGameObjectRequest), global::Tarkin.Data.CreateGameObjectRequest.Parser, new[]{ "NewObjectId", "Name", "ParentGameObject", "Components", "Transform" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateGameObjectRequest), global::Tarkin.Data.UpdateGameObjectRequest.Parser, new[]{ "GameObject", "ParentGameObject", "Components", "ComponentsToRemove", "Transform" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.DestroyGameObjectRequest), global::Tarkin.Data.DestroyGameObjectRequest.Parser, new[]{ "GameObject" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateStateRequest), global::Tarkin.Data.UpdateStateRequest.Parser, new[]{ "Commands", "LoadAssets", "CreateGameObjects", "UpdateGameObjects", "DestroyGameObjects" }, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum ZRenderMode {
+    [pbr::OriginalName("UNKNOWN_RENDER_MODE")] UnknownRenderMode = 0,
+    /// <summary>
+    /// Render at the end of the scene using a 2D Canvas:
+    /// </summary>
+    [pbr::OriginalName("SCREEN_SPACE_OVERLAY")] ScreenSpaceOverlay = 1,
+    /// <summary>
+    /// Render using the Camera configured on the Canvas:
+    /// </summary>
+    [pbr::OriginalName("SCREEN_SPACE_CAMERA")] ScreenSpaceCamera = 2,
+    /// <summary>
+    /// Render using any Camera in the scene that can render the layer:
+    /// </summary>
+    [pbr::OriginalName("WORLD_SPACE")] WorldSpace = 3,
+  }
+
+  public enum ZAdditionalCanvasShaderChannels {
+    [pbr::OriginalName("UNKNOWN_ADDITIONAL_CANVAS_SHADER_CHANNELS")] UnknownAdditionalCanvasShaderChannels = 0,
+    /// <summary>
+    /// No additional shader parameters are needed:
+    /// </summary>
+    [pbr::OriginalName("NONE")] None = 1,
+    /// <summary>
+    /// Include UV1 on the mesh vertices:
+    /// </summary>
+    [pbr::OriginalName("TEX_COORD_1")] TexCoord1 = 2,
+    /// <summary>
+    /// Include UV2 on the mesh vertices:
+    /// </summary>
+    [pbr::OriginalName("TEX_COORD_2")] TexCoord2 = 3,
+    /// <summary>
+    /// Include UV3 on the mesh vertices:
+    /// </summary>
+    [pbr::OriginalName("TEX_COORD_3")] TexCoord3 = 4,
+    /// <summary>
+    /// Include the normals on the mesh vertices:
+    /// </summary>
+    [pbr::OriginalName("NORMAL")] Normal = 5,
+    /// <summary>
+    /// Include the Tangent on the mesh vertices:
+    /// </summary>
+    [pbr::OriginalName("TANGENT")] Tangent = 6,
+  }
+
+  /// <summary>
+  /// Where the anchor of the text is placed:
+  /// </summary>
+  public enum ZTextAnchor {
+    [pbr::OriginalName("UNKNOWN_TEXT_ANCHOR")] UnknownTextAnchor = 0,
+    /// <summary>
+    /// Text is anchored in upper left corner:
+    /// </summary>
+    [pbr::OriginalName("UPPER_LEFT")] UpperLeft = 1,
+    /// <summary>
+    /// Text is anchored in upper side, centered horizontally:
+    /// </summary>
+    [pbr::OriginalName("UPPER_CENTER")] UpperCenter = 2,
+    /// <summary>
+    /// Text is anchored in upper right corner:
+    /// </summary>
+    [pbr::OriginalName("UPPER_RIGHT")] UpperRight = 3,
+    /// <summary>
+    /// Text is anchored in left side, centered vertically:
+    /// </summary>
+    [pbr::OriginalName("MIDDLE_LEFT")] MiddleLeft = 4,
+    /// <summary>
+    /// Text is centered both horizontally and vertically:
+    /// </summary>
+    [pbr::OriginalName("MIDDLE_CENTER")] MiddleCenter = 5,
+    /// <summary>
+    /// Text is anchored in right side, centered vertically:
+    /// </summary>
+    [pbr::OriginalName("MIDDLE_RIGHT")] MiddleRight = 6,
+    /// <summary>
+    /// Text is anchored in lower left corner:
+    /// </summary>
+    [pbr::OriginalName("LOWER_LEFT")] LowerLeft = 7,
+    /// <summary>
+    /// Text is anchored in lower side, centered horizontally:
+    /// </summary>
+    [pbr::OriginalName("LOWER_CENTER")] LowerCenter = 8,
+    /// <summary>
+    /// Text is anchored in lower right corner:
+    /// </summary>
+    [pbr::OriginalName("LOWER_RIGHT")] LowerRight = 9,
+  }
+
+  public enum ZComponentType {
+    [pbr::OriginalName("UNKNOWN_TYPE")] UnknownType = 0,
+    [pbr::OriginalName("CANVAS")] Canvas = 1,
+    [pbr::OriginalName("CANVAS_SCALER")] CanvasScaler = 2,
+    [pbr::OriginalName("CANVAS_RENDERER")] CanvasRenderer = 3,
+    [pbr::OriginalName("GRAPHIC_RAYCASTER")] GraphicRaycaster = 4,
+    [pbr::OriginalName("EVENT_SYSTEM")] EventSystem = 5,
+    [pbr::OriginalName("STANDALONE_INPUT_MODULE")] StandaloneInputModule = 6,
+    [pbr::OriginalName("IMAGE")] Image = 7,
+    [pbr::OriginalName("BUTTON")] Button = 8,
+    [pbr::OriginalName("TEXT")] Text = 9,
+  }
+
+  #endregion
+
   #region Messages
   public sealed partial class Request : pb::IMessage<Request> {
     private static readonly pb::MessageParser<Request> _parser = new pb::MessageParser<Request>(() => new Request());
@@ -345,6 +612,6526 @@ namespace Tarkin.Data {
           }
           case 18: {
             LastName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZVector2 : pb::IMessage<ZVector2> {
+    private static readonly pb::MessageParser<ZVector2> _parser = new pb::MessageParser<ZVector2>(() => new ZVector2());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZVector2> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector2() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector2(ZVector2 other) : this() {
+      x_ = other.x_;
+      y_ = other.y_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector2 Clone() {
+      return new ZVector2(this);
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 1;
+    private float x_;
+    /// <summary>
+    /// X component of the vector:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 2;
+    private float y_;
+    /// <summary>
+    /// Y component of the vector:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZVector2);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZVector2 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (X != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Y);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZVector2 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.X != 0F) {
+        X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Y = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZVector3 : pb::IMessage<ZVector3> {
+    private static readonly pb::MessageParser<ZVector3> _parser = new pb::MessageParser<ZVector3>(() => new ZVector3());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZVector3> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector3() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector3(ZVector3 other) : this() {
+      x_ = other.x_;
+      y_ = other.y_;
+      z_ = other.z_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZVector3 Clone() {
+      return new ZVector3(this);
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 1;
+    private float x_;
+    /// <summary>
+    /// X component of the vector:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 2;
+    private float y_;
+    /// <summary>
+    /// Y component of the vector:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 3;
+    private float z_;
+    /// <summary>
+    /// Z component of the vector:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZVector3);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZVector3 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
+      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (X != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Y);
+      }
+      if (Z != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Z);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (X != 0F) {
+        size += 1 + 4;
+      }
+      if (Y != 0F) {
+        size += 1 + 4;
+      }
+      if (Z != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZVector3 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.X != 0F) {
+        X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
+      }
+      if (other.Z != 0F) {
+        Z = other.Z;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            Y = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            Z = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Representation of RGBA colors:
+  /// </summary>
+  public sealed partial class ZColor : pb::IMessage<ZColor> {
+    private static readonly pb::MessageParser<ZColor> _parser = new pb::MessageParser<ZColor>(() => new ZColor());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZColor> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZColor() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZColor(ZColor other) : this() {
+      r_ = other.r_;
+      g_ = other.g_;
+      b_ = other.b_;
+      a_ = other.a_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZColor Clone() {
+      return new ZColor(this);
+    }
+
+    /// <summary>Field number for the "r" field.</summary>
+    public const int RFieldNumber = 1;
+    private float r_;
+    /// <summary>
+    /// Red component:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float R {
+      get { return r_; }
+      set {
+        r_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "g" field.</summary>
+    public const int GFieldNumber = 2;
+    private float g_;
+    /// <summary>
+    /// Green component:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float G {
+      get { return g_; }
+      set {
+        g_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "b" field.</summary>
+    public const int BFieldNumber = 3;
+    private float b_;
+    /// <summary>
+    /// Blue component:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float B {
+      get { return b_; }
+      set {
+        b_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "a" field.</summary>
+    public const int AFieldNumber = 4;
+    private float a_;
+    /// <summary>
+    /// Alpha component:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float A {
+      get { return a_; }
+      set {
+        a_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZColor);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZColor other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(R, other.R)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(G, other.G)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(B, other.B)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(A, other.A)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (R != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(R);
+      if (G != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(G);
+      if (B != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(B);
+      if (A != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(A);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (R != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(R);
+      }
+      if (G != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(G);
+      }
+      if (B != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(B);
+      }
+      if (A != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(A);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (R != 0F) {
+        size += 1 + 4;
+      }
+      if (G != 0F) {
+        size += 1 + 4;
+      }
+      if (B != 0F) {
+        size += 1 + 4;
+      }
+      if (A != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZColor other) {
+      if (other == null) {
+        return;
+      }
+      if (other.R != 0F) {
+        R = other.R;
+      }
+      if (other.G != 0F) {
+        G = other.G;
+      }
+      if (other.B != 0F) {
+        B = other.B;
+      }
+      if (other.A != 0F) {
+        A = other.A;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            R = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            G = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            B = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            A = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Represents a unity GameObject
+  /// </summary>
+  public sealed partial class ZGameObject : pb::IMessage<ZGameObject> {
+    private static readonly pb::MessageParser<ZGameObject> _parser = new pb::MessageParser<ZGameObject>(() => new ZGameObject());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZGameObject> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGameObject() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGameObject(ZGameObject other) : this() {
+      gameObjectId_ = other.gameObjectId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGameObject Clone() {
+      return new ZGameObject(this);
+    }
+
+    /// <summary>Field number for the "game_object_id" field.</summary>
+    public const int GameObjectIdFieldNumber = 1;
+    private uint gameObjectId_;
+    /// <summary>
+    /// Unique ID of this game object (should be allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint GameObjectId {
+      get { return gameObjectId_; }
+      set {
+        gameObjectId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZGameObject);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZGameObject other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (GameObjectId != other.GameObjectId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (GameObjectId != 0) hash ^= GameObjectId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (GameObjectId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(GameObjectId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (GameObjectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameObjectId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZGameObject other) {
+      if (other == null) {
+        return;
+      }
+      if (other.GameObjectId != 0) {
+        GameObjectId = other.GameObjectId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            GameObjectId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Represents a unity Prefab
+  /// </summary>
+  public sealed partial class ZPrefab : pb::IMessage<ZPrefab> {
+    private static readonly pb::MessageParser<ZPrefab> _parser = new pb::MessageParser<ZPrefab>(() => new ZPrefab());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZPrefab> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZPrefab() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZPrefab(ZPrefab other) : this() {
+      prefabId_ = other.prefabId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZPrefab Clone() {
+      return new ZPrefab(this);
+    }
+
+    /// <summary>Field number for the "prefab_id" field.</summary>
+    public const int PrefabIdFieldNumber = 1;
+    private uint prefabId_;
+    /// <summary>
+    /// Unique ID of this prefab (should be allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint PrefabId {
+      get { return prefabId_; }
+      set {
+        prefabId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZPrefab);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZPrefab other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PrefabId != other.PrefabId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PrefabId != 0) hash ^= PrefabId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PrefabId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PrefabId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PrefabId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PrefabId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZPrefab other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PrefabId != 0) {
+        PrefabId = other.PrefabId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            PrefabId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Represents a Sprite object for use in 2D gameplay:
+  /// </summary>
+  public sealed partial class ZSprite : pb::IMessage<ZSprite> {
+    private static readonly pb::MessageParser<ZSprite> _parser = new pb::MessageParser<ZSprite>(() => new ZSprite());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZSprite> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZSprite() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZSprite(ZSprite other) : this() {
+      spriteId_ = other.spriteId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZSprite Clone() {
+      return new ZSprite(this);
+    }
+
+    /// <summary>Field number for the "sprite_id" field.</summary>
+    public const int SpriteIdFieldNumber = 1;
+    private uint spriteId_;
+    /// <summary>
+    /// Unique ID of this sprite (should be allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint SpriteId {
+      get { return spriteId_; }
+      set {
+        spriteId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZSprite);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZSprite other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SpriteId != other.SpriteId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SpriteId != 0) hash ^= SpriteId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SpriteId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(SpriteId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (SpriteId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SpriteId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZSprite other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SpriteId != 0) {
+        SpriteId = other.SpriteId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            SpriteId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// The material class:
+  /// </summary>
+  public sealed partial class ZMaterial : pb::IMessage<ZMaterial> {
+    private static readonly pb::MessageParser<ZMaterial> _parser = new pb::MessageParser<ZMaterial>(() => new ZMaterial());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZMaterial> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaterial() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaterial(ZMaterial other) : this() {
+      materialId_ = other.materialId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaterial Clone() {
+      return new ZMaterial(this);
+    }
+
+    /// <summary>Field number for the "material_id" field.</summary>
+    public const int MaterialIdFieldNumber = 1;
+    private uint materialId_;
+    /// <summary>
+    /// Unique ID of this material (should be allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint MaterialId {
+      get { return materialId_; }
+      set {
+        materialId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZMaterial);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZMaterial other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaterialId != other.MaterialId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MaterialId != 0) hash ^= MaterialId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MaterialId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(MaterialId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (MaterialId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaterialId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZMaterial other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MaterialId != 0) {
+        MaterialId = other.MaterialId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            MaterialId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Interface for font assets.
+  /// </summary>
+  public sealed partial class ZFont : pb::IMessage<ZFont> {
+    private static readonly pb::MessageParser<ZFont> _parser = new pb::MessageParser<ZFont>(() => new ZFont());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZFont> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZFont() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZFont(ZFont other) : this() {
+      fontId_ = other.fontId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZFont Clone() {
+      return new ZFont(this);
+    }
+
+    /// <summary>Field number for the "font_id" field.</summary>
+    public const int FontIdFieldNumber = 1;
+    private uint fontId_;
+    /// <summary>
+    /// Unique ID of this font (should be allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint FontId {
+      get { return fontId_; }
+      set {
+        fontId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZFont);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZFont other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FontId != other.FontId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FontId != 0) hash ^= FontId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FontId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(FontId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FontId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FontId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZFont other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FontId != 0) {
+        FontId = other.FontId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            FontId = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZRectTransform : pb::IMessage<ZRectTransform> {
+    private static readonly pb::MessageParser<ZRectTransform> _parser = new pb::MessageParser<ZRectTransform>(() => new ZRectTransform());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZRectTransform> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZRectTransform() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZRectTransform(ZRectTransform other) : this() {
+      sizeDelta_ = other.sizeDelta_ != null ? other.sizeDelta_.Clone() : null;
+      anchorMin_ = other.anchorMin_ != null ? other.anchorMin_.Clone() : null;
+      anchorMax_ = other.anchorMax_ != null ? other.anchorMax_.Clone() : null;
+      pivot_ = other.pivot_ != null ? other.pivot_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZRectTransform Clone() {
+      return new ZRectTransform(this);
+    }
+
+    /// <summary>Field number for the "size_delta" field.</summary>
+    public const int SizeDeltaFieldNumber = 1;
+    private global::Tarkin.Data.ZVector2 sizeDelta_;
+    /// <summary>
+    /// The size of this RectTransform relative to the distances between the anchors:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector2 SizeDelta {
+      get { return sizeDelta_; }
+      set {
+        sizeDelta_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "anchor_min" field.</summary>
+    public const int AnchorMinFieldNumber = 2;
+    private global::Tarkin.Data.ZVector2 anchorMin_;
+    /// <summary>
+    /// The normalized position in the parent RectTransform that the lower left corner is anchored to:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector2 AnchorMin {
+      get { return anchorMin_; }
+      set {
+        anchorMin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "anchor_max" field.</summary>
+    public const int AnchorMaxFieldNumber = 3;
+    private global::Tarkin.Data.ZVector2 anchorMax_;
+    /// <summary>
+    /// The normalized position in the parent RectTransform that the upper right corner is anchored to:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector2 AnchorMax {
+      get { return anchorMax_; }
+      set {
+        anchorMax_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pivot" field.</summary>
+    public const int PivotFieldNumber = 4;
+    private global::Tarkin.Data.ZVector2 pivot_;
+    /// <summary>
+    /// The normalized position in this RectTransform that it rotates around:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector2 Pivot {
+      get { return pivot_; }
+      set {
+        pivot_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZRectTransform);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZRectTransform other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(SizeDelta, other.SizeDelta)) return false;
+      if (!object.Equals(AnchorMin, other.AnchorMin)) return false;
+      if (!object.Equals(AnchorMax, other.AnchorMax)) return false;
+      if (!object.Equals(Pivot, other.Pivot)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (sizeDelta_ != null) hash ^= SizeDelta.GetHashCode();
+      if (anchorMin_ != null) hash ^= AnchorMin.GetHashCode();
+      if (anchorMax_ != null) hash ^= AnchorMax.GetHashCode();
+      if (pivot_ != null) hash ^= Pivot.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (sizeDelta_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(SizeDelta);
+      }
+      if (anchorMin_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(AnchorMin);
+      }
+      if (anchorMax_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AnchorMax);
+      }
+      if (pivot_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Pivot);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (sizeDelta_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SizeDelta);
+      }
+      if (anchorMin_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AnchorMin);
+      }
+      if (anchorMax_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AnchorMax);
+      }
+      if (pivot_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pivot);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZRectTransform other) {
+      if (other == null) {
+        return;
+      }
+      if (other.sizeDelta_ != null) {
+        if (sizeDelta_ == null) {
+          sizeDelta_ = new global::Tarkin.Data.ZVector2();
+        }
+        SizeDelta.MergeFrom(other.SizeDelta);
+      }
+      if (other.anchorMin_ != null) {
+        if (anchorMin_ == null) {
+          anchorMin_ = new global::Tarkin.Data.ZVector2();
+        }
+        AnchorMin.MergeFrom(other.AnchorMin);
+      }
+      if (other.anchorMax_ != null) {
+        if (anchorMax_ == null) {
+          anchorMax_ = new global::Tarkin.Data.ZVector2();
+        }
+        AnchorMax.MergeFrom(other.AnchorMax);
+      }
+      if (other.pivot_ != null) {
+        if (pivot_ == null) {
+          pivot_ = new global::Tarkin.Data.ZVector2();
+        }
+        Pivot.MergeFrom(other.Pivot);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (sizeDelta_ == null) {
+              sizeDelta_ = new global::Tarkin.Data.ZVector2();
+            }
+            input.ReadMessage(sizeDelta_);
+            break;
+          }
+          case 18: {
+            if (anchorMin_ == null) {
+              anchorMin_ = new global::Tarkin.Data.ZVector2();
+            }
+            input.ReadMessage(anchorMin_);
+            break;
+          }
+          case 26: {
+            if (anchorMax_ == null) {
+              anchorMax_ = new global::Tarkin.Data.ZVector2();
+            }
+            input.ReadMessage(anchorMax_);
+            break;
+          }
+          case 34: {
+            if (pivot_ == null) {
+              pivot_ = new global::Tarkin.Data.ZVector2();
+            }
+            input.ReadMessage(pivot_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZTransform : pb::IMessage<ZTransform> {
+    private static readonly pb::MessageParser<ZTransform> _parser = new pb::MessageParser<ZTransform>(() => new ZTransform());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZTransform> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZTransform() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZTransform(ZTransform other) : this() {
+      localPosition_ = other.localPosition_ != null ? other.localPosition_.Clone() : null;
+      localEulerAngles_ = other.localEulerAngles_ != null ? other.localEulerAngles_.Clone() : null;
+      localScale_ = other.localScale_ != null ? other.localScale_.Clone() : null;
+      switch (other.TransformCase) {
+        case TransformOneofCase.RectTransform:
+          RectTransform = other.RectTransform.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZTransform Clone() {
+      return new ZTransform(this);
+    }
+
+    /// <summary>Field number for the "rect_transform" field.</summary>
+    public const int RectTransformFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZRectTransform RectTransform {
+      get { return transformCase_ == TransformOneofCase.RectTransform ? (global::Tarkin.Data.ZRectTransform) transform_ : null; }
+      set {
+        transform_ = value;
+        transformCase_ = value == null ? TransformOneofCase.None : TransformOneofCase.RectTransform;
+      }
+    }
+
+    /// <summary>Field number for the "local_position" field.</summary>
+    public const int LocalPositionFieldNumber = 2;
+    private global::Tarkin.Data.ZVector3 localPosition_;
+    /// <summary>
+    /// Position of the transform relative to the parent transform:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector3 LocalPosition {
+      get { return localPosition_; }
+      set {
+        localPosition_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "local_euler_angles" field.</summary>
+    public const int LocalEulerAnglesFieldNumber = 3;
+    private global::Tarkin.Data.ZVector3 localEulerAngles_;
+    /// <summary>
+    /// The rotation as Euler angles in degrees relative to the parent transform's rotation:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector3 LocalEulerAngles {
+      get { return localEulerAngles_; }
+      set {
+        localEulerAngles_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "local_scale" field.</summary>
+    public const int LocalScaleFieldNumber = 4;
+    private global::Tarkin.Data.ZVector3 localScale_;
+    /// <summary>
+    /// The scale of the transform relative to the parent:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector3 LocalScale {
+      get { return localScale_; }
+      set {
+        localScale_ = value;
+      }
+    }
+
+    private object transform_;
+    /// <summary>Enum of possible cases for the "transform" oneof.</summary>
+    public enum TransformOneofCase {
+      None = 0,
+      RectTransform = 1,
+    }
+    private TransformOneofCase transformCase_ = TransformOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public TransformOneofCase TransformCase {
+      get { return transformCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearTransform() {
+      transformCase_ = TransformOneofCase.None;
+      transform_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZTransform);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZTransform other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(RectTransform, other.RectTransform)) return false;
+      if (!object.Equals(LocalPosition, other.LocalPosition)) return false;
+      if (!object.Equals(LocalEulerAngles, other.LocalEulerAngles)) return false;
+      if (!object.Equals(LocalScale, other.LocalScale)) return false;
+      if (TransformCase != other.TransformCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (transformCase_ == TransformOneofCase.RectTransform) hash ^= RectTransform.GetHashCode();
+      if (localPosition_ != null) hash ^= LocalPosition.GetHashCode();
+      if (localEulerAngles_ != null) hash ^= LocalEulerAngles.GetHashCode();
+      if (localScale_ != null) hash ^= LocalScale.GetHashCode();
+      hash ^= (int) transformCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (transformCase_ == TransformOneofCase.RectTransform) {
+        output.WriteRawTag(10);
+        output.WriteMessage(RectTransform);
+      }
+      if (localPosition_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(LocalPosition);
+      }
+      if (localEulerAngles_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(LocalEulerAngles);
+      }
+      if (localScale_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(LocalScale);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (transformCase_ == TransformOneofCase.RectTransform) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RectTransform);
+      }
+      if (localPosition_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LocalPosition);
+      }
+      if (localEulerAngles_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LocalEulerAngles);
+      }
+      if (localScale_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LocalScale);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZTransform other) {
+      if (other == null) {
+        return;
+      }
+      if (other.localPosition_ != null) {
+        if (localPosition_ == null) {
+          localPosition_ = new global::Tarkin.Data.ZVector3();
+        }
+        LocalPosition.MergeFrom(other.LocalPosition);
+      }
+      if (other.localEulerAngles_ != null) {
+        if (localEulerAngles_ == null) {
+          localEulerAngles_ = new global::Tarkin.Data.ZVector3();
+        }
+        LocalEulerAngles.MergeFrom(other.LocalEulerAngles);
+      }
+      if (other.localScale_ != null) {
+        if (localScale_ == null) {
+          localScale_ = new global::Tarkin.Data.ZVector3();
+        }
+        LocalScale.MergeFrom(other.LocalScale);
+      }
+      switch (other.TransformCase) {
+        case TransformOneofCase.RectTransform:
+          if (RectTransform == null) {
+            RectTransform = new global::Tarkin.Data.ZRectTransform();
+          }
+          RectTransform.MergeFrom(other.RectTransform);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            global::Tarkin.Data.ZRectTransform subBuilder = new global::Tarkin.Data.ZRectTransform();
+            if (transformCase_ == TransformOneofCase.RectTransform) {
+              subBuilder.MergeFrom(RectTransform);
+            }
+            input.ReadMessage(subBuilder);
+            RectTransform = subBuilder;
+            break;
+          }
+          case 18: {
+            if (localPosition_ == null) {
+              localPosition_ = new global::Tarkin.Data.ZVector3();
+            }
+            input.ReadMessage(localPosition_);
+            break;
+          }
+          case 26: {
+            if (localEulerAngles_ == null) {
+              localEulerAngles_ = new global::Tarkin.Data.ZVector3();
+            }
+            input.ReadMessage(localEulerAngles_);
+            break;
+          }
+          case 34: {
+            if (localScale_ == null) {
+              localScale_ = new global::Tarkin.Data.ZVector3();
+            }
+            input.ReadMessage(localScale_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZCanvas : pb::IMessage<ZCanvas> {
+    private static readonly pb::MessageParser<ZCanvas> _parser = new pb::MessageParser<ZCanvas>(() => new ZCanvas());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZCanvas> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvas() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvas(ZCanvas other) : this() {
+      renderMode_ = other.renderMode_;
+      PixelPerfect = other.PixelPerfect;
+      SortingOrder = other.SortingOrder;
+      TargetDisplay = other.TargetDisplay;
+      additionalShaderChannels_ = other.additionalShaderChannels_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvas Clone() {
+      return new ZCanvas(this);
+    }
+
+    /// <summary>Field number for the "render_mode" field.</summary>
+    public const int RenderModeFieldNumber = 1;
+    private global::Tarkin.Data.ZRenderMode renderMode_ = 0;
+    /// <summary>
+    /// RenderMode for the Canvas:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZRenderMode RenderMode {
+      get { return renderMode_; }
+      set {
+        renderMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pixel_perfect" field.</summary>
+    public const int PixelPerfectFieldNumber = 2;
+    private static readonly pb::FieldCodec<bool?> _single_pixelPerfect_codec = pb::FieldCodec.ForStructWrapper<bool>(18);
+    private bool? pixelPerfect_;
+    /// <summary>
+    /// Force elements in the canvas to be aligned with pixels. Only applies with renderMode is
+    /// Screen Space:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? PixelPerfect {
+      get { return pixelPerfect_; }
+      set {
+        pixelPerfect_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sorting_order" field.</summary>
+    public const int SortingOrderFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_sortingOrder_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? sortingOrder_;
+    /// <summary>
+    /// Canvas' order within a sorting layer:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? SortingOrder {
+      get { return sortingOrder_; }
+      set {
+        sortingOrder_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "target_display" field.</summary>
+    public const int TargetDisplayFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_targetDisplay_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? targetDisplay_;
+    /// <summary>
+    /// For Overlay mode, display index on which the UI canvas will appear:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? TargetDisplay {
+      get { return targetDisplay_; }
+      set {
+        targetDisplay_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "additional_shader_channels" field.</summary>
+    public const int AdditionalShaderChannelsFieldNumber = 5;
+    private global::Tarkin.Data.ZAdditionalCanvasShaderChannels additionalShaderChannels_ = 0;
+    /// <summary>
+    /// Set the mask of additional shader channels to be used when creating the Canvas mesh:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZAdditionalCanvasShaderChannels AdditionalShaderChannels {
+      get { return additionalShaderChannels_; }
+      set {
+        additionalShaderChannels_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZCanvas);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZCanvas other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (RenderMode != other.RenderMode) return false;
+      if (PixelPerfect != other.PixelPerfect) return false;
+      if (SortingOrder != other.SortingOrder) return false;
+      if (TargetDisplay != other.TargetDisplay) return false;
+      if (AdditionalShaderChannels != other.AdditionalShaderChannels) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (RenderMode != 0) hash ^= RenderMode.GetHashCode();
+      if (pixelPerfect_ != null) hash ^= PixelPerfect.GetHashCode();
+      if (sortingOrder_ != null) hash ^= SortingOrder.GetHashCode();
+      if (targetDisplay_ != null) hash ^= TargetDisplay.GetHashCode();
+      if (AdditionalShaderChannels != 0) hash ^= AdditionalShaderChannels.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RenderMode != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) RenderMode);
+      }
+      if (pixelPerfect_ != null) {
+        _single_pixelPerfect_codec.WriteTagAndValue(output, PixelPerfect);
+      }
+      if (sortingOrder_ != null) {
+        _single_sortingOrder_codec.WriteTagAndValue(output, SortingOrder);
+      }
+      if (targetDisplay_ != null) {
+        _single_targetDisplay_codec.WriteTagAndValue(output, TargetDisplay);
+      }
+      if (AdditionalShaderChannels != 0) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) AdditionalShaderChannels);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (RenderMode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) RenderMode);
+      }
+      if (pixelPerfect_ != null) {
+        size += _single_pixelPerfect_codec.CalculateSizeWithTag(PixelPerfect);
+      }
+      if (sortingOrder_ != null) {
+        size += _single_sortingOrder_codec.CalculateSizeWithTag(SortingOrder);
+      }
+      if (targetDisplay_ != null) {
+        size += _single_targetDisplay_codec.CalculateSizeWithTag(TargetDisplay);
+      }
+      if (AdditionalShaderChannels != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AdditionalShaderChannels);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZCanvas other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RenderMode != 0) {
+        RenderMode = other.RenderMode;
+      }
+      if (other.pixelPerfect_ != null) {
+        if (pixelPerfect_ == null || other.PixelPerfect != false) {
+          PixelPerfect = other.PixelPerfect;
+        }
+      }
+      if (other.sortingOrder_ != null) {
+        if (sortingOrder_ == null || other.SortingOrder != 0) {
+          SortingOrder = other.SortingOrder;
+        }
+      }
+      if (other.targetDisplay_ != null) {
+        if (targetDisplay_ == null || other.TargetDisplay != 0) {
+          TargetDisplay = other.TargetDisplay;
+        }
+      }
+      if (other.AdditionalShaderChannels != 0) {
+        AdditionalShaderChannels = other.AdditionalShaderChannels;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            renderMode_ = (global::Tarkin.Data.ZRenderMode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            bool? value = _single_pixelPerfect_codec.Read(input);
+            if (pixelPerfect_ == null || value != false) {
+              PixelPerfect = value;
+            }
+            break;
+          }
+          case 26: {
+            int? value = _single_sortingOrder_codec.Read(input);
+            if (sortingOrder_ == null || value != 0) {
+              SortingOrder = value;
+            }
+            break;
+          }
+          case 34: {
+            int? value = _single_targetDisplay_codec.Read(input);
+            if (targetDisplay_ == null || value != 0) {
+              TargetDisplay = value;
+            }
+            break;
+          }
+          case 40: {
+            additionalShaderChannels_ = (global::Tarkin.Data.ZAdditionalCanvasShaderChannels) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZCanvasScaler : pb::IMessage<ZCanvasScaler> {
+    private static readonly pb::MessageParser<ZCanvasScaler> _parser = new pb::MessageParser<ZCanvasScaler>(() => new ZCanvasScaler());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZCanvasScaler> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasScaler() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasScaler(ZCanvasScaler other) : this() {
+      uiScaleMode_ = other.uiScaleMode_;
+      ScaleFactor = other.ScaleFactor;
+      ReferencePixelsPerUnit = other.ReferencePixelsPerUnit;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasScaler Clone() {
+      return new ZCanvasScaler(this);
+    }
+
+    /// <summary>Field number for the "ui_scale_mode" field.</summary>
+    public const int UiScaleModeFieldNumber = 1;
+    private global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode uiScaleMode_ = 0;
+    /// <summary>
+    /// Determines how UI elements in the Canvas are scaled:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode UiScaleMode {
+      get { return uiScaleMode_; }
+      set {
+        uiScaleMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "scale_factor" field.</summary>
+    public const int ScaleFactorFieldNumber = 2;
+    private static readonly pb::FieldCodec<float?> _single_scaleFactor_codec = pb::FieldCodec.ForStructWrapper<float>(18);
+    private float? scaleFactor_;
+    /// <summary>
+    /// Scales all UI elements in the Canvas by this factor:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? ScaleFactor {
+      get { return scaleFactor_; }
+      set {
+        scaleFactor_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "reference_pixels_per_unit" field.</summary>
+    public const int ReferencePixelsPerUnitFieldNumber = 3;
+    private static readonly pb::FieldCodec<float?> _single_referencePixelsPerUnit_codec = pb::FieldCodec.ForStructWrapper<float>(26);
+    private float? referencePixelsPerUnit_;
+    /// <summary>
+    /// If a sprite has this 'Pixels Per Unit' setting, then one pixel in the sprite will cover one
+    /// unit in the UI:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? ReferencePixelsPerUnit {
+      get { return referencePixelsPerUnit_; }
+      set {
+        referencePixelsPerUnit_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZCanvasScaler);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZCanvasScaler other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (UiScaleMode != other.UiScaleMode) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ScaleFactor, other.ScaleFactor)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ReferencePixelsPerUnit, other.ReferencePixelsPerUnit)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (UiScaleMode != 0) hash ^= UiScaleMode.GetHashCode();
+      if (scaleFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ScaleFactor);
+      if (referencePixelsPerUnit_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ReferencePixelsPerUnit);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (UiScaleMode != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) UiScaleMode);
+      }
+      if (scaleFactor_ != null) {
+        _single_scaleFactor_codec.WriteTagAndValue(output, ScaleFactor);
+      }
+      if (referencePixelsPerUnit_ != null) {
+        _single_referencePixelsPerUnit_codec.WriteTagAndValue(output, ReferencePixelsPerUnit);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (UiScaleMode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UiScaleMode);
+      }
+      if (scaleFactor_ != null) {
+        size += _single_scaleFactor_codec.CalculateSizeWithTag(ScaleFactor);
+      }
+      if (referencePixelsPerUnit_ != null) {
+        size += _single_referencePixelsPerUnit_codec.CalculateSizeWithTag(ReferencePixelsPerUnit);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZCanvasScaler other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UiScaleMode != 0) {
+        UiScaleMode = other.UiScaleMode;
+      }
+      if (other.scaleFactor_ != null) {
+        if (scaleFactor_ == null || other.ScaleFactor != 0F) {
+          ScaleFactor = other.ScaleFactor;
+        }
+      }
+      if (other.referencePixelsPerUnit_ != null) {
+        if (referencePixelsPerUnit_ == null || other.ReferencePixelsPerUnit != 0F) {
+          ReferencePixelsPerUnit = other.ReferencePixelsPerUnit;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            uiScaleMode_ = (global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            float? value = _single_scaleFactor_codec.Read(input);
+            if (scaleFactor_ == null || value != 0F) {
+              ScaleFactor = value;
+            }
+            break;
+          }
+          case 26: {
+            float? value = _single_referencePixelsPerUnit_codec.Read(input);
+            if (referencePixelsPerUnit_ == null || value != 0F) {
+              ReferencePixelsPerUnit = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZCanvasScaler message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum ScaleMode {
+        [pbr::OriginalName("UNKNOWN_SCALE_MODE")] UnknownScaleMode = 0,
+        /// <summary>
+        /// Using the Constant Pixel Size mode, positions and sizes of UI elements are specified in
+        /// pixels on the screen:
+        /// </summary>
+        [pbr::OriginalName("CONSTANT_PIXEL_SIZE")] ConstantPixelSize = 1,
+        /// <summary>
+        /// Using the Scale With Screen Size mode, positions and sizes can be specified according to
+        /// the pixels of a specified reference resolution:
+        /// </summary>
+        [pbr::OriginalName("SCALE_WITH_SCREEN_SIZE")] ScaleWithScreenSize = 2,
+        /// <summary>
+        /// 	Using the Constant Physical Size mode, positions and sizes of UI elements are specified
+        /// in physical units, such as millimeters, points, or picas:
+        /// </summary>
+        [pbr::OriginalName("CONSTANT_PHYSICAL_SIZE")] ConstantPhysicalSize = 3,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class ZGraphicRaycaster : pb::IMessage<ZGraphicRaycaster> {
+    private static readonly pb::MessageParser<ZGraphicRaycaster> _parser = new pb::MessageParser<ZGraphicRaycaster>(() => new ZGraphicRaycaster());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZGraphicRaycaster> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphicRaycaster() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphicRaycaster(ZGraphicRaycaster other) : this() {
+      IgnoreReversedGraphics = other.IgnoreReversedGraphics;
+      blockingObjects_ = other.blockingObjects_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphicRaycaster Clone() {
+      return new ZGraphicRaycaster(this);
+    }
+
+    /// <summary>Field number for the "ignore_reversed_graphics" field.</summary>
+    public const int IgnoreReversedGraphicsFieldNumber = 1;
+    private static readonly pb::FieldCodec<bool?> _single_ignoreReversedGraphics_codec = pb::FieldCodec.ForStructWrapper<bool>(10);
+    private bool? ignoreReversedGraphics_;
+    /// <summary>
+    /// Should graphics facing away from the raycaster be considered?
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? IgnoreReversedGraphics {
+      get { return ignoreReversedGraphics_; }
+      set {
+        ignoreReversedGraphics_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "blocking_objects" field.</summary>
+    public const int BlockingObjectsFieldNumber = 2;
+    private global::Tarkin.Data.ZGraphicRaycaster.Types.BlockingObjects blockingObjects_ = 0;
+    /// <summary>
+    /// Type of objects that will block graphic raycasts:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGraphicRaycaster.Types.BlockingObjects BlockingObjects {
+      get { return blockingObjects_; }
+      set {
+        blockingObjects_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZGraphicRaycaster);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZGraphicRaycaster other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IgnoreReversedGraphics != other.IgnoreReversedGraphics) return false;
+      if (BlockingObjects != other.BlockingObjects) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ignoreReversedGraphics_ != null) hash ^= IgnoreReversedGraphics.GetHashCode();
+      if (BlockingObjects != 0) hash ^= BlockingObjects.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ignoreReversedGraphics_ != null) {
+        _single_ignoreReversedGraphics_codec.WriteTagAndValue(output, IgnoreReversedGraphics);
+      }
+      if (BlockingObjects != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) BlockingObjects);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ignoreReversedGraphics_ != null) {
+        size += _single_ignoreReversedGraphics_codec.CalculateSizeWithTag(IgnoreReversedGraphics);
+      }
+      if (BlockingObjects != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BlockingObjects);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZGraphicRaycaster other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ignoreReversedGraphics_ != null) {
+        if (ignoreReversedGraphics_ == null || other.IgnoreReversedGraphics != false) {
+          IgnoreReversedGraphics = other.IgnoreReversedGraphics;
+        }
+      }
+      if (other.BlockingObjects != 0) {
+        BlockingObjects = other.BlockingObjects;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            bool? value = _single_ignoreReversedGraphics_codec.Read(input);
+            if (ignoreReversedGraphics_ == null || value != false) {
+              IgnoreReversedGraphics = value;
+            }
+            break;
+          }
+          case 16: {
+            blockingObjects_ = (global::Tarkin.Data.ZGraphicRaycaster.Types.BlockingObjects) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZGraphicRaycaster message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum BlockingObjects {
+        [pbr::OriginalName("UNKNOWN_BLOCKING_OBJECTS")] UnknownBlockingObjects = 0,
+        /// <summary>
+        /// Not blocked:
+        /// </summary>
+        [pbr::OriginalName("NONE")] None = 1,
+        /// <summary>
+        /// 2D physics blocking:
+        /// </summary>
+        [pbr::OriginalName("TWO_D")] TwoD = 2,
+        /// <summary>
+        /// 3D physics blocking:
+        /// </summary>
+        [pbr::OriginalName("THREE_D")] ThreeD = 3,
+        /// <summary>
+        /// Blocked by 2D and 3D:
+        /// </summary>
+        [pbr::OriginalName("ALL")] All = 4,
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// A component that will render to the screen after all normal rendering has completed when
+  /// attached to a Canvas:
+  /// </summary>
+  public sealed partial class ZCanvasRenderer : pb::IMessage<ZCanvasRenderer> {
+    private static readonly pb::MessageParser<ZCanvasRenderer> _parser = new pb::MessageParser<ZCanvasRenderer>(() => new ZCanvasRenderer());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZCanvasRenderer> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasRenderer() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasRenderer(ZCanvasRenderer other) : this() {
+      CullTransparentMesh = other.CullTransparentMesh;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZCanvasRenderer Clone() {
+      return new ZCanvasRenderer(this);
+    }
+
+    /// <summary>Field number for the "cull_transparent_mesh" field.</summary>
+    public const int CullTransparentMeshFieldNumber = 1;
+    private static readonly pb::FieldCodec<bool?> _single_cullTransparentMesh_codec = pb::FieldCodec.ForStructWrapper<bool>(10);
+    private bool? cullTransparentMesh_;
+    /// <summary>
+    /// Indicates whether geometry emitted by this renderer can be ignored when the vertex color
+    /// alpha is close to zero for every vertex of the mesh:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? CullTransparentMesh {
+      get { return cullTransparentMesh_; }
+      set {
+        cullTransparentMesh_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZCanvasRenderer);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZCanvasRenderer other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CullTransparentMesh != other.CullTransparentMesh) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (cullTransparentMesh_ != null) hash ^= CullTransparentMesh.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (cullTransparentMesh_ != null) {
+        _single_cullTransparentMesh_codec.WriteTagAndValue(output, CullTransparentMesh);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (cullTransparentMesh_ != null) {
+        size += _single_cullTransparentMesh_codec.CalculateSizeWithTag(CullTransparentMesh);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZCanvasRenderer other) {
+      if (other == null) {
+        return;
+      }
+      if (other.cullTransparentMesh_ != null) {
+        if (cullTransparentMesh_ == null || other.CullTransparentMesh != false) {
+          CullTransparentMesh = other.CullTransparentMesh;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            bool? value = _single_cullTransparentMesh_codec.Read(input);
+            if (cullTransparentMesh_ == null || value != false) {
+              CullTransparentMesh = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZEventSystem : pb::IMessage<ZEventSystem> {
+    private static readonly pb::MessageParser<ZEventSystem> _parser = new pb::MessageParser<ZEventSystem>(() => new ZEventSystem());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZEventSystem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[16]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZEventSystem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZEventSystem(ZEventSystem other) : this() {
+      firstSelectedGameObject_ = other.firstSelectedGameObject_ != null ? other.firstSelectedGameObject_.Clone() : null;
+      SendNavigationEvents = other.SendNavigationEvents;
+      PixelDragThreshold = other.PixelDragThreshold;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZEventSystem Clone() {
+      return new ZEventSystem(this);
+    }
+
+    /// <summary>Field number for the "first_selected_game_object" field.</summary>
+    public const int FirstSelectedGameObjectFieldNumber = 1;
+    private global::Tarkin.Data.ZGameObject firstSelectedGameObject_;
+    /// <summary>
+    /// The GameObject that is selected first:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGameObject FirstSelectedGameObject {
+      get { return firstSelectedGameObject_; }
+      set {
+        firstSelectedGameObject_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "send_navigation_events" field.</summary>
+    public const int SendNavigationEventsFieldNumber = 2;
+    private static readonly pb::FieldCodec<bool?> _single_sendNavigationEvents_codec = pb::FieldCodec.ForStructWrapper<bool>(18);
+    private bool? sendNavigationEvents_;
+    /// <summary>
+    /// Should the EventSystem allow navigation events (move / submit / cancel):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? SendNavigationEvents {
+      get { return sendNavigationEvents_; }
+      set {
+        sendNavigationEvents_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pixel_drag_threshold" field.</summary>
+    public const int PixelDragThresholdFieldNumber = 3;
+    private static readonly pb::FieldCodec<int?> _single_pixelDragThreshold_codec = pb::FieldCodec.ForStructWrapper<int>(26);
+    private int? pixelDragThreshold_;
+    /// <summary>
+    /// The soft area for dragging in pixels:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? PixelDragThreshold {
+      get { return pixelDragThreshold_; }
+      set {
+        pixelDragThreshold_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZEventSystem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZEventSystem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(FirstSelectedGameObject, other.FirstSelectedGameObject)) return false;
+      if (SendNavigationEvents != other.SendNavigationEvents) return false;
+      if (PixelDragThreshold != other.PixelDragThreshold) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (firstSelectedGameObject_ != null) hash ^= FirstSelectedGameObject.GetHashCode();
+      if (sendNavigationEvents_ != null) hash ^= SendNavigationEvents.GetHashCode();
+      if (pixelDragThreshold_ != null) hash ^= PixelDragThreshold.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (firstSelectedGameObject_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(FirstSelectedGameObject);
+      }
+      if (sendNavigationEvents_ != null) {
+        _single_sendNavigationEvents_codec.WriteTagAndValue(output, SendNavigationEvents);
+      }
+      if (pixelDragThreshold_ != null) {
+        _single_pixelDragThreshold_codec.WriteTagAndValue(output, PixelDragThreshold);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (firstSelectedGameObject_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(FirstSelectedGameObject);
+      }
+      if (sendNavigationEvents_ != null) {
+        size += _single_sendNavigationEvents_codec.CalculateSizeWithTag(SendNavigationEvents);
+      }
+      if (pixelDragThreshold_ != null) {
+        size += _single_pixelDragThreshold_codec.CalculateSizeWithTag(PixelDragThreshold);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZEventSystem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.firstSelectedGameObject_ != null) {
+        if (firstSelectedGameObject_ == null) {
+          firstSelectedGameObject_ = new global::Tarkin.Data.ZGameObject();
+        }
+        FirstSelectedGameObject.MergeFrom(other.FirstSelectedGameObject);
+      }
+      if (other.sendNavigationEvents_ != null) {
+        if (sendNavigationEvents_ == null || other.SendNavigationEvents != false) {
+          SendNavigationEvents = other.SendNavigationEvents;
+        }
+      }
+      if (other.pixelDragThreshold_ != null) {
+        if (pixelDragThreshold_ == null || other.PixelDragThreshold != 0) {
+          PixelDragThreshold = other.PixelDragThreshold;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (firstSelectedGameObject_ == null) {
+              firstSelectedGameObject_ = new global::Tarkin.Data.ZGameObject();
+            }
+            input.ReadMessage(firstSelectedGameObject_);
+            break;
+          }
+          case 18: {
+            bool? value = _single_sendNavigationEvents_codec.Read(input);
+            if (sendNavigationEvents_ == null || value != false) {
+              SendNavigationEvents = value;
+            }
+            break;
+          }
+          case 26: {
+            int? value = _single_pixelDragThreshold_codec.Read(input);
+            if (pixelDragThreshold_ == null || value != 0) {
+              PixelDragThreshold = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZStandaloneInputModule : pb::IMessage<ZStandaloneInputModule> {
+    private static readonly pb::MessageParser<ZStandaloneInputModule> _parser = new pb::MessageParser<ZStandaloneInputModule>(() => new ZStandaloneInputModule());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZStandaloneInputModule> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[17]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZStandaloneInputModule() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZStandaloneInputModule(ZStandaloneInputModule other) : this() {
+      HorizontalAxis = other.HorizontalAxis;
+      VerticalAxis = other.VerticalAxis;
+      SubmitButton = other.SubmitButton;
+      CancelButton = other.CancelButton;
+      InputActionsPerSecond = other.InputActionsPerSecond;
+      RepeatDelay = other.RepeatDelay;
+      ForceModuleActive = other.ForceModuleActive;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZStandaloneInputModule Clone() {
+      return new ZStandaloneInputModule(this);
+    }
+
+    /// <summary>Field number for the "horizontal_axis" field.</summary>
+    public const int HorizontalAxisFieldNumber = 1;
+    private static readonly pb::FieldCodec<string> _single_horizontalAxis_codec = pb::FieldCodec.ForClassWrapper<string>(10);
+    private string horizontalAxis_;
+    /// <summary>
+    /// Input manager name for the horizontal axis button:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string HorizontalAxis {
+      get { return horizontalAxis_; }
+      set {
+        horizontalAxis_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "vertical_axis" field.</summary>
+    public const int VerticalAxisFieldNumber = 2;
+    private static readonly pb::FieldCodec<string> _single_verticalAxis_codec = pb::FieldCodec.ForClassWrapper<string>(18);
+    private string verticalAxis_;
+    /// <summary>
+    /// Input manager name for the vertical axis:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string VerticalAxis {
+      get { return verticalAxis_; }
+      set {
+        verticalAxis_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "submit_button" field.</summary>
+    public const int SubmitButtonFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _single_submitButton_codec = pb::FieldCodec.ForClassWrapper<string>(26);
+    private string submitButton_;
+    /// <summary>
+    /// Input manager name for the submit button:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SubmitButton {
+      get { return submitButton_; }
+      set {
+        submitButton_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cancel_button" field.</summary>
+    public const int CancelButtonFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _single_cancelButton_codec = pb::FieldCodec.ForClassWrapper<string>(34);
+    private string cancelButton_;
+    /// <summary>
+    /// Input manager name for the cancel button:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string CancelButton {
+      get { return cancelButton_; }
+      set {
+        cancelButton_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "input_actions_per_second" field.</summary>
+    public const int InputActionsPerSecondFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_inputActionsPerSecond_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? inputActionsPerSecond_;
+    /// <summary>
+    /// Number of keyboard / controller inputs allowed per second:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? InputActionsPerSecond {
+      get { return inputActionsPerSecond_; }
+      set {
+        inputActionsPerSecond_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "repeat_delay" field.</summary>
+    public const int RepeatDelayFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_repeatDelay_codec = pb::FieldCodec.ForStructWrapper<float>(50);
+    private float? repeatDelay_;
+    /// <summary>
+    /// Delay in seconds before the input actions per second repeat rate takes effect:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? RepeatDelay {
+      get { return repeatDelay_; }
+      set {
+        repeatDelay_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "force_module_active" field.</summary>
+    public const int ForceModuleActiveFieldNumber = 7;
+    private static readonly pb::FieldCodec<bool?> _single_forceModuleActive_codec = pb::FieldCodec.ForStructWrapper<bool>(58);
+    private bool? forceModuleActive_;
+    /// <summary>
+    /// Force this module to be active:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? ForceModuleActive {
+      get { return forceModuleActive_; }
+      set {
+        forceModuleActive_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZStandaloneInputModule);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZStandaloneInputModule other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (HorizontalAxis != other.HorizontalAxis) return false;
+      if (VerticalAxis != other.VerticalAxis) return false;
+      if (SubmitButton != other.SubmitButton) return false;
+      if (CancelButton != other.CancelButton) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(InputActionsPerSecond, other.InputActionsPerSecond)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(RepeatDelay, other.RepeatDelay)) return false;
+      if (ForceModuleActive != other.ForceModuleActive) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (horizontalAxis_ != null) hash ^= HorizontalAxis.GetHashCode();
+      if (verticalAxis_ != null) hash ^= VerticalAxis.GetHashCode();
+      if (submitButton_ != null) hash ^= SubmitButton.GetHashCode();
+      if (cancelButton_ != null) hash ^= CancelButton.GetHashCode();
+      if (inputActionsPerSecond_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(InputActionsPerSecond);
+      if (repeatDelay_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(RepeatDelay);
+      if (forceModuleActive_ != null) hash ^= ForceModuleActive.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (horizontalAxis_ != null) {
+        _single_horizontalAxis_codec.WriteTagAndValue(output, HorizontalAxis);
+      }
+      if (verticalAxis_ != null) {
+        _single_verticalAxis_codec.WriteTagAndValue(output, VerticalAxis);
+      }
+      if (submitButton_ != null) {
+        _single_submitButton_codec.WriteTagAndValue(output, SubmitButton);
+      }
+      if (cancelButton_ != null) {
+        _single_cancelButton_codec.WriteTagAndValue(output, CancelButton);
+      }
+      if (inputActionsPerSecond_ != null) {
+        _single_inputActionsPerSecond_codec.WriteTagAndValue(output, InputActionsPerSecond);
+      }
+      if (repeatDelay_ != null) {
+        _single_repeatDelay_codec.WriteTagAndValue(output, RepeatDelay);
+      }
+      if (forceModuleActive_ != null) {
+        _single_forceModuleActive_codec.WriteTagAndValue(output, ForceModuleActive);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (horizontalAxis_ != null) {
+        size += _single_horizontalAxis_codec.CalculateSizeWithTag(HorizontalAxis);
+      }
+      if (verticalAxis_ != null) {
+        size += _single_verticalAxis_codec.CalculateSizeWithTag(VerticalAxis);
+      }
+      if (submitButton_ != null) {
+        size += _single_submitButton_codec.CalculateSizeWithTag(SubmitButton);
+      }
+      if (cancelButton_ != null) {
+        size += _single_cancelButton_codec.CalculateSizeWithTag(CancelButton);
+      }
+      if (inputActionsPerSecond_ != null) {
+        size += _single_inputActionsPerSecond_codec.CalculateSizeWithTag(InputActionsPerSecond);
+      }
+      if (repeatDelay_ != null) {
+        size += _single_repeatDelay_codec.CalculateSizeWithTag(RepeatDelay);
+      }
+      if (forceModuleActive_ != null) {
+        size += _single_forceModuleActive_codec.CalculateSizeWithTag(ForceModuleActive);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZStandaloneInputModule other) {
+      if (other == null) {
+        return;
+      }
+      if (other.horizontalAxis_ != null) {
+        if (horizontalAxis_ == null || other.HorizontalAxis != "") {
+          HorizontalAxis = other.HorizontalAxis;
+        }
+      }
+      if (other.verticalAxis_ != null) {
+        if (verticalAxis_ == null || other.VerticalAxis != "") {
+          VerticalAxis = other.VerticalAxis;
+        }
+      }
+      if (other.submitButton_ != null) {
+        if (submitButton_ == null || other.SubmitButton != "") {
+          SubmitButton = other.SubmitButton;
+        }
+      }
+      if (other.cancelButton_ != null) {
+        if (cancelButton_ == null || other.CancelButton != "") {
+          CancelButton = other.CancelButton;
+        }
+      }
+      if (other.inputActionsPerSecond_ != null) {
+        if (inputActionsPerSecond_ == null || other.InputActionsPerSecond != 0F) {
+          InputActionsPerSecond = other.InputActionsPerSecond;
+        }
+      }
+      if (other.repeatDelay_ != null) {
+        if (repeatDelay_ == null || other.RepeatDelay != 0F) {
+          RepeatDelay = other.RepeatDelay;
+        }
+      }
+      if (other.forceModuleActive_ != null) {
+        if (forceModuleActive_ == null || other.ForceModuleActive != false) {
+          ForceModuleActive = other.ForceModuleActive;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            string value = _single_horizontalAxis_codec.Read(input);
+            if (horizontalAxis_ == null || value != "") {
+              HorizontalAxis = value;
+            }
+            break;
+          }
+          case 18: {
+            string value = _single_verticalAxis_codec.Read(input);
+            if (verticalAxis_ == null || value != "") {
+              VerticalAxis = value;
+            }
+            break;
+          }
+          case 26: {
+            string value = _single_submitButton_codec.Read(input);
+            if (submitButton_ == null || value != "") {
+              SubmitButton = value;
+            }
+            break;
+          }
+          case 34: {
+            string value = _single_cancelButton_codec.Read(input);
+            if (cancelButton_ == null || value != "") {
+              CancelButton = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_inputActionsPerSecond_codec.Read(input);
+            if (inputActionsPerSecond_ == null || value != 0F) {
+              InputActionsPerSecond = value;
+            }
+            break;
+          }
+          case 50: {
+            float? value = _single_repeatDelay_codec.Read(input);
+            if (repeatDelay_ == null || value != 0F) {
+              RepeatDelay = value;
+            }
+            break;
+          }
+          case 58: {
+            bool? value = _single_forceModuleActive_codec.Read(input);
+            if (forceModuleActive_ == null || value != false) {
+              ForceModuleActive = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// Base class for all visual UI Components:
+  /// </summary>
+  public sealed partial class ZGraphic : pb::IMessage<ZGraphic> {
+    private static readonly pb::MessageParser<ZGraphic> _parser = new pb::MessageParser<ZGraphic>(() => new ZGraphic());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZGraphic> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[18]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphic() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphic(ZGraphic other) : this() {
+      color_ = other.color_ != null ? other.color_.Clone() : null;
+      material_ = other.material_ != null ? other.material_.Clone() : null;
+      RaycastTarget = other.RaycastTarget;
+      switch (other.GraphicCase) {
+        case GraphicOneofCase.MaskableGraphic:
+          MaskableGraphic = other.MaskableGraphic.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZGraphic Clone() {
+      return new ZGraphic(this);
+    }
+
+    /// <summary>Field number for the "maskable_graphic" field.</summary>
+    public const int MaskableGraphicFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZMaskableGraphic MaskableGraphic {
+      get { return graphicCase_ == GraphicOneofCase.MaskableGraphic ? (global::Tarkin.Data.ZMaskableGraphic) graphic_ : null; }
+      set {
+        graphic_ = value;
+        graphicCase_ = value == null ? GraphicOneofCase.None : GraphicOneofCase.MaskableGraphic;
+      }
+    }
+
+    /// <summary>Field number for the "color" field.</summary>
+    public const int ColorFieldNumber = 2;
+    private global::Tarkin.Data.ZColor color_;
+    /// <summary>
+    /// Base color of the Graphic:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZColor Color {
+      get { return color_; }
+      set {
+        color_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "material" field.</summary>
+    public const int MaterialFieldNumber = 3;
+    private global::Tarkin.Data.ZMaterial material_;
+    /// <summary>
+    /// The specified Material used by this Graphic:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZMaterial Material {
+      get { return material_; }
+      set {
+        material_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "raycast_target" field.</summary>
+    public const int RaycastTargetFieldNumber = 4;
+    private static readonly pb::FieldCodec<bool?> _single_raycastTarget_codec = pb::FieldCodec.ForStructWrapper<bool>(34);
+    private bool? raycastTarget_;
+    /// <summary>
+    /// Should this graphic be considered a target for raycasting?
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? RaycastTarget {
+      get { return raycastTarget_; }
+      set {
+        raycastTarget_ = value;
+      }
+    }
+
+    private object graphic_;
+    /// <summary>Enum of possible cases for the "graphic" oneof.</summary>
+    public enum GraphicOneofCase {
+      None = 0,
+      MaskableGraphic = 1,
+    }
+    private GraphicOneofCase graphicCase_ = GraphicOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GraphicOneofCase GraphicCase {
+      get { return graphicCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearGraphic() {
+      graphicCase_ = GraphicOneofCase.None;
+      graphic_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZGraphic);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZGraphic other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(MaskableGraphic, other.MaskableGraphic)) return false;
+      if (!object.Equals(Color, other.Color)) return false;
+      if (!object.Equals(Material, other.Material)) return false;
+      if (RaycastTarget != other.RaycastTarget) return false;
+      if (GraphicCase != other.GraphicCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (graphicCase_ == GraphicOneofCase.MaskableGraphic) hash ^= MaskableGraphic.GetHashCode();
+      if (color_ != null) hash ^= Color.GetHashCode();
+      if (material_ != null) hash ^= Material.GetHashCode();
+      if (raycastTarget_ != null) hash ^= RaycastTarget.GetHashCode();
+      hash ^= (int) graphicCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (graphicCase_ == GraphicOneofCase.MaskableGraphic) {
+        output.WriteRawTag(10);
+        output.WriteMessage(MaskableGraphic);
+      }
+      if (color_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Color);
+      }
+      if (material_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Material);
+      }
+      if (raycastTarget_ != null) {
+        _single_raycastTarget_codec.WriteTagAndValue(output, RaycastTarget);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (graphicCase_ == GraphicOneofCase.MaskableGraphic) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MaskableGraphic);
+      }
+      if (color_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Color);
+      }
+      if (material_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Material);
+      }
+      if (raycastTarget_ != null) {
+        size += _single_raycastTarget_codec.CalculateSizeWithTag(RaycastTarget);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZGraphic other) {
+      if (other == null) {
+        return;
+      }
+      if (other.color_ != null) {
+        if (color_ == null) {
+          color_ = new global::Tarkin.Data.ZColor();
+        }
+        Color.MergeFrom(other.Color);
+      }
+      if (other.material_ != null) {
+        if (material_ == null) {
+          material_ = new global::Tarkin.Data.ZMaterial();
+        }
+        Material.MergeFrom(other.Material);
+      }
+      if (other.raycastTarget_ != null) {
+        if (raycastTarget_ == null || other.RaycastTarget != false) {
+          RaycastTarget = other.RaycastTarget;
+        }
+      }
+      switch (other.GraphicCase) {
+        case GraphicOneofCase.MaskableGraphic:
+          if (MaskableGraphic == null) {
+            MaskableGraphic = new global::Tarkin.Data.ZMaskableGraphic();
+          }
+          MaskableGraphic.MergeFrom(other.MaskableGraphic);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            global::Tarkin.Data.ZMaskableGraphic subBuilder = new global::Tarkin.Data.ZMaskableGraphic();
+            if (graphicCase_ == GraphicOneofCase.MaskableGraphic) {
+              subBuilder.MergeFrom(MaskableGraphic);
+            }
+            input.ReadMessage(subBuilder);
+            MaskableGraphic = subBuilder;
+            break;
+          }
+          case 18: {
+            if (color_ == null) {
+              color_ = new global::Tarkin.Data.ZColor();
+            }
+            input.ReadMessage(color_);
+            break;
+          }
+          case 26: {
+            if (material_ == null) {
+              material_ = new global::Tarkin.Data.ZMaterial();
+            }
+            input.ReadMessage(material_);
+            break;
+          }
+          case 34: {
+            bool? value = _single_raycastTarget_codec.Read(input);
+            if (raycastTarget_ == null || value != false) {
+              RaycastTarget = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// A Graphic that is capable of being masked out:
+  /// </summary>
+  public sealed partial class ZMaskableGraphic : pb::IMessage<ZMaskableGraphic> {
+    private static readonly pb::MessageParser<ZMaskableGraphic> _parser = new pb::MessageParser<ZMaskableGraphic>(() => new ZMaskableGraphic());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZMaskableGraphic> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[19]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaskableGraphic() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaskableGraphic(ZMaskableGraphic other) : this() {
+      Maskable = other.Maskable;
+      switch (other.MaskableGraphicCase) {
+        case MaskableGraphicOneofCase.Image:
+          Image = other.Image.Clone();
+          break;
+        case MaskableGraphicOneofCase.Text:
+          Text = other.Text.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZMaskableGraphic Clone() {
+      return new ZMaskableGraphic(this);
+    }
+
+    /// <summary>Field number for the "image" field.</summary>
+    public const int ImageFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZImage Image {
+      get { return maskableGraphicCase_ == MaskableGraphicOneofCase.Image ? (global::Tarkin.Data.ZImage) maskableGraphic_ : null; }
+      set {
+        maskableGraphic_ = value;
+        maskableGraphicCase_ = value == null ? MaskableGraphicOneofCase.None : MaskableGraphicOneofCase.Image;
+      }
+    }
+
+    /// <summary>Field number for the "text" field.</summary>
+    public const int TextFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZText Text {
+      get { return maskableGraphicCase_ == MaskableGraphicOneofCase.Text ? (global::Tarkin.Data.ZText) maskableGraphic_ : null; }
+      set {
+        maskableGraphic_ = value;
+        maskableGraphicCase_ = value == null ? MaskableGraphicOneofCase.None : MaskableGraphicOneofCase.Text;
+      }
+    }
+
+    /// <summary>Field number for the "maskable" field.</summary>
+    public const int MaskableFieldNumber = 3;
+    private static readonly pb::FieldCodec<bool?> _single_maskable_codec = pb::FieldCodec.ForStructWrapper<bool>(26);
+    private bool? maskable_;
+    /// <summary>
+    /// Does this graphic allow masking?
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? Maskable {
+      get { return maskable_; }
+      set {
+        maskable_ = value;
+      }
+    }
+
+    private object maskableGraphic_;
+    /// <summary>Enum of possible cases for the "maskable_graphic" oneof.</summary>
+    public enum MaskableGraphicOneofCase {
+      None = 0,
+      Image = 1,
+      Text = 2,
+    }
+    private MaskableGraphicOneofCase maskableGraphicCase_ = MaskableGraphicOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MaskableGraphicOneofCase MaskableGraphicCase {
+      get { return maskableGraphicCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearMaskableGraphic() {
+      maskableGraphicCase_ = MaskableGraphicOneofCase.None;
+      maskableGraphic_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZMaskableGraphic);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZMaskableGraphic other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Image, other.Image)) return false;
+      if (!object.Equals(Text, other.Text)) return false;
+      if (Maskable != other.Maskable) return false;
+      if (MaskableGraphicCase != other.MaskableGraphicCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Image) hash ^= Image.GetHashCode();
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Text) hash ^= Text.GetHashCode();
+      if (maskable_ != null) hash ^= Maskable.GetHashCode();
+      hash ^= (int) maskableGraphicCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Image) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Image);
+      }
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Text) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Text);
+      }
+      if (maskable_ != null) {
+        _single_maskable_codec.WriteTagAndValue(output, Maskable);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Image) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Image);
+      }
+      if (maskableGraphicCase_ == MaskableGraphicOneofCase.Text) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Text);
+      }
+      if (maskable_ != null) {
+        size += _single_maskable_codec.CalculateSizeWithTag(Maskable);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZMaskableGraphic other) {
+      if (other == null) {
+        return;
+      }
+      if (other.maskable_ != null) {
+        if (maskable_ == null || other.Maskable != false) {
+          Maskable = other.Maskable;
+        }
+      }
+      switch (other.MaskableGraphicCase) {
+        case MaskableGraphicOneofCase.Image:
+          if (Image == null) {
+            Image = new global::Tarkin.Data.ZImage();
+          }
+          Image.MergeFrom(other.Image);
+          break;
+        case MaskableGraphicOneofCase.Text:
+          if (Text == null) {
+            Text = new global::Tarkin.Data.ZText();
+          }
+          Text.MergeFrom(other.Text);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            global::Tarkin.Data.ZImage subBuilder = new global::Tarkin.Data.ZImage();
+            if (maskableGraphicCase_ == MaskableGraphicOneofCase.Image) {
+              subBuilder.MergeFrom(Image);
+            }
+            input.ReadMessage(subBuilder);
+            Image = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Tarkin.Data.ZText subBuilder = new global::Tarkin.Data.ZText();
+            if (maskableGraphicCase_ == MaskableGraphicOneofCase.Text) {
+              subBuilder.MergeFrom(Text);
+            }
+            input.ReadMessage(subBuilder);
+            Text = subBuilder;
+            break;
+          }
+          case 26: {
+            bool? value = _single_maskable_codec.Read(input);
+            if (maskable_ == null || value != false) {
+              Maskable = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZImage : pb::IMessage<ZImage> {
+    private static readonly pb::MessageParser<ZImage> _parser = new pb::MessageParser<ZImage>(() => new ZImage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZImage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[20]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZImage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZImage(ZImage other) : this() {
+      sprite_ = other.sprite_ != null ? other.sprite_.Clone() : null;
+      PreserveAspect = other.PreserveAspect;
+      FillCenter = other.FillCenter;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZImage Clone() {
+      return new ZImage(this);
+    }
+
+    /// <summary>Field number for the "sprite" field.</summary>
+    public const int SpriteFieldNumber = 1;
+    private global::Tarkin.Data.ZSprite sprite_;
+    /// <summary>
+    /// The sprite that is used to render this image:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZSprite Sprite {
+      get { return sprite_; }
+      set {
+        sprite_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "preserve_aspect" field.</summary>
+    public const int PreserveAspectFieldNumber = 2;
+    private static readonly pb::FieldCodec<bool?> _single_preserveAspect_codec = pb::FieldCodec.ForStructWrapper<bool>(18);
+    private bool? preserveAspect_;
+    /// <summary>
+    /// Whether this image should preserve its Sprite aspect ratio:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? PreserveAspect {
+      get { return preserveAspect_; }
+      set {
+        preserveAspect_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fill_center" field.</summary>
+    public const int FillCenterFieldNumber = 3;
+    private static readonly pb::FieldCodec<bool?> _single_fillCenter_codec = pb::FieldCodec.ForStructWrapper<bool>(26);
+    private bool? fillCenter_;
+    /// <summary>
+    /// Whether or not to render the center of a Tiled or Sliced image:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? FillCenter {
+      get { return fillCenter_; }
+      set {
+        fillCenter_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZImage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZImage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Sprite, other.Sprite)) return false;
+      if (PreserveAspect != other.PreserveAspect) return false;
+      if (FillCenter != other.FillCenter) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (sprite_ != null) hash ^= Sprite.GetHashCode();
+      if (preserveAspect_ != null) hash ^= PreserveAspect.GetHashCode();
+      if (fillCenter_ != null) hash ^= FillCenter.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (sprite_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Sprite);
+      }
+      if (preserveAspect_ != null) {
+        _single_preserveAspect_codec.WriteTagAndValue(output, PreserveAspect);
+      }
+      if (fillCenter_ != null) {
+        _single_fillCenter_codec.WriteTagAndValue(output, FillCenter);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (sprite_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sprite);
+      }
+      if (preserveAspect_ != null) {
+        size += _single_preserveAspect_codec.CalculateSizeWithTag(PreserveAspect);
+      }
+      if (fillCenter_ != null) {
+        size += _single_fillCenter_codec.CalculateSizeWithTag(FillCenter);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZImage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.sprite_ != null) {
+        if (sprite_ == null) {
+          sprite_ = new global::Tarkin.Data.ZSprite();
+        }
+        Sprite.MergeFrom(other.Sprite);
+      }
+      if (other.preserveAspect_ != null) {
+        if (preserveAspect_ == null || other.PreserveAspect != false) {
+          PreserveAspect = other.PreserveAspect;
+        }
+      }
+      if (other.fillCenter_ != null) {
+        if (fillCenter_ == null || other.FillCenter != false) {
+          FillCenter = other.FillCenter;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (sprite_ == null) {
+              sprite_ = new global::Tarkin.Data.ZSprite();
+            }
+            input.ReadMessage(sprite_);
+            break;
+          }
+          case 18: {
+            bool? value = _single_preserveAspect_codec.Read(input);
+            if (preserveAspect_ == null || value != false) {
+              PreserveAspect = value;
+            }
+            break;
+          }
+          case 26: {
+            bool? value = _single_fillCenter_codec.Read(input);
+            if (fillCenter_ == null || value != false) {
+              FillCenter = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// A standard button that can be clicked in order to trigger an event:
+  /// </summary>
+  public sealed partial class ZButton : pb::IMessage<ZButton> {
+    private static readonly pb::MessageParser<ZButton> _parser = new pb::MessageParser<ZButton>(() => new ZButton());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZButton> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[21]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZButton() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZButton(ZButton other) : this() {
+      Interactable = other.Interactable;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZButton Clone() {
+      return new ZButton(this);
+    }
+
+    /// <summary>Field number for the "interactable" field.</summary>
+    public const int InteractableFieldNumber = 1;
+    private static readonly pb::FieldCodec<bool?> _single_interactable_codec = pb::FieldCodec.ForStructWrapper<bool>(10);
+    private bool? interactable_;
+    /// <summary>
+    /// Use to enable or disable the ability to select a selectable UI element (for example, a
+    /// Button):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? Interactable {
+      get { return interactable_; }
+      set {
+        interactable_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZButton);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZButton other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Interactable != other.Interactable) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (interactable_ != null) hash ^= Interactable.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (interactable_ != null) {
+        _single_interactable_codec.WriteTagAndValue(output, Interactable);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (interactable_ != null) {
+        size += _single_interactable_codec.CalculateSizeWithTag(Interactable);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZButton other) {
+      if (other == null) {
+        return;
+      }
+      if (other.interactable_ != null) {
+        if (interactable_ == null || other.Interactable != false) {
+          Interactable = other.Interactable;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            bool? value = _single_interactable_codec.Read(input);
+            if (interactable_ == null || value != false) {
+              Interactable = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// The default Graphic to draw font data to screen:
+  /// </summary>
+  public sealed partial class ZText : pb::IMessage<ZText> {
+    private static readonly pb::MessageParser<ZText> _parser = new pb::MessageParser<ZText>(() => new ZText());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZText> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[22]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZText() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZText(ZText other) : this() {
+      Text = other.Text;
+      font_ = other.font_ != null ? other.font_.Clone() : null;
+      fontStyle_ = other.fontStyle_;
+      FontSize = other.FontSize;
+      LineSpacing = other.LineSpacing;
+      SupportRichText = other.SupportRichText;
+      alignment_ = other.alignment_;
+      AlignByGeometry = other.AlignByGeometry;
+      horizontalOverflow_ = other.horizontalOverflow_;
+      verticalOverflow_ = other.verticalOverflow_;
+      ResizeTextForBestFit = other.ResizeTextForBestFit;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZText Clone() {
+      return new ZText(this);
+    }
+
+    /// <summary>Field number for the "text" field.</summary>
+    public const int TextFieldNumber = 1;
+    private static readonly pb::FieldCodec<string> _single_text_codec = pb::FieldCodec.ForClassWrapper<string>(10);
+    private string text_;
+    /// <summary>
+    /// The string value this Text displays:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Text {
+      get { return text_; }
+      set {
+        text_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "font" field.</summary>
+    public const int FontFieldNumber = 2;
+    private global::Tarkin.Data.ZFont font_;
+    /// <summary>
+    /// The Font used by the text:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZFont Font {
+      get { return font_; }
+      set {
+        font_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "font_style" field.</summary>
+    public const int FontStyleFieldNumber = 3;
+    private global::Tarkin.Data.ZText.Types.FontStyle fontStyle_ = 0;
+    /// <summary>
+    /// FontStyle used by the text:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZText.Types.FontStyle FontStyle {
+      get { return fontStyle_; }
+      set {
+        fontStyle_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "font_size" field.</summary>
+    public const int FontSizeFieldNumber = 4;
+    private static readonly pb::FieldCodec<int?> _single_fontSize_codec = pb::FieldCodec.ForStructWrapper<int>(34);
+    private int? fontSize_;
+    /// <summary>
+    /// The size that the Font should render at:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int? FontSize {
+      get { return fontSize_; }
+      set {
+        fontSize_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "line_spacing" field.</summary>
+    public const int LineSpacingFieldNumber = 5;
+    private static readonly pb::FieldCodec<float?> _single_lineSpacing_codec = pb::FieldCodec.ForStructWrapper<float>(42);
+    private float? lineSpacing_;
+    /// <summary>
+    /// Line spacing, specified as a factor of font line height. A value of 1 will produce normal
+    /// line spacing:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? LineSpacing {
+      get { return lineSpacing_; }
+      set {
+        lineSpacing_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "support_rich_text" field.</summary>
+    public const int SupportRichTextFieldNumber = 6;
+    private static readonly pb::FieldCodec<bool?> _single_supportRichText_codec = pb::FieldCodec.ForStructWrapper<bool>(50);
+    private bool? supportRichText_;
+    /// <summary>
+    /// Whether this Text will support rich text:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? SupportRichText {
+      get { return supportRichText_; }
+      set {
+        supportRichText_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "alignment" field.</summary>
+    public const int AlignmentFieldNumber = 7;
+    private global::Tarkin.Data.ZTextAnchor alignment_ = 0;
+    /// <summary>
+    /// The positioning of the text reliative to its RectTransform:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZTextAnchor Alignment {
+      get { return alignment_; }
+      set {
+        alignment_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "align_by_geometry" field.</summary>
+    public const int AlignByGeometryFieldNumber = 8;
+    private static readonly pb::FieldCodec<bool?> _single_alignByGeometry_codec = pb::FieldCodec.ForStructWrapper<bool>(66);
+    private bool? alignByGeometry_;
+    /// <summary>
+    /// Use the extents of glyph geometry to perform horizontal alignment rather than glyph metrics:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? AlignByGeometry {
+      get { return alignByGeometry_; }
+      set {
+        alignByGeometry_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "horizontal_overflow" field.</summary>
+    public const int HorizontalOverflowFieldNumber = 9;
+    private global::Tarkin.Data.ZText.Types.HorizontalWrapMode horizontalOverflow_ = 0;
+    /// <summary>
+    /// Horizontal overflow mode:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZText.Types.HorizontalWrapMode HorizontalOverflow {
+      get { return horizontalOverflow_; }
+      set {
+        horizontalOverflow_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "vertical_overflow" field.</summary>
+    public const int VerticalOverflowFieldNumber = 10;
+    private global::Tarkin.Data.ZText.Types.VerticalWrapMode verticalOverflow_ = 0;
+    /// <summary>
+    /// Vertical overflow mode:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZText.Types.VerticalWrapMode VerticalOverflow {
+      get { return verticalOverflow_; }
+      set {
+        verticalOverflow_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "resize_text_for_best_fit" field.</summary>
+    public const int ResizeTextForBestFitFieldNumber = 11;
+    private static readonly pb::FieldCodec<bool?> _single_resizeTextForBestFit_codec = pb::FieldCodec.ForStructWrapper<bool>(90);
+    private bool? resizeTextForBestFit_;
+    /// <summary>
+    /// Should the text be allowed to auto resized:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? ResizeTextForBestFit {
+      get { return resizeTextForBestFit_; }
+      set {
+        resizeTextForBestFit_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZText);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZText other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Text != other.Text) return false;
+      if (!object.Equals(Font, other.Font)) return false;
+      if (FontStyle != other.FontStyle) return false;
+      if (FontSize != other.FontSize) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(LineSpacing, other.LineSpacing)) return false;
+      if (SupportRichText != other.SupportRichText) return false;
+      if (Alignment != other.Alignment) return false;
+      if (AlignByGeometry != other.AlignByGeometry) return false;
+      if (HorizontalOverflow != other.HorizontalOverflow) return false;
+      if (VerticalOverflow != other.VerticalOverflow) return false;
+      if (ResizeTextForBestFit != other.ResizeTextForBestFit) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (text_ != null) hash ^= Text.GetHashCode();
+      if (font_ != null) hash ^= Font.GetHashCode();
+      if (FontStyle != 0) hash ^= FontStyle.GetHashCode();
+      if (fontSize_ != null) hash ^= FontSize.GetHashCode();
+      if (lineSpacing_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(LineSpacing);
+      if (supportRichText_ != null) hash ^= SupportRichText.GetHashCode();
+      if (Alignment != 0) hash ^= Alignment.GetHashCode();
+      if (alignByGeometry_ != null) hash ^= AlignByGeometry.GetHashCode();
+      if (HorizontalOverflow != 0) hash ^= HorizontalOverflow.GetHashCode();
+      if (VerticalOverflow != 0) hash ^= VerticalOverflow.GetHashCode();
+      if (resizeTextForBestFit_ != null) hash ^= ResizeTextForBestFit.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (text_ != null) {
+        _single_text_codec.WriteTagAndValue(output, Text);
+      }
+      if (font_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Font);
+      }
+      if (FontStyle != 0) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) FontStyle);
+      }
+      if (fontSize_ != null) {
+        _single_fontSize_codec.WriteTagAndValue(output, FontSize);
+      }
+      if (lineSpacing_ != null) {
+        _single_lineSpacing_codec.WriteTagAndValue(output, LineSpacing);
+      }
+      if (supportRichText_ != null) {
+        _single_supportRichText_codec.WriteTagAndValue(output, SupportRichText);
+      }
+      if (Alignment != 0) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) Alignment);
+      }
+      if (alignByGeometry_ != null) {
+        _single_alignByGeometry_codec.WriteTagAndValue(output, AlignByGeometry);
+      }
+      if (HorizontalOverflow != 0) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) HorizontalOverflow);
+      }
+      if (VerticalOverflow != 0) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) VerticalOverflow);
+      }
+      if (resizeTextForBestFit_ != null) {
+        _single_resizeTextForBestFit_codec.WriteTagAndValue(output, ResizeTextForBestFit);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (text_ != null) {
+        size += _single_text_codec.CalculateSizeWithTag(Text);
+      }
+      if (font_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Font);
+      }
+      if (FontStyle != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FontStyle);
+      }
+      if (fontSize_ != null) {
+        size += _single_fontSize_codec.CalculateSizeWithTag(FontSize);
+      }
+      if (lineSpacing_ != null) {
+        size += _single_lineSpacing_codec.CalculateSizeWithTag(LineSpacing);
+      }
+      if (supportRichText_ != null) {
+        size += _single_supportRichText_codec.CalculateSizeWithTag(SupportRichText);
+      }
+      if (Alignment != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Alignment);
+      }
+      if (alignByGeometry_ != null) {
+        size += _single_alignByGeometry_codec.CalculateSizeWithTag(AlignByGeometry);
+      }
+      if (HorizontalOverflow != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HorizontalOverflow);
+      }
+      if (VerticalOverflow != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) VerticalOverflow);
+      }
+      if (resizeTextForBestFit_ != null) {
+        size += _single_resizeTextForBestFit_codec.CalculateSizeWithTag(ResizeTextForBestFit);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZText other) {
+      if (other == null) {
+        return;
+      }
+      if (other.text_ != null) {
+        if (text_ == null || other.Text != "") {
+          Text = other.Text;
+        }
+      }
+      if (other.font_ != null) {
+        if (font_ == null) {
+          font_ = new global::Tarkin.Data.ZFont();
+        }
+        Font.MergeFrom(other.Font);
+      }
+      if (other.FontStyle != 0) {
+        FontStyle = other.FontStyle;
+      }
+      if (other.fontSize_ != null) {
+        if (fontSize_ == null || other.FontSize != 0) {
+          FontSize = other.FontSize;
+        }
+      }
+      if (other.lineSpacing_ != null) {
+        if (lineSpacing_ == null || other.LineSpacing != 0F) {
+          LineSpacing = other.LineSpacing;
+        }
+      }
+      if (other.supportRichText_ != null) {
+        if (supportRichText_ == null || other.SupportRichText != false) {
+          SupportRichText = other.SupportRichText;
+        }
+      }
+      if (other.Alignment != 0) {
+        Alignment = other.Alignment;
+      }
+      if (other.alignByGeometry_ != null) {
+        if (alignByGeometry_ == null || other.AlignByGeometry != false) {
+          AlignByGeometry = other.AlignByGeometry;
+        }
+      }
+      if (other.HorizontalOverflow != 0) {
+        HorizontalOverflow = other.HorizontalOverflow;
+      }
+      if (other.VerticalOverflow != 0) {
+        VerticalOverflow = other.VerticalOverflow;
+      }
+      if (other.resizeTextForBestFit_ != null) {
+        if (resizeTextForBestFit_ == null || other.ResizeTextForBestFit != false) {
+          ResizeTextForBestFit = other.ResizeTextForBestFit;
+        }
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            string value = _single_text_codec.Read(input);
+            if (text_ == null || value != "") {
+              Text = value;
+            }
+            break;
+          }
+          case 18: {
+            if (font_ == null) {
+              font_ = new global::Tarkin.Data.ZFont();
+            }
+            input.ReadMessage(font_);
+            break;
+          }
+          case 24: {
+            fontStyle_ = (global::Tarkin.Data.ZText.Types.FontStyle) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            int? value = _single_fontSize_codec.Read(input);
+            if (fontSize_ == null || value != 0) {
+              FontSize = value;
+            }
+            break;
+          }
+          case 42: {
+            float? value = _single_lineSpacing_codec.Read(input);
+            if (lineSpacing_ == null || value != 0F) {
+              LineSpacing = value;
+            }
+            break;
+          }
+          case 50: {
+            bool? value = _single_supportRichText_codec.Read(input);
+            if (supportRichText_ == null || value != false) {
+              SupportRichText = value;
+            }
+            break;
+          }
+          case 56: {
+            alignment_ = (global::Tarkin.Data.ZTextAnchor) input.ReadEnum();
+            break;
+          }
+          case 66: {
+            bool? value = _single_alignByGeometry_codec.Read(input);
+            if (alignByGeometry_ == null || value != false) {
+              AlignByGeometry = value;
+            }
+            break;
+          }
+          case 72: {
+            horizontalOverflow_ = (global::Tarkin.Data.ZText.Types.HorizontalWrapMode) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            verticalOverflow_ = (global::Tarkin.Data.ZText.Types.VerticalWrapMode) input.ReadEnum();
+            break;
+          }
+          case 90: {
+            bool? value = _single_resizeTextForBestFit_codec.Read(input);
+            if (resizeTextForBestFit_ == null || value != false) {
+              ResizeTextForBestFit = value;
+            }
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZText message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum FontStyle {
+        [pbr::OriginalName("UNKNOWN_FONT_STYLE")] UnknownFontStyle = 0,
+        /// <summary>
+        /// No special style is applied:
+        /// </summary>
+        [pbr::OriginalName("NORMAL")] Normal = 1,
+        /// <summary>
+        /// Bold style applied to your texts:
+        /// </summary>
+        [pbr::OriginalName("BOLD")] Bold = 2,
+        /// <summary>
+        /// Italic style applied to your texts:
+        /// </summary>
+        [pbr::OriginalName("ITALIC")] Italic = 3,
+        /// <summary>
+        /// Bold and Italic styles applied to your texts:
+        /// </summary>
+        [pbr::OriginalName("BOLD_AND_ITALIC")] BoldAndItalic = 4,
+      }
+
+      public enum HorizontalWrapMode {
+        [pbr::OriginalName("UNKNOWN_HORIZONTAL_WRAP_MODE")] UnknownHorizontalWrapMode = 0,
+        /// <summary>
+        /// Text will word-wrap when reaching the horizontal boundary:
+        /// </summary>
+        [pbr::OriginalName("WRAP")] Wrap = 1,
+        /// <summary>
+        /// Text can exceed the horizontal boundary:
+        /// </summary>
+        [pbr::OriginalName("HORIZONTAL_OVERFLOW")] HorizontalOverflow = 2,
+      }
+
+      public enum VerticalWrapMode {
+        [pbr::OriginalName("UNKNOWN_VERTICAL_WRAP_MODE")] UnknownVerticalWrapMode = 0,
+        /// <summary>
+        /// Text will be clipped when reaching the vertical boundary:
+        /// </summary>
+        [pbr::OriginalName("TRUNCATE")] Truncate = 1,
+        /// <summary>
+        /// Text well continue to generate when reaching vertical boundary:
+        /// </summary>
+        [pbr::OriginalName("VERTICAL_OVERFLOW")] VerticalOverflow = 2,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class ZBehaviour : pb::IMessage<ZBehaviour> {
+    private static readonly pb::MessageParser<ZBehaviour> _parser = new pb::MessageParser<ZBehaviour>(() => new ZBehaviour());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZBehaviour> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[23]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZBehaviour() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZBehaviour(ZBehaviour other) : this() {
+      Enabled = other.Enabled;
+      switch (other.BehaviourCase) {
+        case BehaviourOneofCase.Canvas:
+          Canvas = other.Canvas.Clone();
+          break;
+        case BehaviourOneofCase.CanvasScaler:
+          CanvasScaler = other.CanvasScaler.Clone();
+          break;
+        case BehaviourOneofCase.GraphicRaycaster:
+          GraphicRaycaster = other.GraphicRaycaster.Clone();
+          break;
+        case BehaviourOneofCase.EventSystem:
+          EventSystem = other.EventSystem.Clone();
+          break;
+        case BehaviourOneofCase.StandaloneInputModule:
+          StandaloneInputModule = other.StandaloneInputModule.Clone();
+          break;
+        case BehaviourOneofCase.Graphic:
+          Graphic = other.Graphic.Clone();
+          break;
+        case BehaviourOneofCase.Button:
+          Button = other.Button.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZBehaviour Clone() {
+      return new ZBehaviour(this);
+    }
+
+    /// <summary>Field number for the "enabled" field.</summary>
+    public const int EnabledFieldNumber = 1;
+    private static readonly pb::FieldCodec<bool?> _single_enabled_codec = pb::FieldCodec.ForStructWrapper<bool>(10);
+    private bool? enabled_;
+    /// <summary>
+    /// Enabled Behaviours are Updated, disabled Behaviours are not:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool? Enabled {
+      get { return enabled_; }
+      set {
+        enabled_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "canvas" field.</summary>
+    public const int CanvasFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZCanvas Canvas {
+      get { return behaviourCase_ == BehaviourOneofCase.Canvas ? (global::Tarkin.Data.ZCanvas) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.Canvas;
+      }
+    }
+
+    /// <summary>Field number for the "canvas_scaler" field.</summary>
+    public const int CanvasScalerFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZCanvasScaler CanvasScaler {
+      get { return behaviourCase_ == BehaviourOneofCase.CanvasScaler ? (global::Tarkin.Data.ZCanvasScaler) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.CanvasScaler;
+      }
+    }
+
+    /// <summary>Field number for the "graphic_raycaster" field.</summary>
+    public const int GraphicRaycasterFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGraphicRaycaster GraphicRaycaster {
+      get { return behaviourCase_ == BehaviourOneofCase.GraphicRaycaster ? (global::Tarkin.Data.ZGraphicRaycaster) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.GraphicRaycaster;
+      }
+    }
+
+    /// <summary>Field number for the "event_system" field.</summary>
+    public const int EventSystemFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZEventSystem EventSystem {
+      get { return behaviourCase_ == BehaviourOneofCase.EventSystem ? (global::Tarkin.Data.ZEventSystem) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.EventSystem;
+      }
+    }
+
+    /// <summary>Field number for the "standalone_input_module" field.</summary>
+    public const int StandaloneInputModuleFieldNumber = 6;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZStandaloneInputModule StandaloneInputModule {
+      get { return behaviourCase_ == BehaviourOneofCase.StandaloneInputModule ? (global::Tarkin.Data.ZStandaloneInputModule) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.StandaloneInputModule;
+      }
+    }
+
+    /// <summary>Field number for the "graphic" field.</summary>
+    public const int GraphicFieldNumber = 7;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGraphic Graphic {
+      get { return behaviourCase_ == BehaviourOneofCase.Graphic ? (global::Tarkin.Data.ZGraphic) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.Graphic;
+      }
+    }
+
+    /// <summary>Field number for the "button" field.</summary>
+    public const int ButtonFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZButton Button {
+      get { return behaviourCase_ == BehaviourOneofCase.Button ? (global::Tarkin.Data.ZButton) behaviour_ : null; }
+      set {
+        behaviour_ = value;
+        behaviourCase_ = value == null ? BehaviourOneofCase.None : BehaviourOneofCase.Button;
+      }
+    }
+
+    private object behaviour_;
+    /// <summary>Enum of possible cases for the "behaviour" oneof.</summary>
+    public enum BehaviourOneofCase {
+      None = 0,
+      Canvas = 2,
+      CanvasScaler = 3,
+      GraphicRaycaster = 4,
+      EventSystem = 5,
+      StandaloneInputModule = 6,
+      Graphic = 7,
+      Button = 8,
+    }
+    private BehaviourOneofCase behaviourCase_ = BehaviourOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public BehaviourOneofCase BehaviourCase {
+      get { return behaviourCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearBehaviour() {
+      behaviourCase_ = BehaviourOneofCase.None;
+      behaviour_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZBehaviour);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZBehaviour other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Enabled != other.Enabled) return false;
+      if (!object.Equals(Canvas, other.Canvas)) return false;
+      if (!object.Equals(CanvasScaler, other.CanvasScaler)) return false;
+      if (!object.Equals(GraphicRaycaster, other.GraphicRaycaster)) return false;
+      if (!object.Equals(EventSystem, other.EventSystem)) return false;
+      if (!object.Equals(StandaloneInputModule, other.StandaloneInputModule)) return false;
+      if (!object.Equals(Graphic, other.Graphic)) return false;
+      if (!object.Equals(Button, other.Button)) return false;
+      if (BehaviourCase != other.BehaviourCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (enabled_ != null) hash ^= Enabled.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.Canvas) hash ^= Canvas.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.CanvasScaler) hash ^= CanvasScaler.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.GraphicRaycaster) hash ^= GraphicRaycaster.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.EventSystem) hash ^= EventSystem.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.StandaloneInputModule) hash ^= StandaloneInputModule.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.Graphic) hash ^= Graphic.GetHashCode();
+      if (behaviourCase_ == BehaviourOneofCase.Button) hash ^= Button.GetHashCode();
+      hash ^= (int) behaviourCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (enabled_ != null) {
+        _single_enabled_codec.WriteTagAndValue(output, Enabled);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Canvas) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Canvas);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.CanvasScaler) {
+        output.WriteRawTag(26);
+        output.WriteMessage(CanvasScaler);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.GraphicRaycaster) {
+        output.WriteRawTag(34);
+        output.WriteMessage(GraphicRaycaster);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.EventSystem) {
+        output.WriteRawTag(42);
+        output.WriteMessage(EventSystem);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.StandaloneInputModule) {
+        output.WriteRawTag(50);
+        output.WriteMessage(StandaloneInputModule);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Graphic) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Graphic);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Button) {
+        output.WriteRawTag(66);
+        output.WriteMessage(Button);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (enabled_ != null) {
+        size += _single_enabled_codec.CalculateSizeWithTag(Enabled);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Canvas) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Canvas);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.CanvasScaler) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CanvasScaler);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.GraphicRaycaster) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GraphicRaycaster);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.EventSystem) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EventSystem);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.StandaloneInputModule) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(StandaloneInputModule);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Graphic) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Graphic);
+      }
+      if (behaviourCase_ == BehaviourOneofCase.Button) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Button);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZBehaviour other) {
+      if (other == null) {
+        return;
+      }
+      if (other.enabled_ != null) {
+        if (enabled_ == null || other.Enabled != false) {
+          Enabled = other.Enabled;
+        }
+      }
+      switch (other.BehaviourCase) {
+        case BehaviourOneofCase.Canvas:
+          if (Canvas == null) {
+            Canvas = new global::Tarkin.Data.ZCanvas();
+          }
+          Canvas.MergeFrom(other.Canvas);
+          break;
+        case BehaviourOneofCase.CanvasScaler:
+          if (CanvasScaler == null) {
+            CanvasScaler = new global::Tarkin.Data.ZCanvasScaler();
+          }
+          CanvasScaler.MergeFrom(other.CanvasScaler);
+          break;
+        case BehaviourOneofCase.GraphicRaycaster:
+          if (GraphicRaycaster == null) {
+            GraphicRaycaster = new global::Tarkin.Data.ZGraphicRaycaster();
+          }
+          GraphicRaycaster.MergeFrom(other.GraphicRaycaster);
+          break;
+        case BehaviourOneofCase.EventSystem:
+          if (EventSystem == null) {
+            EventSystem = new global::Tarkin.Data.ZEventSystem();
+          }
+          EventSystem.MergeFrom(other.EventSystem);
+          break;
+        case BehaviourOneofCase.StandaloneInputModule:
+          if (StandaloneInputModule == null) {
+            StandaloneInputModule = new global::Tarkin.Data.ZStandaloneInputModule();
+          }
+          StandaloneInputModule.MergeFrom(other.StandaloneInputModule);
+          break;
+        case BehaviourOneofCase.Graphic:
+          if (Graphic == null) {
+            Graphic = new global::Tarkin.Data.ZGraphic();
+          }
+          Graphic.MergeFrom(other.Graphic);
+          break;
+        case BehaviourOneofCase.Button:
+          if (Button == null) {
+            Button = new global::Tarkin.Data.ZButton();
+          }
+          Button.MergeFrom(other.Button);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            bool? value = _single_enabled_codec.Read(input);
+            if (enabled_ == null || value != false) {
+              Enabled = value;
+            }
+            break;
+          }
+          case 18: {
+            global::Tarkin.Data.ZCanvas subBuilder = new global::Tarkin.Data.ZCanvas();
+            if (behaviourCase_ == BehaviourOneofCase.Canvas) {
+              subBuilder.MergeFrom(Canvas);
+            }
+            input.ReadMessage(subBuilder);
+            Canvas = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Tarkin.Data.ZCanvasScaler subBuilder = new global::Tarkin.Data.ZCanvasScaler();
+            if (behaviourCase_ == BehaviourOneofCase.CanvasScaler) {
+              subBuilder.MergeFrom(CanvasScaler);
+            }
+            input.ReadMessage(subBuilder);
+            CanvasScaler = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Tarkin.Data.ZGraphicRaycaster subBuilder = new global::Tarkin.Data.ZGraphicRaycaster();
+            if (behaviourCase_ == BehaviourOneofCase.GraphicRaycaster) {
+              subBuilder.MergeFrom(GraphicRaycaster);
+            }
+            input.ReadMessage(subBuilder);
+            GraphicRaycaster = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Tarkin.Data.ZEventSystem subBuilder = new global::Tarkin.Data.ZEventSystem();
+            if (behaviourCase_ == BehaviourOneofCase.EventSystem) {
+              subBuilder.MergeFrom(EventSystem);
+            }
+            input.ReadMessage(subBuilder);
+            EventSystem = subBuilder;
+            break;
+          }
+          case 50: {
+            global::Tarkin.Data.ZStandaloneInputModule subBuilder = new global::Tarkin.Data.ZStandaloneInputModule();
+            if (behaviourCase_ == BehaviourOneofCase.StandaloneInputModule) {
+              subBuilder.MergeFrom(StandaloneInputModule);
+            }
+            input.ReadMessage(subBuilder);
+            StandaloneInputModule = subBuilder;
+            break;
+          }
+          case 58: {
+            global::Tarkin.Data.ZGraphic subBuilder = new global::Tarkin.Data.ZGraphic();
+            if (behaviourCase_ == BehaviourOneofCase.Graphic) {
+              subBuilder.MergeFrom(Graphic);
+            }
+            input.ReadMessage(subBuilder);
+            Graphic = subBuilder;
+            break;
+          }
+          case 66: {
+            global::Tarkin.Data.ZButton subBuilder = new global::Tarkin.Data.ZButton();
+            if (behaviourCase_ == BehaviourOneofCase.Button) {
+              subBuilder.MergeFrom(Button);
+            }
+            input.ReadMessage(subBuilder);
+            Button = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ZComponent : pb::IMessage<ZComponent> {
+    private static readonly pb::MessageParser<ZComponent> _parser = new pb::MessageParser<ZComponent>(() => new ZComponent());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ZComponent> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[24]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZComponent() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZComponent(ZComponent other) : this() {
+      switch (other.ComponentCase) {
+        case ComponentOneofCase.Behaviour:
+          Behaviour = other.Behaviour.Clone();
+          break;
+        case ComponentOneofCase.CanvasRenderer:
+          CanvasRenderer = other.CanvasRenderer.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ZComponent Clone() {
+      return new ZComponent(this);
+    }
+
+    /// <summary>Field number for the "behaviour" field.</summary>
+    public const int BehaviourFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZBehaviour Behaviour {
+      get { return componentCase_ == ComponentOneofCase.Behaviour ? (global::Tarkin.Data.ZBehaviour) component_ : null; }
+      set {
+        component_ = value;
+        componentCase_ = value == null ? ComponentOneofCase.None : ComponentOneofCase.Behaviour;
+      }
+    }
+
+    /// <summary>Field number for the "canvas_renderer" field.</summary>
+    public const int CanvasRendererFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZCanvasRenderer CanvasRenderer {
+      get { return componentCase_ == ComponentOneofCase.CanvasRenderer ? (global::Tarkin.Data.ZCanvasRenderer) component_ : null; }
+      set {
+        component_ = value;
+        componentCase_ = value == null ? ComponentOneofCase.None : ComponentOneofCase.CanvasRenderer;
+      }
+    }
+
+    private object component_;
+    /// <summary>Enum of possible cases for the "component" oneof.</summary>
+    public enum ComponentOneofCase {
+      None = 0,
+      Behaviour = 1,
+      CanvasRenderer = 2,
+    }
+    private ComponentOneofCase componentCase_ = ComponentOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ComponentOneofCase ComponentCase {
+      get { return componentCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearComponent() {
+      componentCase_ = ComponentOneofCase.None;
+      component_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ZComponent);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ZComponent other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Behaviour, other.Behaviour)) return false;
+      if (!object.Equals(CanvasRenderer, other.CanvasRenderer)) return false;
+      if (ComponentCase != other.ComponentCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (componentCase_ == ComponentOneofCase.Behaviour) hash ^= Behaviour.GetHashCode();
+      if (componentCase_ == ComponentOneofCase.CanvasRenderer) hash ^= CanvasRenderer.GetHashCode();
+      hash ^= (int) componentCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (componentCase_ == ComponentOneofCase.Behaviour) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Behaviour);
+      }
+      if (componentCase_ == ComponentOneofCase.CanvasRenderer) {
+        output.WriteRawTag(18);
+        output.WriteMessage(CanvasRenderer);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (componentCase_ == ComponentOneofCase.Behaviour) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Behaviour);
+      }
+      if (componentCase_ == ComponentOneofCase.CanvasRenderer) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CanvasRenderer);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ZComponent other) {
+      if (other == null) {
+        return;
+      }
+      switch (other.ComponentCase) {
+        case ComponentOneofCase.Behaviour:
+          if (Behaviour == null) {
+            Behaviour = new global::Tarkin.Data.ZBehaviour();
+          }
+          Behaviour.MergeFrom(other.Behaviour);
+          break;
+        case ComponentOneofCase.CanvasRenderer:
+          if (CanvasRenderer == null) {
+            CanvasRenderer = new global::Tarkin.Data.ZCanvasRenderer();
+          }
+          CanvasRenderer.MergeFrom(other.CanvasRenderer);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            global::Tarkin.Data.ZBehaviour subBuilder = new global::Tarkin.Data.ZBehaviour();
+            if (componentCase_ == ComponentOneofCase.Behaviour) {
+              subBuilder.MergeFrom(Behaviour);
+            }
+            input.ReadMessage(subBuilder);
+            Behaviour = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Tarkin.Data.ZCanvasRenderer subBuilder = new global::Tarkin.Data.ZCanvasRenderer();
+            if (componentCase_ == ComponentOneofCase.CanvasRenderer) {
+              subBuilder.MergeFrom(CanvasRenderer);
+            }
+            input.ReadMessage(subBuilder);
+            CanvasRenderer = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class LoadAssetRequest : pb::IMessage<LoadAssetRequest> {
+    private static readonly pb::MessageParser<LoadAssetRequest> _parser = new pb::MessageParser<LoadAssetRequest>(() => new LoadAssetRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<LoadAssetRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[25]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoadAssetRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoadAssetRequest(LoadAssetRequest other) : this() {
+      assetPath_ = other.assetPath_;
+      switch (other.AssetCase) {
+        case AssetOneofCase.Prefab:
+          Prefab = other.Prefab.Clone();
+          break;
+        case AssetOneofCase.Sprite:
+          Sprite = other.Sprite.Clone();
+          break;
+        case AssetOneofCase.Material:
+          Material = other.Material.Clone();
+          break;
+        case AssetOneofCase.Font:
+          Font = other.Font.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public LoadAssetRequest Clone() {
+      return new LoadAssetRequest(this);
+    }
+
+    /// <summary>Field number for the "asset_path" field.</summary>
+    public const int AssetPathFieldNumber = 1;
+    private string assetPath_ = "";
+    /// <summary>
+    /// Asset reference path
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AssetPath {
+      get { return assetPath_; }
+      set {
+        assetPath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "prefab" field.</summary>
+    public const int PrefabFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZPrefab Prefab {
+      get { return assetCase_ == AssetOneofCase.Prefab ? (global::Tarkin.Data.ZPrefab) asset_ : null; }
+      set {
+        asset_ = value;
+        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Prefab;
+      }
+    }
+
+    /// <summary>Field number for the "sprite" field.</summary>
+    public const int SpriteFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZSprite Sprite {
+      get { return assetCase_ == AssetOneofCase.Sprite ? (global::Tarkin.Data.ZSprite) asset_ : null; }
+      set {
+        asset_ = value;
+        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Sprite;
+      }
+    }
+
+    /// <summary>Field number for the "material" field.</summary>
+    public const int MaterialFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZMaterial Material {
+      get { return assetCase_ == AssetOneofCase.Material ? (global::Tarkin.Data.ZMaterial) asset_ : null; }
+      set {
+        asset_ = value;
+        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Material;
+      }
+    }
+
+    /// <summary>Field number for the "font" field.</summary>
+    public const int FontFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZFont Font {
+      get { return assetCase_ == AssetOneofCase.Font ? (global::Tarkin.Data.ZFont) asset_ : null; }
+      set {
+        asset_ = value;
+        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Font;
+      }
+    }
+
+    private object asset_;
+    /// <summary>Enum of possible cases for the "asset" oneof.</summary>
+    public enum AssetOneofCase {
+      None = 0,
+      Prefab = 2,
+      Sprite = 3,
+      Material = 4,
+      Font = 5,
+    }
+    private AssetOneofCase assetCase_ = AssetOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AssetOneofCase AssetCase {
+      get { return assetCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearAsset() {
+      assetCase_ = AssetOneofCase.None;
+      asset_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as LoadAssetRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(LoadAssetRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (AssetPath != other.AssetPath) return false;
+      if (!object.Equals(Prefab, other.Prefab)) return false;
+      if (!object.Equals(Sprite, other.Sprite)) return false;
+      if (!object.Equals(Material, other.Material)) return false;
+      if (!object.Equals(Font, other.Font)) return false;
+      if (AssetCase != other.AssetCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (AssetPath.Length != 0) hash ^= AssetPath.GetHashCode();
+      if (assetCase_ == AssetOneofCase.Prefab) hash ^= Prefab.GetHashCode();
+      if (assetCase_ == AssetOneofCase.Sprite) hash ^= Sprite.GetHashCode();
+      if (assetCase_ == AssetOneofCase.Material) hash ^= Material.GetHashCode();
+      if (assetCase_ == AssetOneofCase.Font) hash ^= Font.GetHashCode();
+      hash ^= (int) assetCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (AssetPath.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AssetPath);
+      }
+      if (assetCase_ == AssetOneofCase.Prefab) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Prefab);
+      }
+      if (assetCase_ == AssetOneofCase.Sprite) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Sprite);
+      }
+      if (assetCase_ == AssetOneofCase.Material) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Material);
+      }
+      if (assetCase_ == AssetOneofCase.Font) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Font);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (AssetPath.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AssetPath);
+      }
+      if (assetCase_ == AssetOneofCase.Prefab) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Prefab);
+      }
+      if (assetCase_ == AssetOneofCase.Sprite) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sprite);
+      }
+      if (assetCase_ == AssetOneofCase.Material) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Material);
+      }
+      if (assetCase_ == AssetOneofCase.Font) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Font);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(LoadAssetRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.AssetPath.Length != 0) {
+        AssetPath = other.AssetPath;
+      }
+      switch (other.AssetCase) {
+        case AssetOneofCase.Prefab:
+          if (Prefab == null) {
+            Prefab = new global::Tarkin.Data.ZPrefab();
+          }
+          Prefab.MergeFrom(other.Prefab);
+          break;
+        case AssetOneofCase.Sprite:
+          if (Sprite == null) {
+            Sprite = new global::Tarkin.Data.ZSprite();
+          }
+          Sprite.MergeFrom(other.Sprite);
+          break;
+        case AssetOneofCase.Material:
+          if (Material == null) {
+            Material = new global::Tarkin.Data.ZMaterial();
+          }
+          Material.MergeFrom(other.Material);
+          break;
+        case AssetOneofCase.Font:
+          if (Font == null) {
+            Font = new global::Tarkin.Data.ZFont();
+          }
+          Font.MergeFrom(other.Font);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            AssetPath = input.ReadString();
+            break;
+          }
+          case 18: {
+            global::Tarkin.Data.ZPrefab subBuilder = new global::Tarkin.Data.ZPrefab();
+            if (assetCase_ == AssetOneofCase.Prefab) {
+              subBuilder.MergeFrom(Prefab);
+            }
+            input.ReadMessage(subBuilder);
+            Prefab = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Tarkin.Data.ZSprite subBuilder = new global::Tarkin.Data.ZSprite();
+            if (assetCase_ == AssetOneofCase.Sprite) {
+              subBuilder.MergeFrom(Sprite);
+            }
+            input.ReadMessage(subBuilder);
+            Sprite = subBuilder;
+            break;
+          }
+          case 34: {
+            global::Tarkin.Data.ZMaterial subBuilder = new global::Tarkin.Data.ZMaterial();
+            if (assetCase_ == AssetOneofCase.Material) {
+              subBuilder.MergeFrom(Material);
+            }
+            input.ReadMessage(subBuilder);
+            Material = subBuilder;
+            break;
+          }
+          case 42: {
+            global::Tarkin.Data.ZFont subBuilder = new global::Tarkin.Data.ZFont();
+            if (assetCase_ == AssetOneofCase.Font) {
+              subBuilder.MergeFrom(Font);
+            }
+            input.ReadMessage(subBuilder);
+            Font = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class SystemCommandRequest : pb::IMessage<SystemCommandRequest> {
+    private static readonly pb::MessageParser<SystemCommandRequest> _parser = new pb::MessageParser<SystemCommandRequest>(() => new SystemCommandRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SystemCommandRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[26]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest(SystemCommandRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest Clone() {
+      return new SystemCommandRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SystemCommandRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SystemCommandRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SystemCommandRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class CreateGameObjectRequest : pb::IMessage<CreateGameObjectRequest> {
+    private static readonly pb::MessageParser<CreateGameObjectRequest> _parser = new pb::MessageParser<CreateGameObjectRequest>(() => new CreateGameObjectRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CreateGameObjectRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[27]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreateGameObjectRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreateGameObjectRequest(CreateGameObjectRequest other) : this() {
+      newObjectId_ = other.newObjectId_;
+      name_ = other.name_;
+      parentGameObject_ = other.parentGameObject_ != null ? other.parentGameObject_.Clone() : null;
+      components_ = other.components_.Clone();
+      transform_ = other.transform_ != null ? other.transform_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CreateGameObjectRequest Clone() {
+      return new CreateGameObjectRequest(this);
+    }
+
+    /// <summary>Field number for the "new_object_id" field.</summary>
+    public const int NewObjectIdFieldNumber = 1;
+    private uint newObjectId_;
+    /// <summary>
+    /// Globally unique integer which identifies this GameObject for future reference (should be
+    /// allocated sequentially for maximum performance):
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint NewObjectId {
+      get { return newObjectId_; }
+      set {
+        newObjectId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    /// <summary>
+    /// Name for this GameObject:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "parent_game_object" field.</summary>
+    public const int ParentGameObjectFieldNumber = 3;
+    private global::Tarkin.Data.ZGameObject parentGameObject_;
+    /// <summary>
+    /// The parent of this GameObject's transform, if any:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGameObject ParentGameObject {
+      get { return parentGameObject_; }
+      set {
+        parentGameObject_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "components" field.</summary>
+    public const int ComponentsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.ZComponent> _repeated_components_codec
+        = pb::FieldCodec.ForMessage(34, global::Tarkin.Data.ZComponent.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.ZComponent> components_ = new pbc::RepeatedField<global::Tarkin.Data.ZComponent>();
+    /// <summary>
+    /// Initial components for this GameObject:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.ZComponent> Components {
+      get { return components_; }
+    }
+
+    /// <summary>Field number for the "transform" field.</summary>
+    public const int TransformFieldNumber = 5;
+    private global::Tarkin.Data.ZTransform transform_;
+    /// <summary>
+    /// The Transform attached to this GameObject:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZTransform Transform {
+      get { return transform_; }
+      set {
+        transform_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CreateGameObjectRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CreateGameObjectRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (NewObjectId != other.NewObjectId) return false;
+      if (Name != other.Name) return false;
+      if (!object.Equals(ParentGameObject, other.ParentGameObject)) return false;
+      if(!components_.Equals(other.components_)) return false;
+      if (!object.Equals(Transform, other.Transform)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (NewObjectId != 0) hash ^= NewObjectId.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (parentGameObject_ != null) hash ^= ParentGameObject.GetHashCode();
+      hash ^= components_.GetHashCode();
+      if (transform_ != null) hash ^= Transform.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (NewObjectId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(NewObjectId);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (parentGameObject_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ParentGameObject);
+      }
+      components_.WriteTo(output, _repeated_components_codec);
+      if (transform_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Transform);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (NewObjectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NewObjectId);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (parentGameObject_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentGameObject);
+      }
+      size += components_.CalculateSize(_repeated_components_codec);
+      if (transform_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CreateGameObjectRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.NewObjectId != 0) {
+        NewObjectId = other.NewObjectId;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.parentGameObject_ != null) {
+        if (parentGameObject_ == null) {
+          parentGameObject_ = new global::Tarkin.Data.ZGameObject();
+        }
+        ParentGameObject.MergeFrom(other.ParentGameObject);
+      }
+      components_.Add(other.components_);
+      if (other.transform_ != null) {
+        if (transform_ == null) {
+          transform_ = new global::Tarkin.Data.ZTransform();
+        }
+        Transform.MergeFrom(other.Transform);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            NewObjectId = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (parentGameObject_ == null) {
+              parentGameObject_ = new global::Tarkin.Data.ZGameObject();
+            }
+            input.ReadMessage(parentGameObject_);
+            break;
+          }
+          case 34: {
+            components_.AddEntriesFrom(input, _repeated_components_codec);
+            break;
+          }
+          case 42: {
+            if (transform_ == null) {
+              transform_ = new global::Tarkin.Data.ZTransform();
+            }
+            input.ReadMessage(transform_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class UpdateGameObjectRequest : pb::IMessage<UpdateGameObjectRequest> {
+    private static readonly pb::MessageParser<UpdateGameObjectRequest> _parser = new pb::MessageParser<UpdateGameObjectRequest>(() => new UpdateGameObjectRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UpdateGameObjectRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[28]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateGameObjectRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateGameObjectRequest(UpdateGameObjectRequest other) : this() {
+      gameObject_ = other.gameObject_ != null ? other.gameObject_.Clone() : null;
+      parentGameObject_ = other.parentGameObject_ != null ? other.parentGameObject_.Clone() : null;
+      components_ = other.components_.Clone();
+      componentsToRemove_ = other.componentsToRemove_.Clone();
+      transform_ = other.transform_ != null ? other.transform_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateGameObjectRequest Clone() {
+      return new UpdateGameObjectRequest(this);
+    }
+
+    /// <summary>Field number for the "game_object" field.</summary>
+    public const int GameObjectFieldNumber = 1;
+    private global::Tarkin.Data.ZGameObject gameObject_;
+    /// <summary>
+    /// GameObject to update:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGameObject GameObject {
+      get { return gameObject_; }
+      set {
+        gameObject_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "parent_game_object" field.</summary>
+    public const int ParentGameObjectFieldNumber = 2;
+    private global::Tarkin.Data.ZGameObject parentGameObject_;
+    /// <summary>
+    /// The new parent of this GameObject's transform, if any:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGameObject ParentGameObject {
+      get { return parentGameObject_; }
+      set {
+        parentGameObject_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "components" field.</summary>
+    public const int ComponentsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.ZComponent> _repeated_components_codec
+        = pb::FieldCodec.ForMessage(26, global::Tarkin.Data.ZComponent.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.ZComponent> components_ = new pbc::RepeatedField<global::Tarkin.Data.ZComponent>();
+    /// <summary>
+    /// Added and updated components for this GameObject:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.ZComponent> Components {
+      get { return components_; }
+    }
+
+    /// <summary>Field number for the "components_to_remove" field.</summary>
+    public const int ComponentsToRemoveFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.ZComponentType> _repeated_componentsToRemove_codec
+        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::Tarkin.Data.ZComponentType) x);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.ZComponentType> componentsToRemove_ = new pbc::RepeatedField<global::Tarkin.Data.ZComponentType>();
+    /// <summary>
+    /// Components which should be removed from this GameObject;
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.ZComponentType> ComponentsToRemove {
+      get { return componentsToRemove_; }
+    }
+
+    /// <summary>Field number for the "transform" field.</summary>
+    public const int TransformFieldNumber = 5;
+    private global::Tarkin.Data.ZTransform transform_;
+    /// <summary>
+    /// The new value for the Transform attached to this game object
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZTransform Transform {
+      get { return transform_; }
+      set {
+        transform_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UpdateGameObjectRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UpdateGameObjectRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(GameObject, other.GameObject)) return false;
+      if (!object.Equals(ParentGameObject, other.ParentGameObject)) return false;
+      if(!components_.Equals(other.components_)) return false;
+      if(!componentsToRemove_.Equals(other.componentsToRemove_)) return false;
+      if (!object.Equals(Transform, other.Transform)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (gameObject_ != null) hash ^= GameObject.GetHashCode();
+      if (parentGameObject_ != null) hash ^= ParentGameObject.GetHashCode();
+      hash ^= components_.GetHashCode();
+      hash ^= componentsToRemove_.GetHashCode();
+      if (transform_ != null) hash ^= Transform.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (gameObject_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(GameObject);
+      }
+      if (parentGameObject_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(ParentGameObject);
+      }
+      components_.WriteTo(output, _repeated_components_codec);
+      componentsToRemove_.WriteTo(output, _repeated_componentsToRemove_codec);
+      if (transform_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Transform);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (gameObject_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameObject);
+      }
+      if (parentGameObject_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentGameObject);
+      }
+      size += components_.CalculateSize(_repeated_components_codec);
+      size += componentsToRemove_.CalculateSize(_repeated_componentsToRemove_codec);
+      if (transform_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Transform);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UpdateGameObjectRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.gameObject_ != null) {
+        if (gameObject_ == null) {
+          gameObject_ = new global::Tarkin.Data.ZGameObject();
+        }
+        GameObject.MergeFrom(other.GameObject);
+      }
+      if (other.parentGameObject_ != null) {
+        if (parentGameObject_ == null) {
+          parentGameObject_ = new global::Tarkin.Data.ZGameObject();
+        }
+        ParentGameObject.MergeFrom(other.ParentGameObject);
+      }
+      components_.Add(other.components_);
+      componentsToRemove_.Add(other.componentsToRemove_);
+      if (other.transform_ != null) {
+        if (transform_ == null) {
+          transform_ = new global::Tarkin.Data.ZTransform();
+        }
+        Transform.MergeFrom(other.Transform);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (gameObject_ == null) {
+              gameObject_ = new global::Tarkin.Data.ZGameObject();
+            }
+            input.ReadMessage(gameObject_);
+            break;
+          }
+          case 18: {
+            if (parentGameObject_ == null) {
+              parentGameObject_ = new global::Tarkin.Data.ZGameObject();
+            }
+            input.ReadMessage(parentGameObject_);
+            break;
+          }
+          case 26: {
+            components_.AddEntriesFrom(input, _repeated_components_codec);
+            break;
+          }
+          case 34:
+          case 32: {
+            componentsToRemove_.AddEntriesFrom(input, _repeated_componentsToRemove_codec);
+            break;
+          }
+          case 42: {
+            if (transform_ == null) {
+              transform_ = new global::Tarkin.Data.ZTransform();
+            }
+            input.ReadMessage(transform_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class DestroyGameObjectRequest : pb::IMessage<DestroyGameObjectRequest> {
+    private static readonly pb::MessageParser<DestroyGameObjectRequest> _parser = new pb::MessageParser<DestroyGameObjectRequest>(() => new DestroyGameObjectRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<DestroyGameObjectRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[29]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DestroyGameObjectRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DestroyGameObjectRequest(DestroyGameObjectRequest other) : this() {
+      gameObject_ = other.gameObject_ != null ? other.gameObject_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public DestroyGameObjectRequest Clone() {
+      return new DestroyGameObjectRequest(this);
+    }
+
+    /// <summary>Field number for the "game_object" field.</summary>
+    public const int GameObjectFieldNumber = 1;
+    private global::Tarkin.Data.ZGameObject gameObject_;
+    /// <summary>
+    /// GameObject to destroy:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZGameObject GameObject {
+      get { return gameObject_; }
+      set {
+        gameObject_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as DestroyGameObjectRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(DestroyGameObjectRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(GameObject, other.GameObject)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (gameObject_ != null) hash ^= GameObject.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (gameObject_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(GameObject);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (gameObject_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameObject);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(DestroyGameObjectRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.gameObject_ != null) {
+        if (gameObject_ == null) {
+          gameObject_ = new global::Tarkin.Data.ZGameObject();
+        }
+        GameObject.MergeFrom(other.GameObject);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (gameObject_ == null) {
+              gameObject_ = new global::Tarkin.Data.ZGameObject();
+            }
+            input.ReadMessage(gameObject_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class UpdateStateRequest : pb::IMessage<UpdateStateRequest> {
+    private static readonly pb::MessageParser<UpdateStateRequest> _parser = new pb::MessageParser<UpdateStateRequest>(() => new UpdateStateRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UpdateStateRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[30]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateStateRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateStateRequest(UpdateStateRequest other) : this() {
+      commands_ = other.commands_.Clone();
+      loadAssets_ = other.loadAssets_.Clone();
+      createGameObjects_ = other.createGameObjects_.Clone();
+      updateGameObjects_ = other.updateGameObjects_.Clone();
+      destroyGameObjects_ = other.destroyGameObjects_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpdateStateRequest Clone() {
+      return new UpdateStateRequest(this);
+    }
+
+    /// <summary>Field number for the "commands" field.</summary>
+    public const int CommandsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.SystemCommandRequest> _repeated_commands_codec
+        = pb::FieldCodec.ForMessage(10, global::Tarkin.Data.SystemCommandRequest.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> commands_ = new pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest>();
+    /// <summary>
+    /// Top-level system actions, e.g. Load Scene
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> Commands {
+      get { return commands_; }
+    }
+
+    /// <summary>Field number for the "load_assets" field.</summary>
+    public const int LoadAssetsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.LoadAssetRequest> _repeated_loadAssets_codec
+        = pb::FieldCodec.ForMessage(18, global::Tarkin.Data.LoadAssetRequest.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest> loadAssets_ = new pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest>();
+    /// <summary>
+    /// Assets used by this update. Load should be completed before the below requests are processed.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest> LoadAssets {
+      get { return loadAssets_; }
+    }
+
+    /// <summary>Field number for the "create_game_objects" field.</summary>
+    public const int CreateGameObjectsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.CreateGameObjectRequest> _repeated_createGameObjects_codec
+        = pb::FieldCodec.ForMessage(26, global::Tarkin.Data.CreateGameObjectRequest.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.CreateGameObjectRequest> createGameObjects_ = new pbc::RepeatedField<global::Tarkin.Data.CreateGameObjectRequest>();
+    /// <summary>
+    /// Create new game objects:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.CreateGameObjectRequest> CreateGameObjects {
+      get { return createGameObjects_; }
+    }
+
+    /// <summary>Field number for the "update_game_objects" field.</summary>
+    public const int UpdateGameObjectsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.UpdateGameObjectRequest> _repeated_updateGameObjects_codec
+        = pb::FieldCodec.ForMessage(42, global::Tarkin.Data.UpdateGameObjectRequest.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.UpdateGameObjectRequest> updateGameObjects_ = new pbc::RepeatedField<global::Tarkin.Data.UpdateGameObjectRequest>();
+    /// <summary>
+    /// Update existing game objects:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.UpdateGameObjectRequest> UpdateGameObjects {
+      get { return updateGameObjects_; }
+    }
+
+    /// <summary>Field number for the "destroy_game_objects" field.</summary>
+    public const int DestroyGameObjectsFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.DestroyGameObjectRequest> _repeated_destroyGameObjects_codec
+        = pb::FieldCodec.ForMessage(50, global::Tarkin.Data.DestroyGameObjectRequest.Parser);
+    private readonly pbc::RepeatedField<global::Tarkin.Data.DestroyGameObjectRequest> destroyGameObjects_ = new pbc::RepeatedField<global::Tarkin.Data.DestroyGameObjectRequest>();
+    /// <summary>
+    /// Destroy game objects:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Tarkin.Data.DestroyGameObjectRequest> DestroyGameObjects {
+      get { return destroyGameObjects_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UpdateStateRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UpdateStateRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!commands_.Equals(other.commands_)) return false;
+      if(!loadAssets_.Equals(other.loadAssets_)) return false;
+      if(!createGameObjects_.Equals(other.createGameObjects_)) return false;
+      if(!updateGameObjects_.Equals(other.updateGameObjects_)) return false;
+      if(!destroyGameObjects_.Equals(other.destroyGameObjects_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= commands_.GetHashCode();
+      hash ^= loadAssets_.GetHashCode();
+      hash ^= createGameObjects_.GetHashCode();
+      hash ^= updateGameObjects_.GetHashCode();
+      hash ^= destroyGameObjects_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      commands_.WriteTo(output, _repeated_commands_codec);
+      loadAssets_.WriteTo(output, _repeated_loadAssets_codec);
+      createGameObjects_.WriteTo(output, _repeated_createGameObjects_codec);
+      updateGameObjects_.WriteTo(output, _repeated_updateGameObjects_codec);
+      destroyGameObjects_.WriteTo(output, _repeated_destroyGameObjects_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += commands_.CalculateSize(_repeated_commands_codec);
+      size += loadAssets_.CalculateSize(_repeated_loadAssets_codec);
+      size += createGameObjects_.CalculateSize(_repeated_createGameObjects_codec);
+      size += updateGameObjects_.CalculateSize(_repeated_updateGameObjects_codec);
+      size += destroyGameObjects_.CalculateSize(_repeated_destroyGameObjects_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UpdateStateRequest other) {
+      if (other == null) {
+        return;
+      }
+      commands_.Add(other.commands_);
+      loadAssets_.Add(other.loadAssets_);
+      createGameObjects_.Add(other.createGameObjects_);
+      updateGameObjects_.Add(other.updateGameObjects_);
+      destroyGameObjects_.Add(other.destroyGameObjects_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            commands_.AddEntriesFrom(input, _repeated_commands_codec);
+            break;
+          }
+          case 18: {
+            loadAssets_.AddEntriesFrom(input, _repeated_loadAssets_codec);
+            break;
+          }
+          case 26: {
+            createGameObjects_.AddEntriesFrom(input, _repeated_createGameObjects_codec);
+            break;
+          }
+          case 42: {
+            updateGameObjects_.AddEntriesFrom(input, _repeated_updateGameObjects_codec);
+            break;
+          }
+          case 50: {
+            destroyGameObjects_.AddEntriesFrom(input, _repeated_destroyGameObjects_codec);
             break;
           }
         }

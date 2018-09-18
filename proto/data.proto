@@ -2,6 +2,8 @@ syntax="proto3";
 
 package tarkin.data;
 
+import "google/protobuf/wrappers.proto";
+
 message Request {
   int32 first_number = 1;
   string first_name = 2;
@@ -12,3 +14,422 @@ message Response {
   string last_name = 2;
 }
 
+message ZVector2 {
+  // X component of the vector:
+  float x = 1;
+  // Y component of the vector:
+  float y = 2;
+}
+
+message ZVector3 {
+  // X component of the vector:
+  float x = 1;
+  // Y component of the vector:
+  float y = 2;
+  // Z component of the vector:
+  float z = 3;
+}
+
+// Representation of RGBA colors:
+message ZColor {
+  // Red component:
+  float r = 1;
+  // Green component:
+  float g = 2;
+  // Blue component:
+  float b = 3;
+  // Alpha component:
+  float a = 4;
+}
+
+// Represents a unity GameObject
+message ZGameObject {
+  // Unique ID of this game object (should be allocated sequentially for maximum performance):
+  uint32 game_object_id = 1;
+}
+
+// Represents a unity Prefab
+message ZPrefab {
+  // Unique ID of this prefab (should be allocated sequentially for maximum performance):
+  uint32 prefab_id = 1;
+}
+
+// Represents a Sprite object for use in 2D gameplay:
+message ZSprite {
+  // Unique ID of this sprite (should be allocated sequentially for maximum performance):
+  uint32 sprite_id = 1;
+}
+
+// The material class:
+message ZMaterial {
+  // Unique ID of this material (should be allocated sequentially for maximum performance):
+  uint32 material_id = 1;
+}
+
+// Interface for font assets.
+message ZFont {
+  // Unique ID of this font (should be allocated sequentially for maximum performance):
+  uint32 font_id = 1;
+}
+
+message ZRectTransform {
+  // The size of this RectTransform relative to the distances between the anchors:
+  ZVector2 size_delta = 1;
+  // The normalized position in the parent RectTransform that the lower left corner is anchored to:
+  ZVector2 anchor_min = 2;
+  // The normalized position in the parent RectTransform that the upper right corner is anchored to:
+  ZVector2 anchor_max = 3;
+  // The normalized position in this RectTransform that it rotates around:
+  ZVector2 pivot = 4;
+}
+
+message ZTransform {
+  oneof transform {
+    ZRectTransform rect_transform = 1;
+  }
+
+  // Position of the transform relative to the parent transform:
+  ZVector3 local_position = 2;
+  // The rotation as Euler angles in degrees relative to the parent transform's rotation:
+  ZVector3 local_euler_angles = 3;
+  // The scale of the transform relative to the parent:
+  ZVector3 local_scale = 4;
+}
+
+enum ZRenderMode {
+  UNKNOWN_RENDER_MODE = 0;
+  // Render at the end of the scene using a 2D Canvas:
+  SCREEN_SPACE_OVERLAY = 1;
+  // Render using the Camera configured on the Canvas:
+  SCREEN_SPACE_CAMERA = 2;
+  // Render using any Camera in the scene that can render the layer:
+  WORLD_SPACE = 3;
+}
+
+enum ZAdditionalCanvasShaderChannels {
+  UNKNOWN_ADDITIONAL_CANVAS_SHADER_CHANNELS = 0;
+  // No additional shader parameters are needed:
+  NONE = 1;
+  // Include UV1 on the mesh vertices:
+  TEX_COORD_1	= 2;
+  // Include UV2 on the mesh vertices:
+  TEX_COORD_2 = 3;
+  // Include UV3 on the mesh vertices:
+  TEX_COORD_3 = 4;
+  // Include the normals on the mesh vertices:
+  NORMAL = 5;
+  // Include the Tangent on the mesh vertices:
+  TANGENT = 6;
+}
+
+message ZCanvas {
+  // RenderMode for the Canvas:
+  ZRenderMode render_mode = 1;
+  // Force elements in the canvas to be aligned with pixels. Only applies with renderMode is
+  // Screen Space:
+  google.protobuf.BoolValue pixel_perfect = 2;
+  // Canvas' order within a sorting layer:
+  google.protobuf.Int32Value sorting_order = 3;
+  // For Overlay mode, display index on which the UI canvas will appear:
+  google.protobuf.Int32Value target_display = 4;
+  // Set the mask of additional shader channels to be used when creating the Canvas mesh:
+  ZAdditionalCanvasShaderChannels additional_shader_channels = 5;
+}
+
+message ZCanvasScaler {
+  enum ScaleMode {
+    UNKNOWN_SCALE_MODE = 0;
+    // Using the Constant Pixel Size mode, positions and sizes of UI elements are specified in
+    // pixels on the screen:
+    CONSTANT_PIXEL_SIZE = 1;
+    // Using the Scale With Screen Size mode, positions and sizes can be specified according to
+    // the pixels of a specified reference resolution:
+    SCALE_WITH_SCREEN_SIZE = 2;
+    // 	Using the Constant Physical Size mode, positions and sizes of UI elements are specified
+    // in physical units, such as millimeters, points, or picas:
+    CONSTANT_PHYSICAL_SIZE = 3;
+  }
+
+  // Determines how UI elements in the Canvas are scaled:
+  ScaleMode ui_scale_mode = 1;
+  // Scales all UI elements in the Canvas by this factor:
+  google.protobuf.FloatValue scale_factor = 2;
+  // If a sprite has this 'Pixels Per Unit' setting, then one pixel in the sprite will cover one
+  // unit in the UI:
+  google.protobuf.FloatValue reference_pixels_per_unit = 3;
+}
+
+message ZGraphicRaycaster {
+  enum BlockingObjects {
+    UNKNOWN_BLOCKING_OBJECTS = 0;
+    // Not blocked:
+    NONE = 1;
+    // 2D physics blocking:
+    TWO_D = 2;
+    // 3D physics blocking:
+    THREE_D = 3;
+    // Blocked by 2D and 3D:
+    ALL = 4;
+  }
+
+  // Should graphics facing away from the raycaster be considered?
+  google.protobuf.BoolValue ignore_reversed_graphics = 1;
+  // Type of objects that will block graphic raycasts:
+  BlockingObjects blocking_objects = 2;
+}
+
+// A component that will render to the screen after all normal rendering has completed when
+// attached to a Canvas:
+message ZCanvasRenderer {
+  // Indicates whether geometry emitted by this renderer can be ignored when the vertex color
+  // alpha is close to zero for every vertex of the mesh:
+  google.protobuf.BoolValue cull_transparent_mesh = 1;
+}
+
+message ZEventSystem {
+  // The GameObject that is selected first:
+  ZGameObject first_selected_game_object = 1;
+  // Should the EventSystem allow navigation events (move / submit / cancel):
+  google.protobuf.BoolValue send_navigation_events = 2;
+  // The soft area for dragging in pixels:
+  google.protobuf.Int32Value pixel_drag_threshold = 3;
+}
+
+message ZStandaloneInputModule {
+  // Input manager name for the horizontal axis button:
+  google.protobuf.StringValue horizontal_axis = 1;
+  // Input manager name for the vertical axis:
+  google.protobuf.StringValue vertical_axis = 2;
+  // Input manager name for the submit button:
+  google.protobuf.StringValue submit_button = 3;
+  // Input manager name for the cancel button:
+  google.protobuf.StringValue cancel_button = 4;
+  // Number of keyboard / controller inputs allowed per second:
+  google.protobuf.FloatValue input_actions_per_second = 5;
+  // Delay in seconds before the input actions per second repeat rate takes effect:
+  google.protobuf.FloatValue repeat_delay = 6;
+  // Force this module to be active:
+  google.protobuf.BoolValue force_module_active = 7;
+}
+
+// Base class for all visual UI Components:
+message ZGraphic {
+  oneof graphic {
+    ZMaskableGraphic maskable_graphic = 1;
+  }
+
+  // Base color of the Graphic:
+  ZColor color = 2;
+  // The specified Material used by this Graphic:
+  ZMaterial material = 3;
+  // Should this graphic be considered a target for raycasting?
+  google.protobuf.BoolValue raycast_target = 4;
+}
+
+// A Graphic that is capable of being masked out:
+message ZMaskableGraphic {
+  oneof maskable_graphic {
+    ZImage image = 1;
+    ZText text = 2;
+  }
+
+  // Does this graphic allow masking?
+  google.protobuf.BoolValue maskable = 3;
+}
+
+message ZImage {
+  // The sprite that is used to render this image:
+  ZSprite sprite = 1;
+  // Whether this image should preserve its Sprite aspect ratio:
+  google.protobuf.BoolValue preserve_aspect = 2;
+  // Whether or not to render the center of a Tiled or Sliced image:
+  google.protobuf.BoolValue fill_center = 3;
+}
+
+// A standard button that can be clicked in order to trigger an event:
+message ZButton {
+  // Use to enable or disable the ability to select a selectable UI element (for example, a
+  // Button):
+  google.protobuf.BoolValue interactable = 1;
+}
+
+// Where the anchor of the text is placed:
+enum ZTextAnchor {
+  UNKNOWN_TEXT_ANCHOR = 0;
+  // Text is anchored in upper left corner:
+  UPPER_LEFT = 1;
+  // Text is anchored in upper side, centered horizontally:
+  UPPER_CENTER = 2;
+  // Text is anchored in upper right corner:
+  UPPER_RIGHT = 3;
+  // Text is anchored in left side, centered vertically:
+  MIDDLE_LEFT = 4;
+  // Text is centered both horizontally and vertically:
+  MIDDLE_CENTER = 5;
+  // Text is anchored in right side, centered vertically:
+  MIDDLE_RIGHT = 6;
+  // Text is anchored in lower left corner:
+  LOWER_LEFT = 7;
+  // Text is anchored in lower side, centered horizontally:
+  LOWER_CENTER = 8;
+  // Text is anchored in lower right corner:
+  LOWER_RIGHT = 9;
+}
+
+// The default Graphic to draw font data to screen:
+message ZText {
+  enum FontStyle {
+    UNKNOWN_FONT_STYLE = 0;
+    // No special style is applied:
+    NORMAL = 1;
+    // Bold style applied to your texts:
+    BOLD = 2;
+    // Italic style applied to your texts:
+    ITALIC = 3;
+    // Bold and Italic styles applied to your texts:
+    BOLD_AND_ITALIC = 4;
+  }
+
+  enum HorizontalWrapMode {
+    UNKNOWN_HORIZONTAL_WRAP_MODE = 0;
+    // Text will word-wrap when reaching the horizontal boundary:
+    WRAP = 1;
+    // Text can exceed the horizontal boundary:
+    HORIZONTAL_OVERFLOW = 2;
+  }
+
+  enum VerticalWrapMode {
+    UNKNOWN_VERTICAL_WRAP_MODE = 0;
+    // Text will be clipped when reaching the vertical boundary:
+    TRUNCATE = 1;
+    // Text well continue to generate when reaching vertical boundary:
+    VERTICAL_OVERFLOW = 2;
+  }
+
+  // The string value this Text displays:
+  google.protobuf.StringValue text = 1;
+  // The Font used by the text:
+  ZFont font = 2;
+  // FontStyle used by the text:
+  FontStyle font_style = 3;
+  // The size that the Font should render at:
+  google.protobuf.Int32Value font_size = 4;
+  // Line spacing, specified as a factor of font line height. A value of 1 will produce normal
+  // line spacing:
+  google.protobuf.FloatValue line_spacing = 5;
+  // Whether this Text will support rich text:
+  google.protobuf.BoolValue support_rich_text = 6;
+  // The positioning of the text reliative to its RectTransform:
+  ZTextAnchor alignment = 7;
+  // Use the extents of glyph geometry to perform horizontal alignment rather than glyph metrics:
+  google.protobuf.BoolValue align_by_geometry = 8;
+  // Horizontal overflow mode:
+  HorizontalWrapMode horizontal_overflow = 9;
+  // Vertical overflow mode:
+  VerticalWrapMode vertical_overflow = 10;
+  // Should the text be allowed to auto resized:
+  google.protobuf.BoolValue resize_text_for_best_fit = 11;
+}
+
+message ZBehaviour {
+  // Enabled Behaviours are Updated, disabled Behaviours are not:
+  google.protobuf.BoolValue enabled = 1;
+
+  oneof behaviour {
+    ZCanvas canvas = 2;
+    ZCanvasScaler canvas_scaler = 3;
+    ZGraphicRaycaster graphic_raycaster = 4;
+    ZEventSystem event_system = 5;
+    ZStandaloneInputModule standalone_input_module = 6;
+    ZGraphic graphic = 7;
+    ZButton button = 8;
+  }
+}
+
+message ZComponent {
+  oneof component {
+    ZBehaviour behaviour = 1;
+    ZCanvasRenderer canvas_renderer = 2;
+  }
+}
+
+enum ZComponentType {
+  UNKNOWN_TYPE = 0;
+  CANVAS = 1;
+  CANVAS_SCALER = 2;
+  CANVAS_RENDERER = 3;
+  GRAPHIC_RAYCASTER = 4;
+  EVENT_SYSTEM = 5;
+  STANDALONE_INPUT_MODULE = 6;
+  IMAGE = 7;
+  BUTTON = 8;
+  TEXT = 9;
+}
+
+message LoadAssetRequest {
+  // Asset reference path
+  string asset_path = 1;
+
+  oneof asset {
+    ZPrefab prefab = 2;
+    ZSprite sprite = 3;
+    ZMaterial material = 4;
+    ZFont font = 5;
+  }
+}
+
+message SystemCommandRequest {
+}
+
+message CreateGameObjectRequest {
+  // Globally unique integer which identifies this GameObject for future reference (should be
+  // allocated sequentially for maximum performance):
+  uint32 new_object_id = 1;
+
+  // Name for this GameObject:
+  string name = 2;
+
+  // The parent of this GameObject's transform, if any:
+  ZGameObject parent_game_object = 3;
+
+  // Initial components for this GameObject:
+  repeated ZComponent components = 4;
+
+  // The Transform attached to this GameObject:
+  ZTransform transform = 5;
+}
+
+message UpdateGameObjectRequest {
+  // GameObject to update:
+  ZGameObject game_object = 1;
+
+  // The new parent of this GameObject's transform, if any:
+  ZGameObject parent_game_object = 2;
+
+  // Added and updated components for this GameObject:
+  repeated ZComponent components = 3;
+
+  // Components which should be removed from this GameObject;
+  repeated ZComponentType components_to_remove = 4;
+
+  // The new value for the Transform attached to this game object
+  ZTransform transform = 5;
+}
+
+message DestroyGameObjectRequest {
+  // GameObject to destroy:
+  ZGameObject game_object = 1;
+}
+
+message UpdateStateRequest {
+  // Top-level system actions, e.g. Load Scene
+  repeated SystemCommandRequest commands = 1;
+  // Assets used by this update. Load should be completed before the below requests are processed.
+  repeated LoadAssetRequest load_assets = 2;
+  // Create new game objects:
+  repeated CreateGameObjectRequest create_game_objects = 3;
+  // Update existing game objects:
+  repeated UpdateGameObjectRequest update_game_objects  = 5;
+  // Destroy game objects:
+  repeated DestroyGameObjectRequest destroy_game_objects = 6;
+}
