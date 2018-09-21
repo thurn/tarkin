@@ -198,6 +198,29 @@ namespace Tarkin
         canvasScaler.referencePixelsPerUnit = zCanvasScaler.ReferencePixelsPerUnit.Value;
       }
 
+      if (zCanvasScaler.ReferenceResolution != null)
+      {
+        canvasScaler.referenceResolution = ZUtils.Vector2(zCanvasScaler.ReferenceResolution);
+      }
+
+      switch (zCanvasScaler.ScreenMatchMode)
+      {
+        case ZCanvasScaler.Types.ScreenMatchMode.MatchWidthOrHeight:
+          canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+          break;
+        case ZCanvasScaler.Types.ScreenMatchMode.Expand:
+          canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
+          break;
+        case ZCanvasScaler.Types.ScreenMatchMode.Shrink:
+          canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Shrink;
+          break;
+      }
+
+      if (zCanvasScaler.MatchWidthOrHeight.HasValue)
+      {
+        canvasScaler.matchWidthOrHeight = zCanvasScaler.MatchWidthOrHeight.Value;
+      }
+
       return canvasScaler;
     }
 

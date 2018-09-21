@@ -7,9 +7,9 @@ namespace Tarkin
 {
   public class AssetService
   {
-    public async Task<Result> LoadAssets(IList<LoadAssetRequest> loadAssets)
+    public async Task<TaskResult> LoadAssets(IList<LoadAssetRequest> loadAssets)
     {
-      return Result.Success;
+      return TaskResult.Success();
     }
 
     public GameObject GetPrefab(ZPrefab prefab)

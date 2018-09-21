@@ -5,9 +5,9 @@ namespace Tarkin
 {
   public class SystemCommandService
   {
-    public async Task<Result> RunCommand(SystemCommandRequest request)
+    public async Task<TaskResult> RunCommand(SystemCommandRequest request)
     {
-      return Result.Success;
+      return TaskResult.Success();
     }
   }
 }

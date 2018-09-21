@@ -18,6 +18,11 @@ namespace Tarkin
       _objects = new List<T>(capacity);
     }
 
+    public IntMap(IEnumerable<T> initialContents)
+    {
+      _objects = new List<T>(initialContents);
+    }
+
     public void Remove(uint index)
     {
       _objects[(int)index] = null;

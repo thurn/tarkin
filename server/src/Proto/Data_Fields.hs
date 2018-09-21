@@ -140,13 +140,6 @@ color ::
 color
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "color")
-commands ::
-         forall f s a .
-           (Prelude.Functor f, Lens.Labels.HasLens' s "commands" a) =>
-           Lens.Family2.LensLike' f s a
-commands
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "commands")
 components ::
            forall f s a .
              (Prelude.Functor f, Lens.Labels.HasLens' s "components" a) =>
@@ -403,6 +396,14 @@ maskableGraphic ::
 maskableGraphic
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maskableGraphic")
+matchWidthOrHeight ::
+                   forall f s a .
+                     (Prelude.Functor f,
+                      Lens.Labels.HasLens' s "matchWidthOrHeight" a) =>
+                     Lens.Family2.LensLike' f s a
+matchWidthOrHeight
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "matchWidthOrHeight")
 material ::
          forall f s a .
            (Prelude.Functor f, Lens.Labels.HasLens' s "material" a) =>
@@ -684,6 +685,15 @@ maybe'maskableGraphic
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) ::
          (Lens.Labels.Proxy#) "maybe'maskableGraphic")
+maybe'matchWidthOrHeight ::
+                         forall f s a .
+                           (Prelude.Functor f,
+                            Lens.Labels.HasLens' s "maybe'matchWidthOrHeight" a) =>
+                           Lens.Family2.LensLike' f s a
+maybe'matchWidthOrHeight
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) ::
+         (Lens.Labels.Proxy#) "maybe'matchWidthOrHeight")
 maybe'material ::
                forall f s a .
                  (Prelude.Functor f, Lens.Labels.HasLens' s "maybe'material" a) =>
@@ -767,6 +777,15 @@ maybe'referencePixelsPerUnit
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) ::
          (Lens.Labels.Proxy#) "maybe'referencePixelsPerUnit")
+maybe'referenceResolution ::
+                          forall f s a .
+                            (Prelude.Functor f,
+                             Lens.Labels.HasLens' s "maybe'referenceResolution" a) =>
+                            Lens.Family2.LensLike' f s a
+maybe'referenceResolution
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) ::
+         (Lens.Labels.Proxy#) "maybe'referenceResolution")
 maybe'repeatDelay ::
                   forall f s a .
                     (Prelude.Functor f,
@@ -979,6 +998,15 @@ referencePixelsPerUnit
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) ::
          (Lens.Labels.Proxy#) "referencePixelsPerUnit")
+referenceResolution ::
+                    forall f s a .
+                      (Prelude.Functor f,
+                       Lens.Labels.HasLens' s "referenceResolution" a) =>
+                      Lens.Family2.LensLike' f s a
+referenceResolution
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) ::
+         (Lens.Labels.Proxy#) "referenceResolution")
 renderMode ::
            forall f s a .
              (Prelude.Functor f, Lens.Labels.HasLens' s "renderMode" a) =>
@@ -1009,6 +1037,13 @@ scaleFactor ::
 scaleFactor
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "scaleFactor")
+screenMatchMode ::
+                forall f s a .
+                  (Prelude.Functor f, Lens.Labels.HasLens' s "screenMatchMode" a) =>
+                  Lens.Family2.LensLike' f s a
+screenMatchMode
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "screenMatchMode")
 sendNavigationEvents ::
                      forall f s a .
                        (Prelude.Functor f,
@@ -1069,6 +1104,13 @@ supportRichText ::
 supportRichText
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "supportRichText")
+systemCommands ::
+               forall f s a .
+                 (Prelude.Functor f, Lens.Labels.HasLens' s "systemCommands" a) =>
+                 Lens.Family2.LensLike' f s a
+systemCommands
+  = Lens.Labels.lensOf'
+      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "systemCommands")
 targetDisplay ::
               forall f s a .
                 (Prelude.Functor f, Lens.Labels.HasLens' s "targetDisplay" a) =>

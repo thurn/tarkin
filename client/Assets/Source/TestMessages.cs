@@ -1,20 +1,38 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Tarkin.Data;
+using Google.Protobuf;
 
-public class TestMessages : MonoBehaviour
+namespace Tarkin
 {
-  void Start()
+  public class TestMessages : MonoBehaviour
   {
-    var t3d = new ZTransform
+    public TextAsset[] Examples;
+    public Canvas Canvas;
+    public GameObject ExamplePanelPrefab;
+    public GameObject ExampleButtonPrefab;
+    public StateUpdateService StateUpdateService;
+    public GameObject TestPrefab;
+    JsonParser _parser;
+
+    void Start()
     {
-      LocalPosition = new ZVector3()
+      Instantiate(TestPrefab);
+      Instantiate(TestPrefab);
+      Instantiate(TestPrefab);
+      _parser = new JsonParser(new JsonParser.Settings(128));
+      var panel = Instantiate(ExamplePanelPrefab, Canvas.transform);
+      foreach (var example in Examples)
       {
-        X = 1,
-        Y = 1,
-        Z = 1
+        var button = Instantiate(ExampleButtonPrefab, panel.transform);
+        button.GetComponentInChildren<Text>().text = example.name;
+        button.GetComponentInChildren<Button>().onClick.AddListener(() =>
+        {
+          var request = _parser.Parse<UpdateStateRequest>(example.text);
+          StateUpdateService.EnqueueStateUpdate(request);
+        });
       }
-    };
-    Debug.Log("t3d.position " + (t3d.LocalPosition == null));
-    Debug.Log("t3d.scale " + (t3d.LocalScale == null));
+    }
   }
 }
+

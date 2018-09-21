@@ -50,119 +50,126 @@ namespace Tarkin.Data {
             "MwoOdGFyZ2V0X2Rpc3BsYXkYBCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50",
             "MzJWYWx1ZRJQChphZGRpdGlvbmFsX3NoYWRlcl9jaGFubmVscxgFIAEoDjIs",
             "LnRhcmtpbi5kYXRhLlpBZGRpdGlvbmFsQ2FudmFzU2hhZGVyQ2hhbm5lbHMi",
-            "tQIKDVpDYW52YXNTY2FsZXISOwoNdWlfc2NhbGVfbW9kZRgBIAEoDjIkLnRh",
+            "ywQKDVpDYW52YXNTY2FsZXISOwoNdWlfc2NhbGVfbW9kZRgBIAEoDjIkLnRh",
             "cmtpbi5kYXRhLlpDYW52YXNTY2FsZXIuU2NhbGVNb2RlEjEKDHNjYWxlX2Zh",
             "Y3RvchgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEj4KGXJl",
             "ZmVyZW5jZV9waXhlbHNfcGVyX3VuaXQYAyABKAsyGy5nb29nbGUucHJvdG9i",
-            "dWYuRmxvYXRWYWx1ZSJ0CglTY2FsZU1vZGUSFgoSVU5LTk9XTl9TQ0FMRV9N",
-            "T0RFEAASFwoTQ09OU1RBTlRfUElYRUxfU0laRRABEhoKFlNDQUxFX1dJVEhf",
-            "U0NSRUVOX1NJWkUQAhIaChZDT05TVEFOVF9QSFlTSUNBTF9TSVpFEAMi9wEK",
-            "EVpHcmFwaGljUmF5Y2FzdGVyEjwKGGlnbm9yZV9yZXZlcnNlZF9ncmFwaGlj",
-            "cxgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUSSAoQYmxvY2tp",
-            "bmdfb2JqZWN0cxgCIAEoDjIuLnRhcmtpbi5kYXRhLlpHcmFwaGljUmF5Y2Fz",
-            "dGVyLkJsb2NraW5nT2JqZWN0cyJaCg9CbG9ja2luZ09iamVjdHMSHAoYVU5L",
-            "Tk9XTl9CTE9DS0lOR19PQkpFQ1RTEAASCAoETk9ORRABEgkKBVRXT19EEAIS",
-            "CwoHVEhSRUVfRBADEgcKA0FMTBAEIkwKD1pDYW52YXNSZW5kZXJlchI5ChVj",
-            "dWxsX3RyYW5zcGFyZW50X21lc2gYASABKAsyGi5nb29nbGUucHJvdG9idWYu",
-            "Qm9vbFZhbHVlIsMBCgxaRXZlbnRTeXN0ZW0SPAoaZmlyc3Rfc2VsZWN0ZWRf",
-            "Z2FtZV9vYmplY3QYASABKAsyGC50YXJraW4uZGF0YS5aR2FtZU9iamVjdBI6",
-            "ChZzZW5kX25hdmlnYXRpb25fZXZlbnRzGAIgASgLMhouZ29vZ2xlLnByb3Rv",
-            "YnVmLkJvb2xWYWx1ZRI5ChRwaXhlbF9kcmFnX3RocmVzaG9sZBgDIAEoCzIb",
-            "Lmdvb2dsZS5wcm90b2J1Zi5JbnQzMlZhbHVlIpkDChZaU3RhbmRhbG9uZUlu",
-            "cHV0TW9kdWxlEjUKD2hvcml6b250YWxfYXhpcxgBIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIzCg12ZXJ0aWNhbF9heGlzGAIgASgLMhwu",
-            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjMKDXN1Ym1pdF9idXR0b24Y",
-            "AyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNY2FuY2Vs",
-            "X2J1dHRvbhgEIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI9",
-            "ChhpbnB1dF9hY3Rpb25zX3Blcl9zZWNvbmQYBSABKAsyGy5nb29nbGUucHJv",
-            "dG9idWYuRmxvYXRWYWx1ZRIxCgxyZXBlYXRfZGVsYXkYBiABKAsyGy5nb29n",
-            "bGUucHJvdG9idWYuRmxvYXRWYWx1ZRI3ChNmb3JjZV9tb2R1bGVfYWN0aXZl",
-            "GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZSLSAQoIWkdyYXBo",
-            "aWMSOQoQbWFza2FibGVfZ3JhcGhpYxgBIAEoCzIdLnRhcmtpbi5kYXRhLlpN",
-            "YXNrYWJsZUdyYXBoaWNIABIiCgVjb2xvchgCIAEoCzITLnRhcmtpbi5kYXRh",
-            "LlpDb2xvchIoCghtYXRlcmlhbBgDIAEoCzIWLnRhcmtpbi5kYXRhLlpNYXRl",
-            "cmlhbBIyCg5yYXljYXN0X3RhcmdldBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1",
-            "Zi5Cb29sVmFsdWVCCQoHZ3JhcGhpYyKeAQoQWk1hc2thYmxlR3JhcGhpYxIk",
-            "CgVpbWFnZRgBIAEoCzITLnRhcmtpbi5kYXRhLlpJbWFnZUgAEiIKBHRleHQY",
-            "AiABKAsyEi50YXJraW4uZGF0YS5aVGV4dEgAEiwKCG1hc2thYmxlGAMgASgL",
-            "MhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZUISChBtYXNrYWJsZV9ncmFw",
-            "aGljIpQBCgZaSW1hZ2USJAoGc3ByaXRlGAEgASgLMhQudGFya2luLmRhdGEu",
-            "WlNwcml0ZRIzCg9wcmVzZXJ2ZV9hc3BlY3QYAiABKAsyGi5nb29nbGUucHJv",
-            "dG9idWYuQm9vbFZhbHVlEi8KC2ZpbGxfY2VudGVyGAMgASgLMhouZ29vZ2xl",
-            "LnByb3RvYnVmLkJvb2xWYWx1ZSI7CgdaQnV0dG9uEjAKDGludGVyYWN0YWJs",
-            "ZRgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUi1wYKBVpUZXh0",
-            "EioKBHRleHQYASABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUS",
-            "IAoEZm9udBgCIAEoCzISLnRhcmtpbi5kYXRhLlpGb250EjAKCmZvbnRfc3R5",
-            "bGUYAyABKA4yHC50YXJraW4uZGF0YS5aVGV4dC5Gb250U3R5bGUSLgoJZm9u",
-            "dF9zaXplGAQgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUSMQoM",
-            "bGluZV9zcGFjaW5nGAUgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkZsb2F0VmFs",
-            "dWUSNQoRc3VwcG9ydF9yaWNoX3RleHQYBiABKAsyGi5nb29nbGUucHJvdG9i",
-            "dWYuQm9vbFZhbHVlEisKCWFsaWdubWVudBgHIAEoDjIYLnRhcmtpbi5kYXRh",
-            "LlpUZXh0QW5jaG9yEjUKEWFsaWduX2J5X2dlb21ldHJ5GAggASgLMhouZ29v",
-            "Z2xlLnByb3RvYnVmLkJvb2xWYWx1ZRJCChNob3Jpem9udGFsX292ZXJmbG93",
-            "GAkgASgOMiUudGFya2luLmRhdGEuWlRleHQuSG9yaXpvbnRhbFdyYXBNb2Rl",
-            "Ej4KEXZlcnRpY2FsX292ZXJmbG93GAogASgOMiMudGFya2luLmRhdGEuWlRl",
-            "eHQuVmVydGljYWxXcmFwTW9kZRI8ChhyZXNpemVfdGV4dF9mb3JfYmVzdF9m",
-            "aXQYCyABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlIloKCUZvbnRT",
-            "dHlsZRIWChJVTktOT1dOX0ZPTlRfU1RZTEUQABIKCgZOT1JNQUwQARIICgRC",
-            "T0xEEAISCgoGSVRBTElDEAMSEwoPQk9MRF9BTkRfSVRBTElDEAQiWQoSSG9y",
-            "aXpvbnRhbFdyYXBNb2RlEiAKHFVOS05PV05fSE9SSVpPTlRBTF9XUkFQX01P",
-            "REUQABIICgRXUkFQEAESFwoTSE9SSVpPTlRBTF9PVkVSRkxPVxACIlcKEFZl",
-            "cnRpY2FsV3JhcE1vZGUSHgoaVU5LTk9XTl9WRVJUSUNBTF9XUkFQX01PREUQ",
-            "ABIMCghUUlVOQ0FURRABEhUKEVZFUlRJQ0FMX09WRVJGTE9XEAIirQMKClpC",
-            "ZWhhdmlvdXISKwoHZW5hYmxlZBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5C",
-            "b29sVmFsdWUSJgoGY2FudmFzGAIgASgLMhQudGFya2luLmRhdGEuWkNhbnZh",
-            "c0gAEjMKDWNhbnZhc19zY2FsZXIYAyABKAsyGi50YXJraW4uZGF0YS5aQ2Fu",
-            "dmFzU2NhbGVySAASOwoRZ3JhcGhpY19yYXljYXN0ZXIYBCABKAsyHi50YXJr",
-            "aW4uZGF0YS5aR3JhcGhpY1JheWNhc3RlckgAEjEKDGV2ZW50X3N5c3RlbRgF",
-            "IAEoCzIZLnRhcmtpbi5kYXRhLlpFdmVudFN5c3RlbUgAEkYKF3N0YW5kYWxv",
-            "bmVfaW5wdXRfbW9kdWxlGAYgASgLMiMudGFya2luLmRhdGEuWlN0YW5kYWxv",
-            "bmVJbnB1dE1vZHVsZUgAEigKB2dyYXBoaWMYByABKAsyFS50YXJraW4uZGF0",
-            "YS5aR3JhcGhpY0gAEiYKBmJ1dHRvbhgIIAEoCzIULnRhcmtpbi5kYXRhLlpC",
-            "dXR0b25IAEILCgliZWhhdmlvdXIigAEKClpDb21wb25lbnQSLAoJYmVoYXZp",
-            "b3VyGAEgASgLMhcudGFya2luLmRhdGEuWkJlaGF2aW91ckgAEjcKD2NhbnZh",
-            "c19yZW5kZXJlchgCIAEoCzIcLnRhcmtpbi5kYXRhLlpDYW52YXNSZW5kZXJl",
-            "ckgAQgsKCWNvbXBvbmVudCLPAQoQTG9hZEFzc2V0UmVxdWVzdBISCgphc3Nl",
-            "dF9wYXRoGAEgASgJEiYKBnByZWZhYhgCIAEoCzIULnRhcmtpbi5kYXRhLlpQ",
-            "cmVmYWJIABImCgZzcHJpdGUYAyABKAsyFC50YXJraW4uZGF0YS5aU3ByaXRl",
-            "SAASKgoIbWF0ZXJpYWwYBCABKAsyFi50YXJraW4uZGF0YS5aTWF0ZXJpYWxI",
-            "ABIiCgRmb250GAUgASgLMhIudGFya2luLmRhdGEuWkZvbnRIAEIHCgVhc3Nl",
-            "dCIWChRTeXN0ZW1Db21tYW5kUmVxdWVzdCLNAQoXQ3JlYXRlR2FtZU9iamVj",
-            "dFJlcXVlc3QSFQoNbmV3X29iamVjdF9pZBgBIAEoDRIMCgRuYW1lGAIgASgJ",
-            "EjQKEnBhcmVudF9nYW1lX29iamVjdBgDIAEoCzIYLnRhcmtpbi5kYXRhLlpH",
-            "YW1lT2JqZWN0EisKCmNvbXBvbmVudHMYBCADKAsyFy50YXJraW4uZGF0YS5a",
-            "Q29tcG9uZW50EioKCXRyYW5zZm9ybRgFIAEoCzIXLnRhcmtpbi5kYXRhLlpU",
-            "cmFuc2Zvcm0ikgIKF1VwZGF0ZUdhbWVPYmplY3RSZXF1ZXN0Ei0KC2dhbWVf",
-            "b2JqZWN0GAEgASgLMhgudGFya2luLmRhdGEuWkdhbWVPYmplY3QSNAoScGFy",
-            "ZW50X2dhbWVfb2JqZWN0GAIgASgLMhgudGFya2luLmRhdGEuWkdhbWVPYmpl",
-            "Y3QSKwoKY29tcG9uZW50cxgDIAMoCzIXLnRhcmtpbi5kYXRhLlpDb21wb25l",
-            "bnQSOQoUY29tcG9uZW50c190b19yZW1vdmUYBCADKA4yGy50YXJraW4uZGF0",
-            "YS5aQ29tcG9uZW50VHlwZRIqCgl0cmFuc2Zvcm0YBSABKAsyFy50YXJraW4u",
-            "ZGF0YS5aVHJhbnNmb3JtIkkKGERlc3Ryb3lHYW1lT2JqZWN0UmVxdWVzdBIt",
-            "CgtnYW1lX29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2JqZWN0",
-            "IsgCChJVcGRhdGVTdGF0ZVJlcXVlc3QSMwoIY29tbWFuZHMYASADKAsyIS50",
-            "YXJraW4uZGF0YS5TeXN0ZW1Db21tYW5kUmVxdWVzdBIyCgtsb2FkX2Fzc2V0",
-            "cxgCIAMoCzIdLnRhcmtpbi5kYXRhLkxvYWRBc3NldFJlcXVlc3QSQQoTY3Jl",
-            "YXRlX2dhbWVfb2JqZWN0cxgDIAMoCzIkLnRhcmtpbi5kYXRhLkNyZWF0ZUdh",
-            "bWVPYmplY3RSZXF1ZXN0EkEKE3VwZGF0ZV9nYW1lX29iamVjdHMYBSADKAsy",
-            "JC50YXJraW4uZGF0YS5VcGRhdGVHYW1lT2JqZWN0UmVxdWVzdBJDChRkZXN0",
-            "cm95X2dhbWVfb2JqZWN0cxgGIAMoCzIlLnRhcmtpbi5kYXRhLkRlc3Ryb3lH",
-            "YW1lT2JqZWN0UmVxdWVzdCpqCgtaUmVuZGVyTW9kZRIXChNVTktOT1dOX1JF",
-            "TkRFUl9NT0RFEAASGAoUU0NSRUVOX1NQQUNFX09WRVJMQVkQARIXChNTQ1JF",
-            "RU5fU1BBQ0VfQ0FNRVJBEAISDwoLV09STERfU1BBQ0UQAyqmAQofWkFkZGl0",
-            "aW9uYWxDYW52YXNTaGFkZXJDaGFubmVscxItCilVTktOT1dOX0FERElUSU9O",
-            "QUxfQ0FOVkFTX1NIQURFUl9DSEFOTkVMUxAAEggKBE5PTkUQARIPCgtURVhf",
-            "Q09PUkRfMRACEg8KC1RFWF9DT09SRF8yEAMSDwoLVEVYX0NPT1JEXzMQBBIK",
-            "CgZOT1JNQUwQBRILCgdUQU5HRU5UEAYqwgEKC1pUZXh0QW5jaG9yEhcKE1VO",
-            "S05PV05fVEVYVF9BTkNIT1IQABIOCgpVUFBFUl9MRUZUEAESEAoMVVBQRVJf",
-            "Q0VOVEVSEAISDwoLVVBQRVJfUklHSFQQAxIPCgtNSURETEVfTEVGVBAEEhEK",
-            "DU1JRERMRV9DRU5URVIQBRIQCgxNSURETEVfUklHSFQQBhIOCgpMT1dFUl9M",
-            "RUZUEAcSEAoMTE9XRVJfQ0VOVEVSEAgSDwoLTE9XRVJfUklHSFQQCSq9AQoO",
-            "WkNvbXBvbmVudFR5cGUSEAoMVU5LTk9XTl9UWVBFEAASCgoGQ0FOVkFTEAES",
-            "EQoNQ0FOVkFTX1NDQUxFUhACEhMKD0NBTlZBU19SRU5ERVJFUhADEhUKEUdS",
-            "QVBISUNfUkFZQ0FTVEVSEAQSEAoMRVZFTlRfU1lTVEVNEAUSGwoXU1RBTkRB",
-            "TE9ORV9JTlBVVF9NT0RVTEUQBhIJCgVJTUFHRRAHEgoKBkJVVFRPThAIEggK",
-            "BFRFWFQQCWIGcHJvdG8z"));
+            "dWYuRmxvYXRWYWx1ZRIzChRyZWZlcmVuY2VfcmVzb2x1dGlvbhgEIAEoCzIV",
+            "LnRhcmtpbi5kYXRhLlpWZWN0b3IyEkUKEXNjcmVlbl9tYXRjaF9tb2RlGAUg",
+            "ASgOMioudGFya2luLmRhdGEuWkNhbnZhc1NjYWxlci5TY3JlZW5NYXRjaE1v",
+            "ZGUSOgoVbWF0Y2hfd2lkdGhfb3JfaGVpZ2h0GAYgASgLMhsuZ29vZ2xlLnBy",
+            "b3RvYnVmLkZsb2F0VmFsdWUidAoJU2NhbGVNb2RlEhYKElVOS05PV05fU0NB",
+            "TEVfTU9ERRAAEhcKE0NPTlNUQU5UX1BJWEVMX1NJWkUQARIaChZTQ0FMRV9X",
+            "SVRIX1NDUkVFTl9TSVpFEAISGgoWQ09OU1RBTlRfUEhZU0lDQUxfU0laRRAD",
+            "IlwKD1NjcmVlbk1hdGNoTW9kZRIWChJVTktOT1dOX01BVENIX01PREUQABIZ",
+            "ChVNQVRDSF9XSURUSF9PUl9IRUlHSFQQARIKCgZFWFBBTkQQAhIKCgZTSFJJ",
+            "TksQAyL3AQoRWkdyYXBoaWNSYXljYXN0ZXISPAoYaWdub3JlX3JldmVyc2Vk",
+            "X2dyYXBoaWNzGAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZRJI",
+            "ChBibG9ja2luZ19vYmplY3RzGAIgASgOMi4udGFya2luLmRhdGEuWkdyYXBo",
+            "aWNSYXljYXN0ZXIuQmxvY2tpbmdPYmplY3RzIloKD0Jsb2NraW5nT2JqZWN0",
+            "cxIcChhVTktOT1dOX0JMT0NLSU5HX09CSkVDVFMQABIICgROT05FEAESCQoF",
+            "VFdPX0QQAhILCgdUSFJFRV9EEAMSBwoDQUxMEAQiTAoPWkNhbnZhc1JlbmRl",
+            "cmVyEjkKFWN1bGxfdHJhbnNwYXJlbnRfbWVzaBgBIAEoCzIaLmdvb2dsZS5w",
+            "cm90b2J1Zi5Cb29sVmFsdWUiwwEKDFpFdmVudFN5c3RlbRI8ChpmaXJzdF9z",
+            "ZWxlY3RlZF9nYW1lX29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1l",
+            "T2JqZWN0EjoKFnNlbmRfbmF2aWdhdGlvbl9ldmVudHMYAiABKAsyGi5nb29n",
+            "bGUucHJvdG9idWYuQm9vbFZhbHVlEjkKFHBpeGVsX2RyYWdfdGhyZXNob2xk",
+            "GAMgASgLMhsuZ29vZ2xlLnByb3RvYnVmLkludDMyVmFsdWUimQMKFlpTdGFu",
+            "ZGFsb25lSW5wdXRNb2R1bGUSNQoPaG9yaXpvbnRhbF9heGlzGAEgASgLMhwu",
+            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjMKDXZlcnRpY2FsX2F4aXMY",
+            "AiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNc3VibWl0",
+            "X2J1dHRvbhgDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIz",
+            "Cg1jYW5jZWxfYnV0dG9uGAQgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmlu",
+            "Z1ZhbHVlEj0KGGlucHV0X2FjdGlvbnNfcGVyX3NlY29uZBgFIAEoCzIbLmdv",
+            "b2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjEKDHJlcGVhdF9kZWxheRgGIAEo",
+            "CzIbLmdvb2dsZS5wcm90b2J1Zi5GbG9hdFZhbHVlEjcKE2ZvcmNlX21vZHVs",
+            "ZV9hY3RpdmUYByABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlItIB",
+            "CghaR3JhcGhpYxI5ChBtYXNrYWJsZV9ncmFwaGljGAEgASgLMh0udGFya2lu",
+            "LmRhdGEuWk1hc2thYmxlR3JhcGhpY0gAEiIKBWNvbG9yGAIgASgLMhMudGFy",
+            "a2luLmRhdGEuWkNvbG9yEigKCG1hdGVyaWFsGAMgASgLMhYudGFya2luLmRh",
+            "dGEuWk1hdGVyaWFsEjIKDnJheWNhc3RfdGFyZ2V0GAQgASgLMhouZ29vZ2xl",
+            "LnByb3RvYnVmLkJvb2xWYWx1ZUIJCgdncmFwaGljIp4BChBaTWFza2FibGVH",
+            "cmFwaGljEiQKBWltYWdlGAEgASgLMhMudGFya2luLmRhdGEuWkltYWdlSAAS",
+            "IgoEdGV4dBgCIAEoCzISLnRhcmtpbi5kYXRhLlpUZXh0SAASLAoIbWFza2Fi",
+            "bGUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlQhIKEG1hc2th",
+            "YmxlX2dyYXBoaWMilAEKBlpJbWFnZRIkCgZzcHJpdGUYASABKAsyFC50YXJr",
+            "aW4uZGF0YS5aU3ByaXRlEjMKD3ByZXNlcnZlX2FzcGVjdBgCIAEoCzIaLmdv",
+            "b2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUSLwoLZmlsbF9jZW50ZXIYAyABKAsy",
+            "Gi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlIjsKB1pCdXR0b24SMAoMaW50",
+            "ZXJhY3RhYmxlGAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLkJvb2xWYWx1ZSLX",
+            "BgoFWlRleHQSKgoEdGV4dBgBIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJp",
+            "bmdWYWx1ZRIgCgRmb250GAIgASgLMhIudGFya2luLmRhdGEuWkZvbnQSMAoK",
+            "Zm9udF9zdHlsZRgDIAEoDjIcLnRhcmtpbi5kYXRhLlpUZXh0LkZvbnRTdHls",
+            "ZRIuCglmb250X3NpemUYBCABKAsyGy5nb29nbGUucHJvdG9idWYuSW50MzJW",
+            "YWx1ZRIxCgxsaW5lX3NwYWNpbmcYBSABKAsyGy5nb29nbGUucHJvdG9idWYu",
+            "RmxvYXRWYWx1ZRI1ChFzdXBwb3J0X3JpY2hfdGV4dBgGIAEoCzIaLmdvb2ds",
+            "ZS5wcm90b2J1Zi5Cb29sVmFsdWUSKwoJYWxpZ25tZW50GAcgASgOMhgudGFy",
+            "a2luLmRhdGEuWlRleHRBbmNob3ISNQoRYWxpZ25fYnlfZ2VvbWV0cnkYCCAB",
+            "KAsyGi5nb29nbGUucHJvdG9idWYuQm9vbFZhbHVlEkIKE2hvcml6b250YWxf",
+            "b3ZlcmZsb3cYCSABKA4yJS50YXJraW4uZGF0YS5aVGV4dC5Ib3Jpem9udGFs",
+            "V3JhcE1vZGUSPgoRdmVydGljYWxfb3ZlcmZsb3cYCiABKA4yIy50YXJraW4u",
+            "ZGF0YS5aVGV4dC5WZXJ0aWNhbFdyYXBNb2RlEjwKGHJlc2l6ZV90ZXh0X2Zv",
+            "cl9iZXN0X2ZpdBgLIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUi",
+            "WgoJRm9udFN0eWxlEhYKElVOS05PV05fRk9OVF9TVFlMRRAAEgoKBk5PUk1B",
+            "TBABEggKBEJPTEQQAhIKCgZJVEFMSUMQAxITCg9CT0xEX0FORF9JVEFMSUMQ",
+            "BCJZChJIb3Jpem9udGFsV3JhcE1vZGUSIAocVU5LTk9XTl9IT1JJWk9OVEFM",
+            "X1dSQVBfTU9ERRAAEggKBFdSQVAQARIXChNIT1JJWk9OVEFMX09WRVJGTE9X",
+            "EAIiVwoQVmVydGljYWxXcmFwTW9kZRIeChpVTktOT1dOX1ZFUlRJQ0FMX1dS",
+            "QVBfTU9ERRAAEgwKCFRSVU5DQVRFEAESFQoRVkVSVElDQUxfT1ZFUkZMT1cQ",
+            "AiKtAwoKWkJlaGF2aW91chIrCgdlbmFibGVkGAEgASgLMhouZ29vZ2xlLnBy",
+            "b3RvYnVmLkJvb2xWYWx1ZRImCgZjYW52YXMYAiABKAsyFC50YXJraW4uZGF0",
+            "YS5aQ2FudmFzSAASMwoNY2FudmFzX3NjYWxlchgDIAEoCzIaLnRhcmtpbi5k",
+            "YXRhLlpDYW52YXNTY2FsZXJIABI7ChFncmFwaGljX3JheWNhc3RlchgEIAEo",
+            "CzIeLnRhcmtpbi5kYXRhLlpHcmFwaGljUmF5Y2FzdGVySAASMQoMZXZlbnRf",
+            "c3lzdGVtGAUgASgLMhkudGFya2luLmRhdGEuWkV2ZW50U3lzdGVtSAASRgoX",
+            "c3RhbmRhbG9uZV9pbnB1dF9tb2R1bGUYBiABKAsyIy50YXJraW4uZGF0YS5a",
+            "U3RhbmRhbG9uZUlucHV0TW9kdWxlSAASKAoHZ3JhcGhpYxgHIAEoCzIVLnRh",
+            "cmtpbi5kYXRhLlpHcmFwaGljSAASJgoGYnV0dG9uGAggASgLMhQudGFya2lu",
+            "LmRhdGEuWkJ1dHRvbkgAQgsKCWJlaGF2aW91ciKAAQoKWkNvbXBvbmVudBIs",
+            "CgliZWhhdmlvdXIYASABKAsyFy50YXJraW4uZGF0YS5aQmVoYXZpb3VySAAS",
+            "NwoPY2FudmFzX3JlbmRlcmVyGAIgASgLMhwudGFya2luLmRhdGEuWkNhbnZh",
+            "c1JlbmRlcmVySABCCwoJY29tcG9uZW50IhYKFFN5c3RlbUNvbW1hbmRSZXF1",
+            "ZXN0Is8BChBMb2FkQXNzZXRSZXF1ZXN0EhIKCmFzc2V0X3BhdGgYASABKAkS",
+            "JgoGcHJlZmFiGAIgASgLMhQudGFya2luLmRhdGEuWlByZWZhYkgAEiYKBnNw",
+            "cml0ZRgDIAEoCzIULnRhcmtpbi5kYXRhLlpTcHJpdGVIABIqCghtYXRlcmlh",
+            "bBgEIAEoCzIWLnRhcmtpbi5kYXRhLlpNYXRlcmlhbEgAEiIKBGZvbnQYBSAB",
+            "KAsyEi50YXJraW4uZGF0YS5aRm9udEgAQgcKBWFzc2V0IvMBChdDcmVhdGVH",
+            "YW1lT2JqZWN0UmVxdWVzdBIVCg1uZXdfb2JqZWN0X2lkGAEgASgNEgwKBG5h",
+            "bWUYAiABKAkSJAoGcHJlZmFiGAMgASgLMhQudGFya2luLmRhdGEuWlByZWZh",
+            "YhI0ChJwYXJlbnRfZ2FtZV9vYmplY3QYBCABKAsyGC50YXJraW4uZGF0YS5a",
+            "R2FtZU9iamVjdBIrCgpjb21wb25lbnRzGAUgAygLMhcudGFya2luLmRhdGEu",
+            "WkNvbXBvbmVudBIqCgl0cmFuc2Zvcm0YBiABKAsyFy50YXJraW4uZGF0YS5a",
+            "VHJhbnNmb3JtIpICChdVcGRhdGVHYW1lT2JqZWN0UmVxdWVzdBItCgtnYW1l",
+            "X29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2JqZWN0EjQKEnBh",
+            "cmVudF9nYW1lX29iamVjdBgCIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2Jq",
+            "ZWN0EisKCmNvbXBvbmVudHMYAyADKAsyFy50YXJraW4uZGF0YS5aQ29tcG9u",
+            "ZW50EjkKFGNvbXBvbmVudHNfdG9fcmVtb3ZlGAQgAygOMhsudGFya2luLmRh",
+            "dGEuWkNvbXBvbmVudFR5cGUSKgoJdHJhbnNmb3JtGAUgASgLMhcudGFya2lu",
+            "LmRhdGEuWlRyYW5zZm9ybSJJChhEZXN0cm95R2FtZU9iamVjdFJlcXVlc3QS",
+            "LQoLZ2FtZV9vYmplY3QYASABKAsyGC50YXJraW4uZGF0YS5aR2FtZU9iamVj",
+            "dCLPAgoSVXBkYXRlU3RhdGVSZXF1ZXN0EjoKD3N5c3RlbV9jb21tYW5kcxgB",
+            "IAMoCzIhLnRhcmtpbi5kYXRhLlN5c3RlbUNvbW1hbmRSZXF1ZXN0EjIKC2xv",
+            "YWRfYXNzZXRzGAIgAygLMh0udGFya2luLmRhdGEuTG9hZEFzc2V0UmVxdWVz",
+            "dBJBChNjcmVhdGVfZ2FtZV9vYmplY3RzGAMgAygLMiQudGFya2luLmRhdGEu",
+            "Q3JlYXRlR2FtZU9iamVjdFJlcXVlc3QSQQoTdXBkYXRlX2dhbWVfb2JqZWN0",
+            "cxgEIAMoCzIkLnRhcmtpbi5kYXRhLlVwZGF0ZUdhbWVPYmplY3RSZXF1ZXN0",
+            "EkMKFGRlc3Ryb3lfZ2FtZV9vYmplY3RzGAUgAygLMiUudGFya2luLmRhdGEu",
+            "RGVzdHJveUdhbWVPYmplY3RSZXF1ZXN0KmoKC1pSZW5kZXJNb2RlEhcKE1VO",
+            "S05PV05fUkVOREVSX01PREUQABIYChRTQ1JFRU5fU1BBQ0VfT1ZFUkxBWRAB",
+            "EhcKE1NDUkVFTl9TUEFDRV9DQU1FUkEQAhIPCgtXT1JMRF9TUEFDRRADKqYB",
+            "Ch9aQWRkaXRpb25hbENhbnZhc1NoYWRlckNoYW5uZWxzEi0KKVVOS05PV05f",
+            "QURESVRJT05BTF9DQU5WQVNfU0hBREVSX0NIQU5ORUxTEAASCAoETk9ORRAB",
+            "Eg8KC1RFWF9DT09SRF8xEAISDwoLVEVYX0NPT1JEXzIQAxIPCgtURVhfQ09P",
+            "UkRfMxAEEgoKBk5PUk1BTBAFEgsKB1RBTkdFTlQQBirCAQoLWlRleHRBbmNo",
+            "b3ISFwoTVU5LTk9XTl9URVhUX0FOQ0hPUhAAEg4KClVQUEVSX0xFRlQQARIQ",
+            "CgxVUFBFUl9DRU5URVIQAhIPCgtVUFBFUl9SSUdIVBADEg8KC01JRERMRV9M",
+            "RUZUEAQSEQoNTUlERExFX0NFTlRFUhAFEhAKDE1JRERMRV9SSUdIVBAGEg4K",
+            "CkxPV0VSX0xFRlQQBxIQCgxMT1dFUl9DRU5URVIQCBIPCgtMT1dFUl9SSUdI",
+            "VBAJKr0BCg5aQ29tcG9uZW50VHlwZRIQCgxVTktOT1dOX1RZUEUQABIKCgZD",
+            "QU5WQVMQARIRCg1DQU5WQVNfU0NBTEVSEAISEwoPQ0FOVkFTX1JFTkRFUkVS",
+            "EAMSFQoRR1JBUEhJQ19SQVlDQVNURVIQBBIQCgxFVkVOVF9TWVNURU0QBRIb",
+            "ChdTVEFOREFMT05FX0lOUFVUX01PRFVMRRAGEgkKBUlNQUdFEAcSCgoGQlVU",
+            "VE9OEAgSCAoEVEVYVBAJYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Tarkin.Data.ZRenderMode), typeof(global::Tarkin.Data.ZAdditionalCanvasShaderChannels), typeof(global::Tarkin.Data.ZTextAnchor), typeof(global::Tarkin.Data.ZComponentType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -179,7 +186,7 @@ namespace Tarkin.Data {
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZRectTransform), global::Tarkin.Data.ZRectTransform.Parser, new[]{ "SizeDelta", "AnchorMin", "AnchorMax", "Pivot" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZTransform), global::Tarkin.Data.ZTransform.Parser, new[]{ "RectTransform", "LocalPosition", "LocalEulerAngles", "LocalScale" }, new[]{ "Transform" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvas), global::Tarkin.Data.ZCanvas.Parser, new[]{ "RenderMode", "PixelPerfect", "SortingOrder", "TargetDisplay", "AdditionalShaderChannels" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvasScaler), global::Tarkin.Data.ZCanvasScaler.Parser, new[]{ "UiScaleMode", "ScaleFactor", "ReferencePixelsPerUnit" }, null, new[]{ typeof(global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvasScaler), global::Tarkin.Data.ZCanvasScaler.Parser, new[]{ "UiScaleMode", "ScaleFactor", "ReferencePixelsPerUnit", "ReferenceResolution", "ScreenMatchMode", "MatchWidthOrHeight" }, null, new[]{ typeof(global::Tarkin.Data.ZCanvasScaler.Types.ScaleMode), typeof(global::Tarkin.Data.ZCanvasScaler.Types.ScreenMatchMode) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZGraphicRaycaster), global::Tarkin.Data.ZGraphicRaycaster.Parser, new[]{ "IgnoreReversedGraphics", "BlockingObjects" }, null, new[]{ typeof(global::Tarkin.Data.ZGraphicRaycaster.Types.BlockingObjects) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZCanvasRenderer), global::Tarkin.Data.ZCanvasRenderer.Parser, new[]{ "CullTransparentMesh" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZEventSystem), global::Tarkin.Data.ZEventSystem.Parser, new[]{ "FirstSelectedGameObject", "SendNavigationEvents", "PixelDragThreshold" }, null, null, null),
@@ -191,12 +198,12 @@ namespace Tarkin.Data {
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZText), global::Tarkin.Data.ZText.Parser, new[]{ "Text", "Font", "FontStyle", "FontSize", "LineSpacing", "SupportRichText", "Alignment", "AlignByGeometry", "HorizontalOverflow", "VerticalOverflow", "ResizeTextForBestFit" }, null, new[]{ typeof(global::Tarkin.Data.ZText.Types.FontStyle), typeof(global::Tarkin.Data.ZText.Types.HorizontalWrapMode), typeof(global::Tarkin.Data.ZText.Types.VerticalWrapMode) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZBehaviour), global::Tarkin.Data.ZBehaviour.Parser, new[]{ "Enabled", "Canvas", "CanvasScaler", "GraphicRaycaster", "EventSystem", "StandaloneInputModule", "Graphic", "Button" }, new[]{ "Behaviour" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZComponent), global::Tarkin.Data.ZComponent.Parser, new[]{ "Behaviour", "CanvasRenderer" }, new[]{ "Component" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.LoadAssetRequest), global::Tarkin.Data.LoadAssetRequest.Parser, new[]{ "AssetPath", "Prefab", "Sprite", "Material", "Font" }, new[]{ "Asset" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.SystemCommandRequest), global::Tarkin.Data.SystemCommandRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.CreateGameObjectRequest), global::Tarkin.Data.CreateGameObjectRequest.Parser, new[]{ "NewObjectId", "Name", "ParentGameObject", "Components", "Transform" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.LoadAssetRequest), global::Tarkin.Data.LoadAssetRequest.Parser, new[]{ "AssetPath", "Prefab", "Sprite", "Material", "Font" }, new[]{ "Asset" }, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.CreateGameObjectRequest), global::Tarkin.Data.CreateGameObjectRequest.Parser, new[]{ "NewObjectId", "Name", "Prefab", "ParentGameObject", "Components", "Transform" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateGameObjectRequest), global::Tarkin.Data.UpdateGameObjectRequest.Parser, new[]{ "GameObject", "ParentGameObject", "Components", "ComponentsToRemove", "Transform" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.DestroyGameObjectRequest), global::Tarkin.Data.DestroyGameObjectRequest.Parser, new[]{ "GameObject" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateStateRequest), global::Tarkin.Data.UpdateStateRequest.Parser, new[]{ "Commands", "LoadAssets", "CreateGameObjects", "UpdateGameObjects", "DestroyGameObjects" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateStateRequest), global::Tarkin.Data.UpdateStateRequest.Parser, new[]{ "SystemCommands", "LoadAssets", "CreateGameObjects", "UpdateGameObjects", "DestroyGameObjects" }, null, null, null)
           }));
     }
     #endregion
@@ -2705,6 +2712,9 @@ namespace Tarkin.Data {
       uiScaleMode_ = other.uiScaleMode_;
       ScaleFactor = other.ScaleFactor;
       ReferencePixelsPerUnit = other.ReferencePixelsPerUnit;
+      referenceResolution_ = other.referenceResolution_ != null ? other.referenceResolution_.Clone() : null;
+      screenMatchMode_ = other.screenMatchMode_;
+      MatchWidthOrHeight = other.MatchWidthOrHeight;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2758,6 +2768,51 @@ namespace Tarkin.Data {
       }
     }
 
+    /// <summary>Field number for the "reference_resolution" field.</summary>
+    public const int ReferenceResolutionFieldNumber = 4;
+    private global::Tarkin.Data.ZVector2 referenceResolution_;
+    /// <summary>
+    /// The resolution the UI layout is designed for:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZVector2 ReferenceResolution {
+      get { return referenceResolution_; }
+      set {
+        referenceResolution_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "screen_match_mode" field.</summary>
+    public const int ScreenMatchModeFieldNumber = 5;
+    private global::Tarkin.Data.ZCanvasScaler.Types.ScreenMatchMode screenMatchMode_ = 0;
+    /// <summary>
+    /// A mode used to scale the canvas area if the aspect ratio of the current resolution doesn't
+    /// fit the reference resolution:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZCanvasScaler.Types.ScreenMatchMode ScreenMatchMode {
+      get { return screenMatchMode_; }
+      set {
+        screenMatchMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "match_width_or_height" field.</summary>
+    public const int MatchWidthOrHeightFieldNumber = 6;
+    private static readonly pb::FieldCodec<float?> _single_matchWidthOrHeight_codec = pb::FieldCodec.ForStructWrapper<float>(50);
+    private float? matchWidthOrHeight_;
+    /// <summary>
+    /// Setting to scale the Canvas to match the width or height of the reference resolution, or a
+    /// combination:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float? MatchWidthOrHeight {
+      get { return matchWidthOrHeight_; }
+      set {
+        matchWidthOrHeight_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ZCanvasScaler);
@@ -2774,6 +2829,9 @@ namespace Tarkin.Data {
       if (UiScaleMode != other.UiScaleMode) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ScaleFactor, other.ScaleFactor)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(ReferencePixelsPerUnit, other.ReferencePixelsPerUnit)) return false;
+      if (!object.Equals(ReferenceResolution, other.ReferenceResolution)) return false;
+      if (ScreenMatchMode != other.ScreenMatchMode) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.Equals(MatchWidthOrHeight, other.MatchWidthOrHeight)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2783,6 +2841,9 @@ namespace Tarkin.Data {
       if (UiScaleMode != 0) hash ^= UiScaleMode.GetHashCode();
       if (scaleFactor_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ScaleFactor);
       if (referencePixelsPerUnit_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(ReferencePixelsPerUnit);
+      if (referenceResolution_ != null) hash ^= ReferenceResolution.GetHashCode();
+      if (ScreenMatchMode != 0) hash ^= ScreenMatchMode.GetHashCode();
+      if (matchWidthOrHeight_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableSingleEqualityComparer.GetHashCode(MatchWidthOrHeight);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2806,6 +2867,17 @@ namespace Tarkin.Data {
       if (referencePixelsPerUnit_ != null) {
         _single_referencePixelsPerUnit_codec.WriteTagAndValue(output, ReferencePixelsPerUnit);
       }
+      if (referenceResolution_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ReferenceResolution);
+      }
+      if (ScreenMatchMode != 0) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) ScreenMatchMode);
+      }
+      if (matchWidthOrHeight_ != null) {
+        _single_matchWidthOrHeight_codec.WriteTagAndValue(output, MatchWidthOrHeight);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2822,6 +2894,15 @@ namespace Tarkin.Data {
       }
       if (referencePixelsPerUnit_ != null) {
         size += _single_referencePixelsPerUnit_codec.CalculateSizeWithTag(ReferencePixelsPerUnit);
+      }
+      if (referenceResolution_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReferenceResolution);
+      }
+      if (ScreenMatchMode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ScreenMatchMode);
+      }
+      if (matchWidthOrHeight_ != null) {
+        size += _single_matchWidthOrHeight_codec.CalculateSizeWithTag(MatchWidthOrHeight);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2845,6 +2926,20 @@ namespace Tarkin.Data {
       if (other.referencePixelsPerUnit_ != null) {
         if (referencePixelsPerUnit_ == null || other.ReferencePixelsPerUnit != 0F) {
           ReferencePixelsPerUnit = other.ReferencePixelsPerUnit;
+        }
+      }
+      if (other.referenceResolution_ != null) {
+        if (referenceResolution_ == null) {
+          referenceResolution_ = new global::Tarkin.Data.ZVector2();
+        }
+        ReferenceResolution.MergeFrom(other.ReferenceResolution);
+      }
+      if (other.ScreenMatchMode != 0) {
+        ScreenMatchMode = other.ScreenMatchMode;
+      }
+      if (other.matchWidthOrHeight_ != null) {
+        if (matchWidthOrHeight_ == null || other.MatchWidthOrHeight != 0F) {
+          MatchWidthOrHeight = other.MatchWidthOrHeight;
         }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2876,6 +2971,24 @@ namespace Tarkin.Data {
             }
             break;
           }
+          case 34: {
+            if (referenceResolution_ == null) {
+              referenceResolution_ = new global::Tarkin.Data.ZVector2();
+            }
+            input.ReadMessage(referenceResolution_);
+            break;
+          }
+          case 40: {
+            screenMatchMode_ = (global::Tarkin.Data.ZCanvasScaler.Types.ScreenMatchMode) input.ReadEnum();
+            break;
+          }
+          case 50: {
+            float? value = _single_matchWidthOrHeight_codec.Read(input);
+            if (matchWidthOrHeight_ == null || value != 0F) {
+              MatchWidthOrHeight = value;
+            }
+            break;
+          }
         }
       }
     }
@@ -2901,6 +3014,25 @@ namespace Tarkin.Data {
         /// in physical units, such as millimeters, points, or picas:
         /// </summary>
         [pbr::OriginalName("CONSTANT_PHYSICAL_SIZE")] ConstantPhysicalSize = 3,
+      }
+
+      public enum ScreenMatchMode {
+        [pbr::OriginalName("UNKNOWN_MATCH_MODE")] UnknownMatchMode = 0,
+        /// <summary>
+        /// Scale the canvas area with the width as reference, the height as reference, or something
+        /// in between:
+        /// </summary>
+        [pbr::OriginalName("MATCH_WIDTH_OR_HEIGHT")] MatchWidthOrHeight = 1,
+        /// <summary>
+        /// Expand the canvas area either horizontally or vertically, so the size of the canvas
+        /// will never be smaller than the reference:
+        /// </summary>
+        [pbr::OriginalName("EXPAND")] Expand = 2,
+        /// <summary>
+        /// Crop the canvas area either horizontally or vertically, so the size of the canvas will
+        /// never be larger than the reference:
+        /// </summary>
+        [pbr::OriginalName("SHRINK")] Shrink = 3,
       }
 
     }
@@ -5852,6 +5984,107 @@ namespace Tarkin.Data {
 
   }
 
+  public sealed partial class SystemCommandRequest : pb::IMessage<SystemCommandRequest> {
+    private static readonly pb::MessageParser<SystemCommandRequest> _parser = new pb::MessageParser<SystemCommandRequest>(() => new SystemCommandRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SystemCommandRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[25]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest(SystemCommandRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SystemCommandRequest Clone() {
+      return new SystemCommandRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SystemCommandRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SystemCommandRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SystemCommandRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
   public sealed partial class LoadAssetRequest : pb::IMessage<LoadAssetRequest> {
     private static readonly pb::MessageParser<LoadAssetRequest> _parser = new pb::MessageParser<LoadAssetRequest>(() => new LoadAssetRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -5860,7 +6093,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6165,107 +6398,6 @@ namespace Tarkin.Data {
 
   }
 
-  public sealed partial class SystemCommandRequest : pb::IMessage<SystemCommandRequest> {
-    private static readonly pb::MessageParser<SystemCommandRequest> _parser = new pb::MessageParser<SystemCommandRequest>(() => new SystemCommandRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<SystemCommandRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[26]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemCommandRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemCommandRequest(SystemCommandRequest other) : this() {
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public SystemCommandRequest Clone() {
-      return new SystemCommandRequest(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as SystemCommandRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(SystemCommandRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(SystemCommandRequest other) {
-      if (other == null) {
-        return;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-        }
-      }
-    }
-
-  }
-
   public sealed partial class CreateGameObjectRequest : pb::IMessage<CreateGameObjectRequest> {
     private static readonly pb::MessageParser<CreateGameObjectRequest> _parser = new pb::MessageParser<CreateGameObjectRequest>(() => new CreateGameObjectRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -6293,6 +6425,7 @@ namespace Tarkin.Data {
     public CreateGameObjectRequest(CreateGameObjectRequest other) : this() {
       newObjectId_ = other.newObjectId_;
       name_ = other.name_;
+      prefab_ = other.prefab_ != null ? other.prefab_.Clone() : null;
       parentGameObject_ = other.parentGameObject_ != null ? other.parentGameObject_.Clone() : null;
       components_ = other.components_.Clone();
       transform_ = other.transform_ != null ? other.transform_.Clone() : null;
@@ -6308,7 +6441,7 @@ namespace Tarkin.Data {
     public const int NewObjectIdFieldNumber = 1;
     private uint newObjectId_;
     /// <summary>
-    /// Globally unique integer which identifies this GameObject for future reference (should be
+    /// Unique integer which identifies this GameObject for future reference (should be
     /// allocated sequentially for maximum performance):
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6323,7 +6456,7 @@ namespace Tarkin.Data {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    /// Name for this GameObject:
+    /// Name for this GameObject. Cannot containin '/' characters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -6333,11 +6466,25 @@ namespace Tarkin.Data {
       }
     }
 
+    /// <summary>Field number for the "prefab" field.</summary>
+    public const int PrefabFieldNumber = 3;
+    private global::Tarkin.Data.ZPrefab prefab_;
+    /// <summary>
+    /// Optionally, a prefab from which this GameObject should be instantiated:
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Tarkin.Data.ZPrefab Prefab {
+      get { return prefab_; }
+      set {
+        prefab_ = value;
+      }
+    }
+
     /// <summary>Field number for the "parent_game_object" field.</summary>
-    public const int ParentGameObjectFieldNumber = 3;
+    public const int ParentGameObjectFieldNumber = 4;
     private global::Tarkin.Data.ZGameObject parentGameObject_;
     /// <summary>
-    /// The parent of this GameObject's transform, if any:
+    /// Optionally, the parent of this GameObject's transform:
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Tarkin.Data.ZGameObject ParentGameObject {
@@ -6348,9 +6495,9 @@ namespace Tarkin.Data {
     }
 
     /// <summary>Field number for the "components" field.</summary>
-    public const int ComponentsFieldNumber = 4;
+    public const int ComponentsFieldNumber = 5;
     private static readonly pb::FieldCodec<global::Tarkin.Data.ZComponent> _repeated_components_codec
-        = pb::FieldCodec.ForMessage(34, global::Tarkin.Data.ZComponent.Parser);
+        = pb::FieldCodec.ForMessage(42, global::Tarkin.Data.ZComponent.Parser);
     private readonly pbc::RepeatedField<global::Tarkin.Data.ZComponent> components_ = new pbc::RepeatedField<global::Tarkin.Data.ZComponent>();
     /// <summary>
     /// Initial components for this GameObject:
@@ -6361,7 +6508,7 @@ namespace Tarkin.Data {
     }
 
     /// <summary>Field number for the "transform" field.</summary>
-    public const int TransformFieldNumber = 5;
+    public const int TransformFieldNumber = 6;
     private global::Tarkin.Data.ZTransform transform_;
     /// <summary>
     /// The Transform attached to this GameObject:
@@ -6389,6 +6536,7 @@ namespace Tarkin.Data {
       }
       if (NewObjectId != other.NewObjectId) return false;
       if (Name != other.Name) return false;
+      if (!object.Equals(Prefab, other.Prefab)) return false;
       if (!object.Equals(ParentGameObject, other.ParentGameObject)) return false;
       if(!components_.Equals(other.components_)) return false;
       if (!object.Equals(Transform, other.Transform)) return false;
@@ -6400,6 +6548,7 @@ namespace Tarkin.Data {
       int hash = 1;
       if (NewObjectId != 0) hash ^= NewObjectId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (prefab_ != null) hash ^= Prefab.GetHashCode();
       if (parentGameObject_ != null) hash ^= ParentGameObject.GetHashCode();
       hash ^= components_.GetHashCode();
       if (transform_ != null) hash ^= Transform.GetHashCode();
@@ -6424,13 +6573,17 @@ namespace Tarkin.Data {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (parentGameObject_ != null) {
+      if (prefab_ != null) {
         output.WriteRawTag(26);
+        output.WriteMessage(Prefab);
+      }
+      if (parentGameObject_ != null) {
+        output.WriteRawTag(34);
         output.WriteMessage(ParentGameObject);
       }
       components_.WriteTo(output, _repeated_components_codec);
       if (transform_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteMessage(Transform);
       }
       if (_unknownFields != null) {
@@ -6446,6 +6599,9 @@ namespace Tarkin.Data {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (prefab_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Prefab);
       }
       if (parentGameObject_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ParentGameObject);
@@ -6470,6 +6626,12 @@ namespace Tarkin.Data {
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
+      }
+      if (other.prefab_ != null) {
+        if (prefab_ == null) {
+          prefab_ = new global::Tarkin.Data.ZPrefab();
+        }
+        Prefab.MergeFrom(other.Prefab);
       }
       if (other.parentGameObject_ != null) {
         if (parentGameObject_ == null) {
@@ -6504,17 +6666,24 @@ namespace Tarkin.Data {
             break;
           }
           case 26: {
+            if (prefab_ == null) {
+              prefab_ = new global::Tarkin.Data.ZPrefab();
+            }
+            input.ReadMessage(prefab_);
+            break;
+          }
+          case 34: {
             if (parentGameObject_ == null) {
               parentGameObject_ = new global::Tarkin.Data.ZGameObject();
             }
             input.ReadMessage(parentGameObject_);
             break;
           }
-          case 34: {
+          case 42: {
             components_.AddEntriesFrom(input, _repeated_components_codec);
             break;
           }
-          case 42: {
+          case 50: {
             if (transform_ == null) {
               transform_ = new global::Tarkin.Data.ZTransform();
             }
@@ -6949,7 +7118,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public UpdateStateRequest(UpdateStateRequest other) : this() {
-      commands_ = other.commands_.Clone();
+      systemCommands_ = other.systemCommands_.Clone();
       loadAssets_ = other.loadAssets_.Clone();
       createGameObjects_ = other.createGameObjects_.Clone();
       updateGameObjects_ = other.updateGameObjects_.Clone();
@@ -6962,17 +7131,17 @@ namespace Tarkin.Data {
       return new UpdateStateRequest(this);
     }
 
-    /// <summary>Field number for the "commands" field.</summary>
-    public const int CommandsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Tarkin.Data.SystemCommandRequest> _repeated_commands_codec
+    /// <summary>Field number for the "system_commands" field.</summary>
+    public const int SystemCommandsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Tarkin.Data.SystemCommandRequest> _repeated_systemCommands_codec
         = pb::FieldCodec.ForMessage(10, global::Tarkin.Data.SystemCommandRequest.Parser);
-    private readonly pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> commands_ = new pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest>();
+    private readonly pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> systemCommands_ = new pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest>();
     /// <summary>
-    /// Top-level system actions, e.g. Load Scene
+    /// System-level commands
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> Commands {
-      get { return commands_; }
+    public pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> SystemCommands {
+      get { return systemCommands_; }
     }
 
     /// <summary>Field number for the "load_assets" field.</summary>
@@ -7002,9 +7171,9 @@ namespace Tarkin.Data {
     }
 
     /// <summary>Field number for the "update_game_objects" field.</summary>
-    public const int UpdateGameObjectsFieldNumber = 5;
+    public const int UpdateGameObjectsFieldNumber = 4;
     private static readonly pb::FieldCodec<global::Tarkin.Data.UpdateGameObjectRequest> _repeated_updateGameObjects_codec
-        = pb::FieldCodec.ForMessage(42, global::Tarkin.Data.UpdateGameObjectRequest.Parser);
+        = pb::FieldCodec.ForMessage(34, global::Tarkin.Data.UpdateGameObjectRequest.Parser);
     private readonly pbc::RepeatedField<global::Tarkin.Data.UpdateGameObjectRequest> updateGameObjects_ = new pbc::RepeatedField<global::Tarkin.Data.UpdateGameObjectRequest>();
     /// <summary>
     /// Update existing game objects:
@@ -7015,9 +7184,9 @@ namespace Tarkin.Data {
     }
 
     /// <summary>Field number for the "destroy_game_objects" field.</summary>
-    public const int DestroyGameObjectsFieldNumber = 6;
+    public const int DestroyGameObjectsFieldNumber = 5;
     private static readonly pb::FieldCodec<global::Tarkin.Data.DestroyGameObjectRequest> _repeated_destroyGameObjects_codec
-        = pb::FieldCodec.ForMessage(50, global::Tarkin.Data.DestroyGameObjectRequest.Parser);
+        = pb::FieldCodec.ForMessage(42, global::Tarkin.Data.DestroyGameObjectRequest.Parser);
     private readonly pbc::RepeatedField<global::Tarkin.Data.DestroyGameObjectRequest> destroyGameObjects_ = new pbc::RepeatedField<global::Tarkin.Data.DestroyGameObjectRequest>();
     /// <summary>
     /// Destroy game objects:
@@ -7040,7 +7209,7 @@ namespace Tarkin.Data {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!commands_.Equals(other.commands_)) return false;
+      if(!systemCommands_.Equals(other.systemCommands_)) return false;
       if(!loadAssets_.Equals(other.loadAssets_)) return false;
       if(!createGameObjects_.Equals(other.createGameObjects_)) return false;
       if(!updateGameObjects_.Equals(other.updateGameObjects_)) return false;
@@ -7051,7 +7220,7 @@ namespace Tarkin.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= commands_.GetHashCode();
+      hash ^= systemCommands_.GetHashCode();
       hash ^= loadAssets_.GetHashCode();
       hash ^= createGameObjects_.GetHashCode();
       hash ^= updateGameObjects_.GetHashCode();
@@ -7069,7 +7238,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      commands_.WriteTo(output, _repeated_commands_codec);
+      systemCommands_.WriteTo(output, _repeated_systemCommands_codec);
       loadAssets_.WriteTo(output, _repeated_loadAssets_codec);
       createGameObjects_.WriteTo(output, _repeated_createGameObjects_codec);
       updateGameObjects_.WriteTo(output, _repeated_updateGameObjects_codec);
@@ -7082,7 +7251,7 @@ namespace Tarkin.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += commands_.CalculateSize(_repeated_commands_codec);
+      size += systemCommands_.CalculateSize(_repeated_systemCommands_codec);
       size += loadAssets_.CalculateSize(_repeated_loadAssets_codec);
       size += createGameObjects_.CalculateSize(_repeated_createGameObjects_codec);
       size += updateGameObjects_.CalculateSize(_repeated_updateGameObjects_codec);
@@ -7098,7 +7267,7 @@ namespace Tarkin.Data {
       if (other == null) {
         return;
       }
-      commands_.Add(other.commands_);
+      systemCommands_.Add(other.systemCommands_);
       loadAssets_.Add(other.loadAssets_);
       createGameObjects_.Add(other.createGameObjects_);
       updateGameObjects_.Add(other.updateGameObjects_);
@@ -7115,7 +7284,7 @@ namespace Tarkin.Data {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            commands_.AddEntriesFrom(input, _repeated_commands_codec);
+            systemCommands_.AddEntriesFrom(input, _repeated_systemCommands_codec);
             break;
           }
           case 18: {
@@ -7126,11 +7295,11 @@ namespace Tarkin.Data {
             createGameObjects_.AddEntriesFrom(input, _repeated_createGameObjects_codec);
             break;
           }
-          case 42: {
+          case 34: {
             updateGameObjects_.AddEntriesFrom(input, _repeated_updateGameObjects_codec);
             break;
           }
-          case 50: {
+          case 42: {
             destroyGameObjects_.AddEntriesFrom(input, _repeated_destroyGameObjects_codec);
             break;
           }

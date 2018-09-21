@@ -1,21 +1,34 @@
 ﻿using UnityEngine;
 using Tarkin.Data;
+using System.Collections.Generic;
 
 namespace Tarkin
 {
   public class GameObjectService
   {
-    readonly IntMap<GameObject> _gameObjects = new IntMap<GameObject>();
+    readonly IntMap<GameObject> _gameObjects;
+    readonly AssetService _assetService;
     readonly ComponentService _componentService;
 
-    public GameObjectService(AssetService assetService)
+    public GameObjectService(IEnumerable<GameObject> initialObjects, AssetService assetService)
     {
+      _gameObjects = new IntMap<GameObject>(initialObjects);
+      _assetService = assetService;
       _componentService = new ComponentService(this, assetService);
     }
 
     public void CreateGameObject(CreateGameObjectRequest request)
     {
-      var gameObject = new GameObject(request.Name);
+      GameObject gameObject;
+      if (request.Prefab == null)
+      {
+        gameObject = new GameObject(request.Name);
+      }
+      else
+      {
+        gameObject = Object.Instantiate(_assetService.GetPrefab(request.Prefab));
+        gameObject.name = request.Name;
+      }
 
       if (request.ParentGameObject != null)
       {

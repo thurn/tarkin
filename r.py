@@ -4,10 +4,11 @@ import argparse
 import subprocess
 import os
 import pwd
+import hashlib
 
 COMMANDS = [
   "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos",
-  "lock", "unlock"
+  "lock", "unlock", "updateChecksum"
 ]
 
 EXPECTED_PROGRAMS = ["stack", "protoc"]
@@ -21,6 +22,7 @@ DIR = os.path.dirname(os.path.realpath(__file__))
 SERVER_DIR = os.path.join(DIR, "server")
 CLIENT_DIR = os.path.join(DIR, "client")
 THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
+CHECKSUM_FILE = os.path.join(CLIENT_DIR, "third_party.sha1")
 
 def which(program):
   """Returns the location of a program on the PATH if it can be found, or None
@@ -76,6 +78,24 @@ def chown(base_path, uid, gid):
     for f in files:
       os.chown(os.path.join(root, f), uid, gid)
 
+def hash_third_party():
+  sha_hash = hashlib.sha1()
+  for root, dirs, files in os.walk(THIRD_PARTY):
+    dirs.sort()
+    if ".git" in root:
+      continue
+    for file in sorted(files):
+      path = os.path.join(root, file)
+      f = open(path, 'rb')
+      while 1:
+        buf = f.read(4096)
+        if not buf:
+          break
+        sha_hash.update(buf)
+      sha_hash.update(bytes(file, 'utf-8'))
+      f.close()
+  return sha_hash.hexdigest()
+
 for program in EXPECTED_PROGRAMS:
   if not which(program):
     print("Program " + program + " not found on path. Please install.")
@@ -116,12 +136,18 @@ elif command == "commands":
   print("Commands:")
   print(COMMANDS)
 elif command == "lock":
+  # TODO check git status
   require_sudo()
   print("Locking ThirdParty")
   chown(THIRD_PARTY, 0, 0)
 elif command == "unlock":
+  # TODO check git status
   require_sudo()
   uid = pwd.getpwnam(os.getlogin()).pw_uid
   gid = pwd.getpwnam(os.getlogin()).pw_gid
   print("Unlocking ThirdParty for user " + str(uid))
   chown(THIRD_PARTY, uid, gid)
+elif command == "updateChecksum":
+  # TODO check git status
+  file = open(CHECKSUM_FILE, "w")
+  file.write(hash_third_party())

@@ -1,0 +1,37 @@
+{
+  "createGameObjects": [
+    {
+      "newObjectId": 0,
+      "name": "Canvas",
+      "components": [
+        {
+          "behaviour": {
+            "canvas": {
+              "render_mode": "SCREEN_SPACE_OVERLAY"
+            }
+          }
+        },
+        {
+          "behaviour": {
+            "canvas_scaler": {
+              "ui_scale_mode": "SCALE_WITH_SCREEN_SIZE",
+              "reference_resolution": {
+                "x": 1920,
+                "y": 1080
+              },
+              "screen_match_mode": "MATCH_WIDTH_OR_HEIGHT"
+            }
+          }
+        },
+        {
+          "behaviour": {
+            "graphic_raycaster": {
+              "ignore_reversed_graphics": true,
+              "blocking_objects": "NONE"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

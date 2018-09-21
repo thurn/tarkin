@@ -1,43 +1,66 @@
 using UnityEngine;
 using Tarkin.Data;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Tarkin
 {
   public class StateUpdateService : MonoBehaviour
   {
-    public enum UpdateResult
-    {
-      Success,
-      Failure
-    }
+    Task<TaskResult> _runningStateUpdate;
+    Queue<UpdateStateRequest> _updateQueue;
+    AssetService _assetService;
+    SystemCommandService _systemCommandService;
+    GameObjectService _gameObjectService;
 
-    readonly AssetService _assetService;
-    readonly SystemCommandService _systemCommandService;
-    readonly GameObjectService _gameObjectService;
-
-    public StateUpdateService()
+    public void Awake()
     {
+      _updateQueue = new Queue<UpdateStateRequest>();
       _assetService = new AssetService();
       _systemCommandService = new SystemCommandService();
-      _gameObjectService = new GameObjectService(_assetService);
+      var objects = GetComponent<SceneObjects>();
+      _gameObjectService = new GameObjectService(objects.GameObjects, _assetService);
     }
 
-    public async Task<Result> HandleStateUpdate(UpdateStateRequest request)
+    public void EnqueueStateUpdate(UpdateStateRequest request)
     {
-      foreach (var command in request.Commands)
+      _updateQueue.Enqueue(request);
+    }
+
+    void Update()
+    {
+      if (_updateQueue.Count != 0 && _runningStateUpdate == null)
       {
-        var updateResult = await _systemCommandService.RunCommand(command);
-        if (updateResult == Result.Failure)
+        _runningStateUpdate = HandleStateUpdateAsync(_updateQueue.Dequeue());
+      }
+      else if (_runningStateUpdate != null && _runningStateUpdate.IsCompleted)
+      {
+        if (_runningStateUpdate.Result.Failed)
         {
-          return Result.Failure;
+          Debug.Log("Error: State Update Failed.\n" + _runningStateUpdate.Result.Message);
+        }
+        _runningStateUpdate = null;
+      }
+    }
+
+    async Task<TaskResult> HandleStateUpdateAsync(UpdateStateRequest request)
+    {
+      foreach (var command in request.SystemCommands)
+      {
+        var commandResult = await _systemCommandService.RunCommand(command);
+        if (commandResult.Failed)
+        {
+          return commandResult;
         }
       }
 
-      var result = await _assetService.LoadAssets(request.LoadAssets);
-      if (result == Result.Failure)
+      if (request.LoadAssets.Count != 0)
       {
-        return Result.Failure;
+        var result = await _assetService.LoadAssets(request.LoadAssets);
+        if (result.Failed)
+        {
+          return result;
+        }
       }
 
       foreach (var createGameObject in request.CreateGameObjects)
@@ -55,7 +78,7 @@ namespace Tarkin
         _gameObjectService.DestroyGameObject(destroyGameObject);
       }
 
-      return Result.Success;
+      return TaskResult.Success();
     }
   }
 }

@@ -20,8 +20,10 @@ module Proto.Data
         _ZBehaviour'Graphic, _ZBehaviour'Button, ZButton(), ZCanvas(),
         ZCanvasRenderer(), ZCanvasScaler(), ZCanvasScaler'ScaleMode(..),
         ZCanvasScaler'ScaleMode(),
-        ZCanvasScaler'ScaleMode'UnrecognizedValue, ZColor(), ZComponent(),
-        ZComponent'Component(..), _ZComponent'Behaviour,
+        ZCanvasScaler'ScaleMode'UnrecognizedValue,
+        ZCanvasScaler'ScreenMatchMode(..), ZCanvasScaler'ScreenMatchMode(),
+        ZCanvasScaler'ScreenMatchMode'UnrecognizedValue, ZColor(),
+        ZComponent(), ZComponent'Component(..), _ZComponent'Behaviour,
         _ZComponent'CanvasRenderer, ZComponentType(..), ZComponentType(),
         ZComponentType'UnrecognizedValue, ZEventSystem(), ZFont(),
         ZGameObject(), ZGraphic(), ZGraphic'Graphic(..),
@@ -75,6 +77,8 @@ import qualified Proto.Google.Protobuf.Wrappers
 
     * 'Proto.Data_Fields.newObjectId' @:: Lens' CreateGameObjectRequest Data.Word.Word32@
     * 'Proto.Data_Fields.name' @:: Lens' CreateGameObjectRequest Data.Text.Text@
+    * 'Proto.Data_Fields.prefab' @:: Lens' CreateGameObjectRequest ZPrefab@
+    * 'Proto.Data_Fields.maybe'prefab' @:: Lens' CreateGameObjectRequest (Prelude.Maybe ZPrefab)@
     * 'Proto.Data_Fields.parentGameObject' @:: Lens' CreateGameObjectRequest ZGameObject@
     * 'Proto.Data_Fields.maybe'parentGameObject' @:: Lens' CreateGameObjectRequest (Prelude.Maybe ZGameObject)@
     * 'Proto.Data_Fields.components' @:: Lens' CreateGameObjectRequest [ZComponent]@
@@ -85,6 +89,8 @@ data CreateGameObjectRequest = CreateGameObjectRequest{_CreateGameObjectRequest'
                                                        :: !Data.Word.Word32,
                                                        _CreateGameObjectRequest'name ::
                                                        !Data.Text.Text,
+                                                       _CreateGameObjectRequest'prefab ::
+                                                       !(Prelude.Maybe ZPrefab),
                                                        _CreateGameObjectRequest'parentGameObject ::
                                                        !(Prelude.Maybe ZGameObject),
                                                        _CreateGameObjectRequest'components ::
@@ -114,6 +120,23 @@ instance Lens.Labels.HasLens' CreateGameObjectRequest "name"
           = (Prelude..)
               (Lens.Family2.Unchecked.lens _CreateGameObjectRequest'name
                  (\ x__ y__ -> x__{_CreateGameObjectRequest'name = y__}))
+              Prelude.id
+instance Lens.Labels.HasLens' CreateGameObjectRequest "prefab"
+           (ZPrefab)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _CreateGameObjectRequest'prefab
+                 (\ x__ y__ -> x__{_CreateGameObjectRequest'prefab = y__}))
+              (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage)
+instance Lens.Labels.HasLens' CreateGameObjectRequest
+           "maybe'prefab"
+           (Prelude.Maybe ZPrefab)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _CreateGameObjectRequest'prefab
+                 (\ x__ y__ -> x__{_CreateGameObjectRequest'prefab = y__}))
               Prelude.id
 instance Lens.Labels.HasLens' CreateGameObjectRequest
            "parentGameObject"
@@ -182,6 +205,14 @@ instance Data.ProtoLens.Message CreateGameObjectRequest where
                          (Lens.Labels.lensOf'
                             ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "name")))
                       :: Data.ProtoLens.FieldDescriptor CreateGameObjectRequest
+                prefab__field_descriptor
+                  = Data.ProtoLens.FieldDescriptor "prefab"
+                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
+                         Data.ProtoLens.FieldTypeDescriptor ZPrefab)
+                      (Data.ProtoLens.OptionalField
+                         (Lens.Labels.lensOf'
+                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'prefab")))
+                      :: Data.ProtoLens.FieldDescriptor CreateGameObjectRequest
                 parentGameObject__field_descriptor
                   = Data.ProtoLens.FieldDescriptor "parent_game_object"
                       (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
@@ -211,9 +242,10 @@ instance Data.ProtoLens.Message CreateGameObjectRequest where
               Data.Map.fromList
                 [(Data.ProtoLens.Tag 1, newObjectId__field_descriptor),
                  (Data.ProtoLens.Tag 2, name__field_descriptor),
-                 (Data.ProtoLens.Tag 3, parentGameObject__field_descriptor),
-                 (Data.ProtoLens.Tag 4, components__field_descriptor),
-                 (Data.ProtoLens.Tag 5, transform__field_descriptor)]
+                 (Data.ProtoLens.Tag 3, prefab__field_descriptor),
+                 (Data.ProtoLens.Tag 4, parentGameObject__field_descriptor),
+                 (Data.ProtoLens.Tag 5, components__field_descriptor),
+                 (Data.ProtoLens.Tag 6, transform__field_descriptor)]
         unknownFields
           = Lens.Family2.Unchecked.lens
               _CreateGameObjectRequest'_unknownFields
@@ -222,6 +254,7 @@ instance Data.ProtoLens.Message CreateGameObjectRequest where
           = CreateGameObjectRequest{_CreateGameObjectRequest'newObjectId =
                                       Data.ProtoLens.fieldDefault,
                                     _CreateGameObjectRequest'name = Data.ProtoLens.fieldDefault,
+                                    _CreateGameObjectRequest'prefab = Prelude.Nothing,
                                     _CreateGameObjectRequest'parentGameObject = Prelude.Nothing,
                                     _CreateGameObjectRequest'components = [],
                                     _CreateGameObjectRequest'transform = Prelude.Nothing,
@@ -233,11 +266,12 @@ instance Control.DeepSeq.NFData CreateGameObjectRequest where
                 (_CreateGameObjectRequest'_unknownFields x__)
                 (Control.DeepSeq.deepseq (_CreateGameObjectRequest'newObjectId x__)
                    (Control.DeepSeq.deepseq (_CreateGameObjectRequest'name x__)
-                      (Control.DeepSeq.deepseq
-                         (_CreateGameObjectRequest'parentGameObject x__)
-                         (Control.DeepSeq.deepseq (_CreateGameObjectRequest'components x__)
-                            (Control.DeepSeq.deepseq (_CreateGameObjectRequest'transform x__)
-                               (()))))))
+                      (Control.DeepSeq.deepseq (_CreateGameObjectRequest'prefab x__)
+                         (Control.DeepSeq.deepseq
+                            (_CreateGameObjectRequest'parentGameObject x__)
+                            (Control.DeepSeq.deepseq (_CreateGameObjectRequest'components x__)
+                               (Control.DeepSeq.deepseq (_CreateGameObjectRequest'transform x__)
+                                  (())))))))
 {- | Fields :
 
     * 'Proto.Data_Fields.gameObject' @:: Lens' DestroyGameObjectRequest ZGameObject@
@@ -899,13 +933,13 @@ instance Control.DeepSeq.NFData UpdateGameObjectRequest where
                                (()))))))
 {- | Fields :
 
-    * 'Proto.Data_Fields.commands' @:: Lens' UpdateStateRequest [SystemCommandRequest]@
+    * 'Proto.Data_Fields.systemCommands' @:: Lens' UpdateStateRequest [SystemCommandRequest]@
     * 'Proto.Data_Fields.loadAssets' @:: Lens' UpdateStateRequest [LoadAssetRequest]@
     * 'Proto.Data_Fields.createGameObjects' @:: Lens' UpdateStateRequest [CreateGameObjectRequest]@
     * 'Proto.Data_Fields.updateGameObjects' @:: Lens' UpdateStateRequest [UpdateGameObjectRequest]@
     * 'Proto.Data_Fields.destroyGameObjects' @:: Lens' UpdateStateRequest [DestroyGameObjectRequest]@
  -}
-data UpdateStateRequest = UpdateStateRequest{_UpdateStateRequest'commands
+data UpdateStateRequest = UpdateStateRequest{_UpdateStateRequest'systemCommands
                                              :: ![SystemCommandRequest],
                                              _UpdateStateRequest'loadAssets :: ![LoadAssetRequest],
                                              _UpdateStateRequest'createGameObjects ::
@@ -922,13 +956,13 @@ instance Prelude.Show UpdateStateRequest where
           = Prelude.showChar '{'
               (Prelude.showString (Data.ProtoLens.showMessageShort __x)
                  (Prelude.showChar '}' __s))
-instance Lens.Labels.HasLens' UpdateStateRequest "commands"
+instance Lens.Labels.HasLens' UpdateStateRequest "systemCommands"
            ([SystemCommandRequest])
          where
         lensOf' _
           = (Prelude..)
-              (Lens.Family2.Unchecked.lens _UpdateStateRequest'commands
-                 (\ x__ y__ -> x__{_UpdateStateRequest'commands = y__}))
+              (Lens.Family2.Unchecked.lens _UpdateStateRequest'systemCommands
+                 (\ x__ y__ -> x__{_UpdateStateRequest'systemCommands = y__}))
               Prelude.id
 instance Lens.Labels.HasLens' UpdateStateRequest "loadAssets"
            ([LoadAssetRequest])
@@ -968,13 +1002,13 @@ instance Lens.Labels.HasLens' UpdateStateRequest
 instance Data.ProtoLens.Message UpdateStateRequest where
         messageName _ = Data.Text.pack "tarkin.data.UpdateStateRequest"
         fieldsByTag
-          = let commands__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "commands"
+          = let systemCommands__field_descriptor
+                  = Data.ProtoLens.FieldDescriptor "system_commands"
                       (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
                          Data.ProtoLens.FieldTypeDescriptor SystemCommandRequest)
                       (Data.ProtoLens.RepeatedField Data.ProtoLens.Unpacked
                          (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "commands")))
+                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "systemCommands")))
                       :: Data.ProtoLens.FieldDescriptor UpdateStateRequest
                 loadAssets__field_descriptor
                   = Data.ProtoLens.FieldDescriptor "load_assets"
@@ -1013,16 +1047,16 @@ instance Data.ProtoLens.Message UpdateStateRequest where
                       :: Data.ProtoLens.FieldDescriptor UpdateStateRequest
               in
               Data.Map.fromList
-                [(Data.ProtoLens.Tag 1, commands__field_descriptor),
+                [(Data.ProtoLens.Tag 1, systemCommands__field_descriptor),
                  (Data.ProtoLens.Tag 2, loadAssets__field_descriptor),
                  (Data.ProtoLens.Tag 3, createGameObjects__field_descriptor),
-                 (Data.ProtoLens.Tag 5, updateGameObjects__field_descriptor),
-                 (Data.ProtoLens.Tag 6, destroyGameObjects__field_descriptor)]
+                 (Data.ProtoLens.Tag 4, updateGameObjects__field_descriptor),
+                 (Data.ProtoLens.Tag 5, destroyGameObjects__field_descriptor)]
         unknownFields
           = Lens.Family2.Unchecked.lens _UpdateStateRequest'_unknownFields
               (\ x__ y__ -> x__{_UpdateStateRequest'_unknownFields = y__})
         defMessage
-          = UpdateStateRequest{_UpdateStateRequest'commands = [],
+          = UpdateStateRequest{_UpdateStateRequest'systemCommands = [],
                                _UpdateStateRequest'loadAssets = [],
                                _UpdateStateRequest'createGameObjects = [],
                                _UpdateStateRequest'updateGameObjects = [],
@@ -1032,7 +1066,7 @@ instance Control.DeepSeq.NFData UpdateStateRequest where
         rnf
           = \ x__ ->
               Control.DeepSeq.deepseq (_UpdateStateRequest'_unknownFields x__)
-                (Control.DeepSeq.deepseq (_UpdateStateRequest'commands x__)
+                (Control.DeepSeq.deepseq (_UpdateStateRequest'systemCommands x__)
                    (Control.DeepSeq.deepseq (_UpdateStateRequest'loadAssets x__)
                       (Control.DeepSeq.deepseq
                          (_UpdateStateRequest'createGameObjects x__)
@@ -1867,12 +1901,22 @@ instance Control.DeepSeq.NFData ZCanvasRenderer where
     * 'Proto.Data_Fields.referencePixelsPerUnit' @:: Lens' ZCanvasScaler Proto.Google.Protobuf.Wrappers.FloatValue@
     * 'Proto.Data_Fields.maybe'referencePixelsPerUnit' @:: Lens' ZCanvasScaler
   (Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue)@
+    * 'Proto.Data_Fields.referenceResolution' @:: Lens' ZCanvasScaler ZVector2@
+    * 'Proto.Data_Fields.maybe'referenceResolution' @:: Lens' ZCanvasScaler (Prelude.Maybe ZVector2)@
+    * 'Proto.Data_Fields.screenMatchMode' @:: Lens' ZCanvasScaler ZCanvasScaler'ScreenMatchMode@
+    * 'Proto.Data_Fields.matchWidthOrHeight' @:: Lens' ZCanvasScaler Proto.Google.Protobuf.Wrappers.FloatValue@
+    * 'Proto.Data_Fields.maybe'matchWidthOrHeight' @:: Lens' ZCanvasScaler
+  (Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue)@
  -}
 data ZCanvasScaler = ZCanvasScaler{_ZCanvasScaler'uiScaleMode ::
                                    !ZCanvasScaler'ScaleMode,
                                    _ZCanvasScaler'scaleFactor ::
                                    !(Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue),
                                    _ZCanvasScaler'referencePixelsPerUnit ::
+                                   !(Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue),
+                                   _ZCanvasScaler'referenceResolution :: !(Prelude.Maybe ZVector2),
+                                   _ZCanvasScaler'screenMatchMode :: !ZCanvasScaler'ScreenMatchMode,
+                                   _ZCanvasScaler'matchWidthOrHeight ::
                                    !(Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue),
                                    _ZCanvasScaler'_unknownFields :: !Data.ProtoLens.FieldSet}
                        deriving (Prelude.Eq, Prelude.Ord)
@@ -1923,6 +1967,48 @@ instance Lens.Labels.HasLens' ZCanvasScaler
               (Lens.Family2.Unchecked.lens _ZCanvasScaler'referencePixelsPerUnit
                  (\ x__ y__ -> x__{_ZCanvasScaler'referencePixelsPerUnit = y__}))
               Prelude.id
+instance Lens.Labels.HasLens' ZCanvasScaler "referenceResolution"
+           (ZVector2)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _ZCanvasScaler'referenceResolution
+                 (\ x__ y__ -> x__{_ZCanvasScaler'referenceResolution = y__}))
+              (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage)
+instance Lens.Labels.HasLens' ZCanvasScaler
+           "maybe'referenceResolution"
+           (Prelude.Maybe ZVector2)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _ZCanvasScaler'referenceResolution
+                 (\ x__ y__ -> x__{_ZCanvasScaler'referenceResolution = y__}))
+              Prelude.id
+instance Lens.Labels.HasLens' ZCanvasScaler "screenMatchMode"
+           (ZCanvasScaler'ScreenMatchMode)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _ZCanvasScaler'screenMatchMode
+                 (\ x__ y__ -> x__{_ZCanvasScaler'screenMatchMode = y__}))
+              Prelude.id
+instance Lens.Labels.HasLens' ZCanvasScaler "matchWidthOrHeight"
+           (Proto.Google.Protobuf.Wrappers.FloatValue)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _ZCanvasScaler'matchWidthOrHeight
+                 (\ x__ y__ -> x__{_ZCanvasScaler'matchWidthOrHeight = y__}))
+              (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage)
+instance Lens.Labels.HasLens' ZCanvasScaler
+           "maybe'matchWidthOrHeight"
+           (Prelude.Maybe Proto.Google.Protobuf.Wrappers.FloatValue)
+         where
+        lensOf' _
+          = (Prelude..)
+              (Lens.Family2.Unchecked.lens _ZCanvasScaler'matchWidthOrHeight
+                 (\ x__ y__ -> x__{_ZCanvasScaler'matchWidthOrHeight = y__}))
+              Prelude.id
 instance Data.ProtoLens.Message ZCanvasScaler where
         messageName _ = Data.Text.pack "tarkin.data.ZCanvasScaler"
         fieldsByTag
@@ -1954,11 +2040,41 @@ instance Data.ProtoLens.Message ZCanvasScaler where
                             ((Lens.Labels.proxy#) ::
                                (Lens.Labels.Proxy#) "maybe'referencePixelsPerUnit")))
                       :: Data.ProtoLens.FieldDescriptor ZCanvasScaler
+                referenceResolution__field_descriptor
+                  = Data.ProtoLens.FieldDescriptor "reference_resolution"
+                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
+                         Data.ProtoLens.FieldTypeDescriptor ZVector2)
+                      (Data.ProtoLens.OptionalField
+                         (Lens.Labels.lensOf'
+                            ((Lens.Labels.proxy#) ::
+                               (Lens.Labels.Proxy#) "maybe'referenceResolution")))
+                      :: Data.ProtoLens.FieldDescriptor ZCanvasScaler
+                screenMatchMode__field_descriptor
+                  = Data.ProtoLens.FieldDescriptor "screen_match_mode"
+                      (Data.ProtoLens.ScalarField Data.ProtoLens.EnumField ::
+                         Data.ProtoLens.FieldTypeDescriptor ZCanvasScaler'ScreenMatchMode)
+                      (Data.ProtoLens.PlainField Data.ProtoLens.Optional
+                         (Lens.Labels.lensOf'
+                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "screenMatchMode")))
+                      :: Data.ProtoLens.FieldDescriptor ZCanvasScaler
+                matchWidthOrHeight__field_descriptor
+                  = Data.ProtoLens.FieldDescriptor "match_width_or_height"
+                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
+                         Data.ProtoLens.FieldTypeDescriptor
+                           Proto.Google.Protobuf.Wrappers.FloatValue)
+                      (Data.ProtoLens.OptionalField
+                         (Lens.Labels.lensOf'
+                            ((Lens.Labels.proxy#) ::
+                               (Lens.Labels.Proxy#) "maybe'matchWidthOrHeight")))
+                      :: Data.ProtoLens.FieldDescriptor ZCanvasScaler
               in
               Data.Map.fromList
                 [(Data.ProtoLens.Tag 1, uiScaleMode__field_descriptor),
                  (Data.ProtoLens.Tag 2, scaleFactor__field_descriptor),
-                 (Data.ProtoLens.Tag 3, referencePixelsPerUnit__field_descriptor)]
+                 (Data.ProtoLens.Tag 3, referencePixelsPerUnit__field_descriptor),
+                 (Data.ProtoLens.Tag 4, referenceResolution__field_descriptor),
+                 (Data.ProtoLens.Tag 5, screenMatchMode__field_descriptor),
+                 (Data.ProtoLens.Tag 6, matchWidthOrHeight__field_descriptor)]
         unknownFields
           = Lens.Family2.Unchecked.lens _ZCanvasScaler'_unknownFields
               (\ x__ y__ -> x__{_ZCanvasScaler'_unknownFields = y__})
@@ -1967,6 +2083,9 @@ instance Data.ProtoLens.Message ZCanvasScaler where
                             Data.ProtoLens.fieldDefault,
                           _ZCanvasScaler'scaleFactor = Prelude.Nothing,
                           _ZCanvasScaler'referencePixelsPerUnit = Prelude.Nothing,
+                          _ZCanvasScaler'referenceResolution = Prelude.Nothing,
+                          _ZCanvasScaler'screenMatchMode = Data.ProtoLens.fieldDefault,
+                          _ZCanvasScaler'matchWidthOrHeight = Prelude.Nothing,
                           _ZCanvasScaler'_unknownFields = ([])}
 instance Control.DeepSeq.NFData ZCanvasScaler where
         rnf
@@ -1976,7 +2095,10 @@ instance Control.DeepSeq.NFData ZCanvasScaler where
                    (Control.DeepSeq.deepseq (_ZCanvasScaler'scaleFactor x__)
                       (Control.DeepSeq.deepseq
                          (_ZCanvasScaler'referencePixelsPerUnit x__)
-                         (()))))
+                         (Control.DeepSeq.deepseq (_ZCanvasScaler'referenceResolution x__)
+                            (Control.DeepSeq.deepseq (_ZCanvasScaler'screenMatchMode x__)
+                               (Control.DeepSeq.deepseq (_ZCanvasScaler'matchWidthOrHeight x__)
+                                  (())))))))
 data ZCanvasScaler'ScaleMode = ZCanvasScaler'UNKNOWN_SCALE_MODE
                              | ZCanvasScaler'CONSTANT_PIXEL_SIZE
                              | ZCanvasScaler'SCALE_WITH_SCREEN_SIZE
@@ -2066,6 +2188,91 @@ instance Prelude.Enum ZCanvasScaler'ScaleMode where
 instance Data.ProtoLens.FieldDefault ZCanvasScaler'ScaleMode where
         fieldDefault = ZCanvasScaler'UNKNOWN_SCALE_MODE
 instance Control.DeepSeq.NFData ZCanvasScaler'ScaleMode where
+        rnf x__ = Prelude.seq x__ (())
+data ZCanvasScaler'ScreenMatchMode = ZCanvasScaler'UNKNOWN_MATCH_MODE
+                                   | ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+                                   | ZCanvasScaler'EXPAND
+                                   | ZCanvasScaler'SHRINK
+                                   | ZCanvasScaler'ScreenMatchMode'Unrecognized !ZCanvasScaler'ScreenMatchMode'UnrecognizedValue
+                                       deriving (Prelude.Show, Prelude.Eq, Prelude.Ord)
+newtype ZCanvasScaler'ScreenMatchMode'UnrecognizedValue = ZCanvasScaler'ScreenMatchMode'UnrecognizedValue Data.Int.Int32
+                                                            deriving (Prelude.Eq, Prelude.Ord,
+                                                                      Prelude.Show)
+instance Data.ProtoLens.MessageEnum ZCanvasScaler'ScreenMatchMode
+         where
+        maybeToEnum 0 = Prelude.Just ZCanvasScaler'UNKNOWN_MATCH_MODE
+        maybeToEnum 1 = Prelude.Just ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+        maybeToEnum 2 = Prelude.Just ZCanvasScaler'EXPAND
+        maybeToEnum 3 = Prelude.Just ZCanvasScaler'SHRINK
+        maybeToEnum k
+          = Prelude.Just
+              (ZCanvasScaler'ScreenMatchMode'Unrecognized
+                 (ZCanvasScaler'ScreenMatchMode'UnrecognizedValue
+                    (Prelude.fromIntegral k)))
+        showEnum ZCanvasScaler'UNKNOWN_MATCH_MODE = "UNKNOWN_MATCH_MODE"
+        showEnum ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+          = "MATCH_WIDTH_OR_HEIGHT"
+        showEnum ZCanvasScaler'EXPAND = "EXPAND"
+        showEnum ZCanvasScaler'SHRINK = "SHRINK"
+        showEnum
+          (ZCanvasScaler'ScreenMatchMode'Unrecognized
+             (ZCanvasScaler'ScreenMatchMode'UnrecognizedValue k))
+          = Prelude.show k
+        readEnum "UNKNOWN_MATCH_MODE"
+          = Prelude.Just ZCanvasScaler'UNKNOWN_MATCH_MODE
+        readEnum "MATCH_WIDTH_OR_HEIGHT"
+          = Prelude.Just ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+        readEnum "EXPAND" = Prelude.Just ZCanvasScaler'EXPAND
+        readEnum "SHRINK" = Prelude.Just ZCanvasScaler'SHRINK
+        readEnum k
+          = (Prelude.>>=) (Text.Read.readMaybe k) Data.ProtoLens.maybeToEnum
+instance Prelude.Bounded ZCanvasScaler'ScreenMatchMode where
+        minBound = ZCanvasScaler'UNKNOWN_MATCH_MODE
+        maxBound = ZCanvasScaler'SHRINK
+instance Prelude.Enum ZCanvasScaler'ScreenMatchMode where
+        toEnum k__
+          = Prelude.maybe
+              (Prelude.error
+                 ((Prelude.++) "toEnum: unknown value for enum ScreenMatchMode: "
+                    (Prelude.show k__)))
+              Prelude.id
+              (Data.ProtoLens.maybeToEnum k__)
+        fromEnum ZCanvasScaler'UNKNOWN_MATCH_MODE = 0
+        fromEnum ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT = 1
+        fromEnum ZCanvasScaler'EXPAND = 2
+        fromEnum ZCanvasScaler'SHRINK = 3
+        fromEnum
+          (ZCanvasScaler'ScreenMatchMode'Unrecognized
+             (ZCanvasScaler'ScreenMatchMode'UnrecognizedValue k))
+          = Prelude.fromIntegral k
+        succ ZCanvasScaler'SHRINK
+          = Prelude.error
+              "ZCanvasScaler'ScreenMatchMode.succ: bad argument ZCanvasScaler'SHRINK. This value would be out of bounds."
+        succ ZCanvasScaler'UNKNOWN_MATCH_MODE
+          = ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+        succ ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT = ZCanvasScaler'EXPAND
+        succ ZCanvasScaler'EXPAND = ZCanvasScaler'SHRINK
+        succ _
+          = Prelude.error
+              "ZCanvasScaler'ScreenMatchMode.succ: bad argument: unrecognized value"
+        pred ZCanvasScaler'UNKNOWN_MATCH_MODE
+          = Prelude.error
+              "ZCanvasScaler'ScreenMatchMode.pred: bad argument ZCanvasScaler'UNKNOWN_MATCH_MODE. This value would be out of bounds."
+        pred ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+          = ZCanvasScaler'UNKNOWN_MATCH_MODE
+        pred ZCanvasScaler'EXPAND = ZCanvasScaler'MATCH_WIDTH_OR_HEIGHT
+        pred ZCanvasScaler'SHRINK = ZCanvasScaler'EXPAND
+        pred _
+          = Prelude.error
+              "ZCanvasScaler'ScreenMatchMode.pred: bad argument: unrecognized value"
+        enumFrom = Data.ProtoLens.Message.Enum.messageEnumFrom
+        enumFromTo = Data.ProtoLens.Message.Enum.messageEnumFromTo
+        enumFromThen = Data.ProtoLens.Message.Enum.messageEnumFromThen
+        enumFromThenTo = Data.ProtoLens.Message.Enum.messageEnumFromThenTo
+instance Data.ProtoLens.FieldDefault ZCanvasScaler'ScreenMatchMode
+         where
+        fieldDefault = ZCanvasScaler'UNKNOWN_MATCH_MODE
+instance Control.DeepSeq.NFData ZCanvasScaler'ScreenMatchMode where
         rnf x__ = Prelude.seq x__ (())
 {- | Fields :
 
