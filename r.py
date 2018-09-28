@@ -11,7 +11,10 @@ COMMANDS = [
   "lock", "unlock", "updateChecksum"
 ]
 
-EXPECTED_PROGRAMS = ["stack", "protoc"]
+EXPECTED_PROGRAMS = [
+  "stack",
+  "protoc" # sudo apt-get install protobuf-compiler
+]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("command", choices=COMMANDS)
@@ -95,6 +98,8 @@ def hash_third_party():
       sha_hash.update(bytes(file, 'utf-8'))
       f.close()
   return sha_hash.hexdigest()
+
+os.chdir(DIR)
 
 for program in EXPECTED_PROGRAMS:
   if not which(program):

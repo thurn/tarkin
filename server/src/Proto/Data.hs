@@ -6,10 +6,7 @@
 {-# OPTIONS_GHC -fno-warn-unused-imports#-}
 {-# OPTIONS_GHC -fno-warn-duplicate-exports#-}
 module Proto.Data
-       (CreateGameObjectRequest(), DestroyGameObjectRequest(),
-        LoadAssetRequest(), LoadAssetRequest'Asset(..),
-        _LoadAssetRequest'Prefab, _LoadAssetRequest'Sprite,
-        _LoadAssetRequest'Material, _LoadAssetRequest'Font, Request(),
+       (CreateGameObjectRequest(), DestroyGameObjectRequest(), Request(),
         Response(), SystemCommandRequest(), UpdateGameObjectRequest(),
         UpdateStateRequest(), ZAdditionalCanvasShaderChannels(..),
         ZAdditionalCanvasShaderChannels(),
@@ -334,267 +331,6 @@ instance Control.DeepSeq.NFData DestroyGameObjectRequest where
                 (_DestroyGameObjectRequest'_unknownFields x__)
                 (Control.DeepSeq.deepseq (_DestroyGameObjectRequest'gameObject x__)
                    (()))
-{- | Fields :
-
-    * 'Proto.Data_Fields.assetPath' @:: Lens' LoadAssetRequest Data.Text.Text@
-    * 'Proto.Data_Fields.maybe'asset' @:: Lens' LoadAssetRequest (Prelude.Maybe LoadAssetRequest'Asset)@
-    * 'Proto.Data_Fields.maybe'prefab' @:: Lens' LoadAssetRequest (Prelude.Maybe ZPrefab)@
-    * 'Proto.Data_Fields.prefab' @:: Lens' LoadAssetRequest ZPrefab@
-    * 'Proto.Data_Fields.maybe'sprite' @:: Lens' LoadAssetRequest (Prelude.Maybe ZSprite)@
-    * 'Proto.Data_Fields.sprite' @:: Lens' LoadAssetRequest ZSprite@
-    * 'Proto.Data_Fields.maybe'material' @:: Lens' LoadAssetRequest (Prelude.Maybe ZMaterial)@
-    * 'Proto.Data_Fields.material' @:: Lens' LoadAssetRequest ZMaterial@
-    * 'Proto.Data_Fields.maybe'font' @:: Lens' LoadAssetRequest (Prelude.Maybe ZFont)@
-    * 'Proto.Data_Fields.font' @:: Lens' LoadAssetRequest ZFont@
- -}
-data LoadAssetRequest = LoadAssetRequest{_LoadAssetRequest'assetPath
-                                         :: !Data.Text.Text,
-                                         _LoadAssetRequest'asset ::
-                                         !(Prelude.Maybe LoadAssetRequest'Asset),
-                                         _LoadAssetRequest'_unknownFields ::
-                                         !Data.ProtoLens.FieldSet}
-                          deriving (Prelude.Eq, Prelude.Ord)
-instance Prelude.Show LoadAssetRequest where
-        showsPrec _ __x __s
-          = Prelude.showChar '{'
-              (Prelude.showString (Data.ProtoLens.showMessageShort __x)
-                 (Prelude.showChar '}' __s))
-data LoadAssetRequest'Asset = LoadAssetRequest'Prefab !ZPrefab
-                            | LoadAssetRequest'Sprite !ZSprite
-                            | LoadAssetRequest'Material !ZMaterial
-                            | LoadAssetRequest'Font !ZFont
-                                deriving (Prelude.Show, Prelude.Eq, Prelude.Ord)
-instance Lens.Labels.HasLens' LoadAssetRequest "assetPath"
-           (Data.Text.Text)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'assetPath
-                 (\ x__ y__ -> x__{_LoadAssetRequest'assetPath = y__}))
-              Prelude.id
-instance Lens.Labels.HasLens' LoadAssetRequest "maybe'asset"
-           (Prelude.Maybe LoadAssetRequest'Asset)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              Prelude.id
-instance Lens.Labels.HasLens' LoadAssetRequest "maybe'prefab"
-           (Prelude.Maybe ZPrefab)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              (Lens.Family2.Unchecked.lens
-                 (\ x__ ->
-                    case x__ of
-                        Prelude.Just (LoadAssetRequest'Prefab x__val) -> Prelude.Just
-                                                                           x__val
-                        _otherwise -> Prelude.Nothing)
-                 (\ _ y__ -> Prelude.fmap LoadAssetRequest'Prefab y__))
-instance Lens.Labels.HasLens' LoadAssetRequest "prefab" (ZPrefab)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              ((Prelude..)
-                 (Lens.Family2.Unchecked.lens
-                    (\ x__ ->
-                       case x__ of
-                           Prelude.Just (LoadAssetRequest'Prefab x__val) -> Prelude.Just
-                                                                              x__val
-                           _otherwise -> Prelude.Nothing)
-                    (\ _ y__ -> Prelude.fmap LoadAssetRequest'Prefab y__))
-                 (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage))
-instance Lens.Labels.HasLens' LoadAssetRequest "maybe'sprite"
-           (Prelude.Maybe ZSprite)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              (Lens.Family2.Unchecked.lens
-                 (\ x__ ->
-                    case x__ of
-                        Prelude.Just (LoadAssetRequest'Sprite x__val) -> Prelude.Just
-                                                                           x__val
-                        _otherwise -> Prelude.Nothing)
-                 (\ _ y__ -> Prelude.fmap LoadAssetRequest'Sprite y__))
-instance Lens.Labels.HasLens' LoadAssetRequest "sprite" (ZSprite)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              ((Prelude..)
-                 (Lens.Family2.Unchecked.lens
-                    (\ x__ ->
-                       case x__ of
-                           Prelude.Just (LoadAssetRequest'Sprite x__val) -> Prelude.Just
-                                                                              x__val
-                           _otherwise -> Prelude.Nothing)
-                    (\ _ y__ -> Prelude.fmap LoadAssetRequest'Sprite y__))
-                 (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage))
-instance Lens.Labels.HasLens' LoadAssetRequest "maybe'material"
-           (Prelude.Maybe ZMaterial)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              (Lens.Family2.Unchecked.lens
-                 (\ x__ ->
-                    case x__ of
-                        Prelude.Just (LoadAssetRequest'Material x__val) -> Prelude.Just
-                                                                             x__val
-                        _otherwise -> Prelude.Nothing)
-                 (\ _ y__ -> Prelude.fmap LoadAssetRequest'Material y__))
-instance Lens.Labels.HasLens' LoadAssetRequest "material"
-           (ZMaterial)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              ((Prelude..)
-                 (Lens.Family2.Unchecked.lens
-                    (\ x__ ->
-                       case x__ of
-                           Prelude.Just (LoadAssetRequest'Material x__val) -> Prelude.Just
-                                                                                x__val
-                           _otherwise -> Prelude.Nothing)
-                    (\ _ y__ -> Prelude.fmap LoadAssetRequest'Material y__))
-                 (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage))
-instance Lens.Labels.HasLens' LoadAssetRequest "maybe'font"
-           (Prelude.Maybe ZFont)
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              (Lens.Family2.Unchecked.lens
-                 (\ x__ ->
-                    case x__ of
-                        Prelude.Just (LoadAssetRequest'Font x__val) -> Prelude.Just x__val
-                        _otherwise -> Prelude.Nothing)
-                 (\ _ y__ -> Prelude.fmap LoadAssetRequest'Font y__))
-instance Lens.Labels.HasLens' LoadAssetRequest "font" (ZFont) where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _LoadAssetRequest'asset
-                 (\ x__ y__ -> x__{_LoadAssetRequest'asset = y__}))
-              ((Prelude..)
-                 (Lens.Family2.Unchecked.lens
-                    (\ x__ ->
-                       case x__ of
-                           Prelude.Just (LoadAssetRequest'Font x__val) -> Prelude.Just x__val
-                           _otherwise -> Prelude.Nothing)
-                    (\ _ y__ -> Prelude.fmap LoadAssetRequest'Font y__))
-                 (Data.ProtoLens.maybeLens Data.ProtoLens.defMessage))
-instance Data.ProtoLens.Message LoadAssetRequest where
-        messageName _ = Data.Text.pack "tarkin.data.LoadAssetRequest"
-        fieldsByTag
-          = let assetPath__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "asset_path"
-                      (Data.ProtoLens.ScalarField Data.ProtoLens.StringField ::
-                         Data.ProtoLens.FieldTypeDescriptor Data.Text.Text)
-                      (Data.ProtoLens.PlainField Data.ProtoLens.Optional
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "assetPath")))
-                      :: Data.ProtoLens.FieldDescriptor LoadAssetRequest
-                prefab__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "prefab"
-                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
-                         Data.ProtoLens.FieldTypeDescriptor ZPrefab)
-                      (Data.ProtoLens.OptionalField
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'prefab")))
-                      :: Data.ProtoLens.FieldDescriptor LoadAssetRequest
-                sprite__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "sprite"
-                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
-                         Data.ProtoLens.FieldTypeDescriptor ZSprite)
-                      (Data.ProtoLens.OptionalField
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'sprite")))
-                      :: Data.ProtoLens.FieldDescriptor LoadAssetRequest
-                material__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "material"
-                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
-                         Data.ProtoLens.FieldTypeDescriptor ZMaterial)
-                      (Data.ProtoLens.OptionalField
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'material")))
-                      :: Data.ProtoLens.FieldDescriptor LoadAssetRequest
-                font__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "font"
-                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
-                         Data.ProtoLens.FieldTypeDescriptor ZFont)
-                      (Data.ProtoLens.OptionalField
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'font")))
-                      :: Data.ProtoLens.FieldDescriptor LoadAssetRequest
-              in
-              Data.Map.fromList
-                [(Data.ProtoLens.Tag 1, assetPath__field_descriptor),
-                 (Data.ProtoLens.Tag 2, prefab__field_descriptor),
-                 (Data.ProtoLens.Tag 3, sprite__field_descriptor),
-                 (Data.ProtoLens.Tag 4, material__field_descriptor),
-                 (Data.ProtoLens.Tag 5, font__field_descriptor)]
-        unknownFields
-          = Lens.Family2.Unchecked.lens _LoadAssetRequest'_unknownFields
-              (\ x__ y__ -> x__{_LoadAssetRequest'_unknownFields = y__})
-        defMessage
-          = LoadAssetRequest{_LoadAssetRequest'assetPath =
-                               Data.ProtoLens.fieldDefault,
-                             _LoadAssetRequest'asset = Prelude.Nothing,
-                             _LoadAssetRequest'_unknownFields = ([])}
-instance Control.DeepSeq.NFData LoadAssetRequest where
-        rnf
-          = \ x__ ->
-              Control.DeepSeq.deepseq (_LoadAssetRequest'_unknownFields x__)
-                (Control.DeepSeq.deepseq (_LoadAssetRequest'assetPath x__)
-                   (Control.DeepSeq.deepseq (_LoadAssetRequest'asset x__) (())))
-instance Control.DeepSeq.NFData LoadAssetRequest'Asset where
-        rnf (LoadAssetRequest'Prefab x__) = Control.DeepSeq.rnf x__
-        rnf (LoadAssetRequest'Sprite x__) = Control.DeepSeq.rnf x__
-        rnf (LoadAssetRequest'Material x__) = Control.DeepSeq.rnf x__
-        rnf (LoadAssetRequest'Font x__) = Control.DeepSeq.rnf x__
-_LoadAssetRequest'Prefab ::
-                         Lens.Labels.Prism.Prism' LoadAssetRequest'Asset ZPrefab
-_LoadAssetRequest'Prefab
-  = Lens.Labels.Prism.prism' LoadAssetRequest'Prefab
-      (\ p__ ->
-         case p__ of
-             LoadAssetRequest'Prefab p__val -> Prelude.Just p__val
-             _otherwise -> Prelude.Nothing)
-_LoadAssetRequest'Sprite ::
-                         Lens.Labels.Prism.Prism' LoadAssetRequest'Asset ZSprite
-_LoadAssetRequest'Sprite
-  = Lens.Labels.Prism.prism' LoadAssetRequest'Sprite
-      (\ p__ ->
-         case p__ of
-             LoadAssetRequest'Sprite p__val -> Prelude.Just p__val
-             _otherwise -> Prelude.Nothing)
-_LoadAssetRequest'Material ::
-                           Lens.Labels.Prism.Prism' LoadAssetRequest'Asset ZMaterial
-_LoadAssetRequest'Material
-  = Lens.Labels.Prism.prism' LoadAssetRequest'Material
-      (\ p__ ->
-         case p__ of
-             LoadAssetRequest'Material p__val -> Prelude.Just p__val
-             _otherwise -> Prelude.Nothing)
-_LoadAssetRequest'Font ::
-                       Lens.Labels.Prism.Prism' LoadAssetRequest'Asset ZFont
-_LoadAssetRequest'Font
-  = Lens.Labels.Prism.prism' LoadAssetRequest'Font
-      (\ p__ ->
-         case p__ of
-             LoadAssetRequest'Font p__val -> Prelude.Just p__val
-             _otherwise -> Prelude.Nothing)
 {- | Fields :
 
     * 'Proto.Data_Fields.firstNumber' @:: Lens' Request Data.Int.Int32@
@@ -934,14 +670,12 @@ instance Control.DeepSeq.NFData UpdateGameObjectRequest where
 {- | Fields :
 
     * 'Proto.Data_Fields.systemCommands' @:: Lens' UpdateStateRequest [SystemCommandRequest]@
-    * 'Proto.Data_Fields.loadAssets' @:: Lens' UpdateStateRequest [LoadAssetRequest]@
     * 'Proto.Data_Fields.createGameObjects' @:: Lens' UpdateStateRequest [CreateGameObjectRequest]@
     * 'Proto.Data_Fields.updateGameObjects' @:: Lens' UpdateStateRequest [UpdateGameObjectRequest]@
     * 'Proto.Data_Fields.destroyGameObjects' @:: Lens' UpdateStateRequest [DestroyGameObjectRequest]@
  -}
 data UpdateStateRequest = UpdateStateRequest{_UpdateStateRequest'systemCommands
                                              :: ![SystemCommandRequest],
-                                             _UpdateStateRequest'loadAssets :: ![LoadAssetRequest],
                                              _UpdateStateRequest'createGameObjects ::
                                              ![CreateGameObjectRequest],
                                              _UpdateStateRequest'updateGameObjects ::
@@ -963,14 +697,6 @@ instance Lens.Labels.HasLens' UpdateStateRequest "systemCommands"
           = (Prelude..)
               (Lens.Family2.Unchecked.lens _UpdateStateRequest'systemCommands
                  (\ x__ y__ -> x__{_UpdateStateRequest'systemCommands = y__}))
-              Prelude.id
-instance Lens.Labels.HasLens' UpdateStateRequest "loadAssets"
-           ([LoadAssetRequest])
-         where
-        lensOf' _
-          = (Prelude..)
-              (Lens.Family2.Unchecked.lens _UpdateStateRequest'loadAssets
-                 (\ x__ y__ -> x__{_UpdateStateRequest'loadAssets = y__}))
               Prelude.id
 instance Lens.Labels.HasLens' UpdateStateRequest
            "createGameObjects"
@@ -1010,14 +736,6 @@ instance Data.ProtoLens.Message UpdateStateRequest where
                          (Lens.Labels.lensOf'
                             ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "systemCommands")))
                       :: Data.ProtoLens.FieldDescriptor UpdateStateRequest
-                loadAssets__field_descriptor
-                  = Data.ProtoLens.FieldDescriptor "load_assets"
-                      (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
-                         Data.ProtoLens.FieldTypeDescriptor LoadAssetRequest)
-                      (Data.ProtoLens.RepeatedField Data.ProtoLens.Unpacked
-                         (Lens.Labels.lensOf'
-                            ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "loadAssets")))
-                      :: Data.ProtoLens.FieldDescriptor UpdateStateRequest
                 createGameObjects__field_descriptor
                   = Data.ProtoLens.FieldDescriptor "create_game_objects"
                       (Data.ProtoLens.MessageField Data.ProtoLens.MessageType ::
@@ -1048,7 +766,6 @@ instance Data.ProtoLens.Message UpdateStateRequest where
               in
               Data.Map.fromList
                 [(Data.ProtoLens.Tag 1, systemCommands__field_descriptor),
-                 (Data.ProtoLens.Tag 2, loadAssets__field_descriptor),
                  (Data.ProtoLens.Tag 3, createGameObjects__field_descriptor),
                  (Data.ProtoLens.Tag 4, updateGameObjects__field_descriptor),
                  (Data.ProtoLens.Tag 5, destroyGameObjects__field_descriptor)]
@@ -1057,7 +774,6 @@ instance Data.ProtoLens.Message UpdateStateRequest where
               (\ x__ y__ -> x__{_UpdateStateRequest'_unknownFields = y__})
         defMessage
           = UpdateStateRequest{_UpdateStateRequest'systemCommands = [],
-                               _UpdateStateRequest'loadAssets = [],
                                _UpdateStateRequest'createGameObjects = [],
                                _UpdateStateRequest'updateGameObjects = [],
                                _UpdateStateRequest'destroyGameObjects = [],
@@ -1067,14 +783,13 @@ instance Control.DeepSeq.NFData UpdateStateRequest where
           = \ x__ ->
               Control.DeepSeq.deepseq (_UpdateStateRequest'_unknownFields x__)
                 (Control.DeepSeq.deepseq (_UpdateStateRequest'systemCommands x__)
-                   (Control.DeepSeq.deepseq (_UpdateStateRequest'loadAssets x__)
+                   (Control.DeepSeq.deepseq
+                      (_UpdateStateRequest'createGameObjects x__)
                       (Control.DeepSeq.deepseq
-                         (_UpdateStateRequest'createGameObjects x__)
+                         (_UpdateStateRequest'updateGameObjects x__)
                          (Control.DeepSeq.deepseq
-                            (_UpdateStateRequest'updateGameObjects x__)
-                            (Control.DeepSeq.deepseq
-                               (_UpdateStateRequest'destroyGameObjects x__)
-                               (()))))))
+                            (_UpdateStateRequest'destroyGameObjects x__)
+                            (())))))
 data ZAdditionalCanvasShaderChannels = UNKNOWN_ADDITIONAL_CANVAS_SHADER_CHANNELS
                                      | NONE
                                      | TEX_COORD_1

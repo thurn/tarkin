@@ -1,4 +1,4 @@
-module Tarkin.Generated.GameObjects where
+module Generated.GameObjects where
 
 directionalLight = 0
 mainCamera = 1

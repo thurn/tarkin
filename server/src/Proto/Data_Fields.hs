@@ -72,13 +72,6 @@ anchorMin ::
 anchorMin
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "anchorMin")
-assetPath ::
-          forall f s a .
-            (Prelude.Functor f, Lens.Labels.HasLens' s "assetPath" a) =>
-            Lens.Family2.LensLike' f s a
-assetPath
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "assetPath")
 b ::
   forall f s a . (Prelude.Functor f, Lens.Labels.HasLens' s "b" a) =>
     Lens.Family2.LensLike' f s a
@@ -354,13 +347,6 @@ lineSpacing ::
 lineSpacing
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "lineSpacing")
-loadAssets ::
-           forall f s a .
-             (Prelude.Functor f, Lens.Labels.HasLens' s "loadAssets" a) =>
-             Lens.Family2.LensLike' f s a
-loadAssets
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "loadAssets")
 localEulerAngles ::
                  forall f s a .
                    (Prelude.Functor f, Lens.Labels.HasLens' s "localEulerAngles" a) =>
@@ -441,13 +427,6 @@ maybe'anchorMin ::
 maybe'anchorMin
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'anchorMin")
-maybe'asset ::
-            forall f s a .
-              (Prelude.Functor f, Lens.Labels.HasLens' s "maybe'asset" a) =>
-              Lens.Family2.LensLike' f s a
-maybe'asset
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "maybe'asset")
 maybe'behaviour ::
                 forall f s a .
                   (Prelude.Functor f, Lens.Labels.HasLens' s "maybe'behaviour" a) =>

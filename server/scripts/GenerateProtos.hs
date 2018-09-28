@@ -5,4 +5,7 @@ module GenerateProtos where
 
 import Data.ProtoLens.Setup
 
-main = generateProtos "../proto" "src" ["../proto/data.proto"]
+main =
+  do
+    generateProtos "." "src" ["google/protobuf/wrappers.proto"]
+    generateProtos "../proto" "src" ["../proto/data.proto"]

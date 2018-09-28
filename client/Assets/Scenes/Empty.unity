@@ -341,6 +341,8 @@ GameObject:
   - component: {fileID: 1398929281}
   - component: {fileID: 1398929283}
   - component: {fileID: 1398929284}
+  - component: {fileID: 1398929287}
+  - component: {fileID: 1398929286}
   - component: {fileID: 1398929285}
   m_Layer: 0
   m_Name: Root
@@ -416,11 +418,95 @@ MonoBehaviour:
   m_GameObject: {fileID: 1398929280}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e829b5a5fb30ec47ba274e27de3892c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefabs:
+  - {fileID: 7840338691873103489, guid: 9d9874264a70f4dff92144b61f9bb1df, type: 3}
+  - {fileID: 993426773313545581, guid: f4ffb75c0b3404fa0a24a57a43af2f2c, type: 3}
+  - {fileID: 8523160969398477674, guid: fcf65b364f39145e7af222358d96cb10, type: 3}
+  - {fileID: 698101409927826218, guid: 82e922e1ac7d14b67a6694fad1ae1684, type: 3}
+  Sprites:
+  - {fileID: 21300000, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300002, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300004, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300006, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300008, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300010, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300012, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300014, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300016, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300018, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300020, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300022, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300024, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300026, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300028, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300030, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300032, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300034, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300036, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300038, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300040, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300042, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300044, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300046, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300048, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300050, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300052, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300054, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300056, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300058, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300060, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300062, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300064, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300066, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300068, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300070, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300072, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300074, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300076, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300078, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300080, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300082, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300084, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300086, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300088, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300090, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300092, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300094, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300096, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300098, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300100, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300102, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300104, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300106, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300108, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300110, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300112, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300114, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300116, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300118, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
+  - {fileID: 21300000, guid: 4dfd3f5da88944ec6ac5977d676c30c6, type: 3}
+  - {fileID: 21300000, guid: acc34040a66fe4170bc8885268860cfe, type: 3}
+  - {fileID: 21300000, guid: 3cf132d4fa07f4f0cb2883499c5c7dd0, type: 3}
+  - {fileID: 21300000, guid: f8eca3a711f4842eba0c52ea9885ef7f, type: 3}
+  - {fileID: 21300000, guid: 4c433abcdb28444ebb7bd395ba5c76fc, type: 3}
+  - {fileID: 21300000, guid: 01e02995805eb483690380a911a657e2, type: 3}
+  Materials: []
+  Fonts: []
+--- !u!114 &1398929286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398929280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d1f8ddcaaca4f98995f9bd067df62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConstantsPath: ../server/src/Generated/GameObjects.hs
-  ModuleName: Tarkin.Generated.GameObjects
   GameObjects:
   - {fileID: 917074277}
   - {fileID: 922385735}
@@ -436,6 +522,20 @@ MonoBehaviour:
   - {fileID: 7037400245665778464}
   - {fileID: 7037400245956631042}
   - {fileID: 7037400246294264005}
+--- !u!114 &1398929287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398929280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3426685830bbbb24c930a6549adb3f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConstantsPath: ../server/src/generated/GameObjects.hs
+  ModuleName: Generated.GameObjects
 --- !u!1 &7037400244347440348
 GameObject:
   m_ObjectHideFlags: 0

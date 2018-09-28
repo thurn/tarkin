@@ -54,15 +54,6 @@ namespace Tarkin
         }
       }
 
-      if (request.LoadAssets.Count != 0)
-      {
-        var result = await _assetService.LoadAssets(request.LoadAssets);
-        if (result.Failed)
-        {
-          return result;
-        }
-      }
-
       foreach (var createGameObject in request.CreateGameObjects)
       {
         _gameObjectService.CreateGameObject(createGameObject);

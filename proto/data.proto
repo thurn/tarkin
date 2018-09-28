@@ -390,18 +390,6 @@ enum ZComponentType {
 message SystemCommandRequest {
 }
 
-message LoadAssetRequest {
-  // Asset reference path
-  string asset_path = 1;
-
-  oneof asset {
-    ZPrefab prefab = 2;
-    ZSprite sprite = 3;
-    ZMaterial material = 4;
-    ZFont font = 5;
-  }
-}
-
 message CreateGameObjectRequest {
   // Unique integer which identifies this GameObject for future reference (should be
   // allocated sequentially for maximum performance):
@@ -448,8 +436,6 @@ message DestroyGameObjectRequest {
 message UpdateStateRequest {
   // System-level commands
   repeated SystemCommandRequest system_commands = 1;
-  // Assets used by this update. Load should be completed before the below requests are processed.
-  repeated LoadAssetRequest load_assets = 2;
   // Create new game objects:
   repeated CreateGameObjectRequest create_game_objects = 3;
   // Update existing game objects:

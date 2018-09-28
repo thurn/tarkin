@@ -129,47 +129,41 @@ namespace Tarkin.Data {
             "CgliZWhhdmlvdXIYASABKAsyFy50YXJraW4uZGF0YS5aQmVoYXZpb3VySAAS",
             "NwoPY2FudmFzX3JlbmRlcmVyGAIgASgLMhwudGFya2luLmRhdGEuWkNhbnZh",
             "c1JlbmRlcmVySABCCwoJY29tcG9uZW50IhYKFFN5c3RlbUNvbW1hbmRSZXF1",
-            "ZXN0Is8BChBMb2FkQXNzZXRSZXF1ZXN0EhIKCmFzc2V0X3BhdGgYASABKAkS",
-            "JgoGcHJlZmFiGAIgASgLMhQudGFya2luLmRhdGEuWlByZWZhYkgAEiYKBnNw",
-            "cml0ZRgDIAEoCzIULnRhcmtpbi5kYXRhLlpTcHJpdGVIABIqCghtYXRlcmlh",
-            "bBgEIAEoCzIWLnRhcmtpbi5kYXRhLlpNYXRlcmlhbEgAEiIKBGZvbnQYBSAB",
-            "KAsyEi50YXJraW4uZGF0YS5aRm9udEgAQgcKBWFzc2V0IvMBChdDcmVhdGVH",
-            "YW1lT2JqZWN0UmVxdWVzdBIVCg1uZXdfb2JqZWN0X2lkGAEgASgNEgwKBG5h",
-            "bWUYAiABKAkSJAoGcHJlZmFiGAMgASgLMhQudGFya2luLmRhdGEuWlByZWZh",
-            "YhI0ChJwYXJlbnRfZ2FtZV9vYmplY3QYBCABKAsyGC50YXJraW4uZGF0YS5a",
-            "R2FtZU9iamVjdBIrCgpjb21wb25lbnRzGAUgAygLMhcudGFya2luLmRhdGEu",
-            "WkNvbXBvbmVudBIqCgl0cmFuc2Zvcm0YBiABKAsyFy50YXJraW4uZGF0YS5a",
-            "VHJhbnNmb3JtIpICChdVcGRhdGVHYW1lT2JqZWN0UmVxdWVzdBItCgtnYW1l",
-            "X29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2JqZWN0EjQKEnBh",
-            "cmVudF9nYW1lX29iamVjdBgCIAEoCzIYLnRhcmtpbi5kYXRhLlpHYW1lT2Jq",
-            "ZWN0EisKCmNvbXBvbmVudHMYAyADKAsyFy50YXJraW4uZGF0YS5aQ29tcG9u",
-            "ZW50EjkKFGNvbXBvbmVudHNfdG9fcmVtb3ZlGAQgAygOMhsudGFya2luLmRh",
-            "dGEuWkNvbXBvbmVudFR5cGUSKgoJdHJhbnNmb3JtGAUgASgLMhcudGFya2lu",
-            "LmRhdGEuWlRyYW5zZm9ybSJJChhEZXN0cm95R2FtZU9iamVjdFJlcXVlc3QS",
-            "LQoLZ2FtZV9vYmplY3QYASABKAsyGC50YXJraW4uZGF0YS5aR2FtZU9iamVj",
-            "dCLPAgoSVXBkYXRlU3RhdGVSZXF1ZXN0EjoKD3N5c3RlbV9jb21tYW5kcxgB",
-            "IAMoCzIhLnRhcmtpbi5kYXRhLlN5c3RlbUNvbW1hbmRSZXF1ZXN0EjIKC2xv",
-            "YWRfYXNzZXRzGAIgAygLMh0udGFya2luLmRhdGEuTG9hZEFzc2V0UmVxdWVz",
-            "dBJBChNjcmVhdGVfZ2FtZV9vYmplY3RzGAMgAygLMiQudGFya2luLmRhdGEu",
-            "Q3JlYXRlR2FtZU9iamVjdFJlcXVlc3QSQQoTdXBkYXRlX2dhbWVfb2JqZWN0",
-            "cxgEIAMoCzIkLnRhcmtpbi5kYXRhLlVwZGF0ZUdhbWVPYmplY3RSZXF1ZXN0",
-            "EkMKFGRlc3Ryb3lfZ2FtZV9vYmplY3RzGAUgAygLMiUudGFya2luLmRhdGEu",
-            "RGVzdHJveUdhbWVPYmplY3RSZXF1ZXN0KmoKC1pSZW5kZXJNb2RlEhcKE1VO",
-            "S05PV05fUkVOREVSX01PREUQABIYChRTQ1JFRU5fU1BBQ0VfT1ZFUkxBWRAB",
-            "EhcKE1NDUkVFTl9TUEFDRV9DQU1FUkEQAhIPCgtXT1JMRF9TUEFDRRADKqYB",
-            "Ch9aQWRkaXRpb25hbENhbnZhc1NoYWRlckNoYW5uZWxzEi0KKVVOS05PV05f",
-            "QURESVRJT05BTF9DQU5WQVNfU0hBREVSX0NIQU5ORUxTEAASCAoETk9ORRAB",
-            "Eg8KC1RFWF9DT09SRF8xEAISDwoLVEVYX0NPT1JEXzIQAxIPCgtURVhfQ09P",
-            "UkRfMxAEEgoKBk5PUk1BTBAFEgsKB1RBTkdFTlQQBirCAQoLWlRleHRBbmNo",
-            "b3ISFwoTVU5LTk9XTl9URVhUX0FOQ0hPUhAAEg4KClVQUEVSX0xFRlQQARIQ",
-            "CgxVUFBFUl9DRU5URVIQAhIPCgtVUFBFUl9SSUdIVBADEg8KC01JRERMRV9M",
-            "RUZUEAQSEQoNTUlERExFX0NFTlRFUhAFEhAKDE1JRERMRV9SSUdIVBAGEg4K",
-            "CkxPV0VSX0xFRlQQBxIQCgxMT1dFUl9DRU5URVIQCBIPCgtMT1dFUl9SSUdI",
-            "VBAJKr0BCg5aQ29tcG9uZW50VHlwZRIQCgxVTktOT1dOX1RZUEUQABIKCgZD",
-            "QU5WQVMQARIRCg1DQU5WQVNfU0NBTEVSEAISEwoPQ0FOVkFTX1JFTkRFUkVS",
-            "EAMSFQoRR1JBUEhJQ19SQVlDQVNURVIQBBIQCgxFVkVOVF9TWVNURU0QBRIb",
-            "ChdTVEFOREFMT05FX0lOUFVUX01PRFVMRRAGEgkKBUlNQUdFEAcSCgoGQlVU",
-            "VE9OEAgSCAoEVEVYVBAJYgZwcm90bzM="));
+            "ZXN0IvMBChdDcmVhdGVHYW1lT2JqZWN0UmVxdWVzdBIVCg1uZXdfb2JqZWN0",
+            "X2lkGAEgASgNEgwKBG5hbWUYAiABKAkSJAoGcHJlZmFiGAMgASgLMhQudGFy",
+            "a2luLmRhdGEuWlByZWZhYhI0ChJwYXJlbnRfZ2FtZV9vYmplY3QYBCABKAsy",
+            "GC50YXJraW4uZGF0YS5aR2FtZU9iamVjdBIrCgpjb21wb25lbnRzGAUgAygL",
+            "MhcudGFya2luLmRhdGEuWkNvbXBvbmVudBIqCgl0cmFuc2Zvcm0YBiABKAsy",
+            "Fy50YXJraW4uZGF0YS5aVHJhbnNmb3JtIpICChdVcGRhdGVHYW1lT2JqZWN0",
+            "UmVxdWVzdBItCgtnYW1lX29iamVjdBgBIAEoCzIYLnRhcmtpbi5kYXRhLlpH",
+            "YW1lT2JqZWN0EjQKEnBhcmVudF9nYW1lX29iamVjdBgCIAEoCzIYLnRhcmtp",
+            "bi5kYXRhLlpHYW1lT2JqZWN0EisKCmNvbXBvbmVudHMYAyADKAsyFy50YXJr",
+            "aW4uZGF0YS5aQ29tcG9uZW50EjkKFGNvbXBvbmVudHNfdG9fcmVtb3ZlGAQg",
+            "AygOMhsudGFya2luLmRhdGEuWkNvbXBvbmVudFR5cGUSKgoJdHJhbnNmb3Jt",
+            "GAUgASgLMhcudGFya2luLmRhdGEuWlRyYW5zZm9ybSJJChhEZXN0cm95R2Ft",
+            "ZU9iamVjdFJlcXVlc3QSLQoLZ2FtZV9vYmplY3QYASABKAsyGC50YXJraW4u",
+            "ZGF0YS5aR2FtZU9iamVjdCKbAgoSVXBkYXRlU3RhdGVSZXF1ZXN0EjoKD3N5",
+            "c3RlbV9jb21tYW5kcxgBIAMoCzIhLnRhcmtpbi5kYXRhLlN5c3RlbUNvbW1h",
+            "bmRSZXF1ZXN0EkEKE2NyZWF0ZV9nYW1lX29iamVjdHMYAyADKAsyJC50YXJr",
+            "aW4uZGF0YS5DcmVhdGVHYW1lT2JqZWN0UmVxdWVzdBJBChN1cGRhdGVfZ2Ft",
+            "ZV9vYmplY3RzGAQgAygLMiQudGFya2luLmRhdGEuVXBkYXRlR2FtZU9iamVj",
+            "dFJlcXVlc3QSQwoUZGVzdHJveV9nYW1lX29iamVjdHMYBSADKAsyJS50YXJr",
+            "aW4uZGF0YS5EZXN0cm95R2FtZU9iamVjdFJlcXVlc3QqagoLWlJlbmRlck1v",
+            "ZGUSFwoTVU5LTk9XTl9SRU5ERVJfTU9ERRAAEhgKFFNDUkVFTl9TUEFDRV9P",
+            "VkVSTEFZEAESFwoTU0NSRUVOX1NQQUNFX0NBTUVSQRACEg8KC1dPUkxEX1NQ",
+            "QUNFEAMqpgEKH1pBZGRpdGlvbmFsQ2FudmFzU2hhZGVyQ2hhbm5lbHMSLQop",
+            "VU5LTk9XTl9BRERJVElPTkFMX0NBTlZBU19TSEFERVJfQ0hBTk5FTFMQABII",
+            "CgROT05FEAESDwoLVEVYX0NPT1JEXzEQAhIPCgtURVhfQ09PUkRfMhADEg8K",
+            "C1RFWF9DT09SRF8zEAQSCgoGTk9STUFMEAUSCwoHVEFOR0VOVBAGKsIBCgta",
+            "VGV4dEFuY2hvchIXChNVTktOT1dOX1RFWFRfQU5DSE9SEAASDgoKVVBQRVJf",
+            "TEVGVBABEhAKDFVQUEVSX0NFTlRFUhACEg8KC1VQUEVSX1JJR0hUEAMSDwoL",
+            "TUlERExFX0xFRlQQBBIRCg1NSURETEVfQ0VOVEVSEAUSEAoMTUlERExFX1JJ",
+            "R0hUEAYSDgoKTE9XRVJfTEVGVBAHEhAKDExPV0VSX0NFTlRFUhAIEg8KC0xP",
+            "V0VSX1JJR0hUEAkqvQEKDlpDb21wb25lbnRUeXBlEhAKDFVOS05PV05fVFlQ",
+            "RRAAEgoKBkNBTlZBUxABEhEKDUNBTlZBU19TQ0FMRVIQAhITCg9DQU5WQVNf",
+            "UkVOREVSRVIQAxIVChFHUkFQSElDX1JBWUNBU1RFUhAEEhAKDEVWRU5UX1NZ",
+            "U1RFTRAFEhsKF1NUQU5EQUxPTkVfSU5QVVRfTU9EVUxFEAYSCQoFSU1BR0UQ",
+            "BxIKCgZCVVRUT04QCBIICgRURVhUEAliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Tarkin.Data.ZRenderMode), typeof(global::Tarkin.Data.ZAdditionalCanvasShaderChannels), typeof(global::Tarkin.Data.ZTextAnchor), typeof(global::Tarkin.Data.ZComponentType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -199,11 +193,10 @@ namespace Tarkin.Data {
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZBehaviour), global::Tarkin.Data.ZBehaviour.Parser, new[]{ "Enabled", "Canvas", "CanvasScaler", "GraphicRaycaster", "EventSystem", "StandaloneInputModule", "Graphic", "Button" }, new[]{ "Behaviour" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.ZComponent), global::Tarkin.Data.ZComponent.Parser, new[]{ "Behaviour", "CanvasRenderer" }, new[]{ "Component" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.SystemCommandRequest), global::Tarkin.Data.SystemCommandRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.LoadAssetRequest), global::Tarkin.Data.LoadAssetRequest.Parser, new[]{ "AssetPath", "Prefab", "Sprite", "Material", "Font" }, new[]{ "Asset" }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.CreateGameObjectRequest), global::Tarkin.Data.CreateGameObjectRequest.Parser, new[]{ "NewObjectId", "Name", "Prefab", "ParentGameObject", "Components", "Transform" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateGameObjectRequest), global::Tarkin.Data.UpdateGameObjectRequest.Parser, new[]{ "GameObject", "ParentGameObject", "Components", "ComponentsToRemove", "Transform" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.DestroyGameObjectRequest), global::Tarkin.Data.DestroyGameObjectRequest.Parser, new[]{ "GameObject" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateStateRequest), global::Tarkin.Data.UpdateStateRequest.Parser, new[]{ "SystemCommands", "LoadAssets", "CreateGameObjects", "UpdateGameObjects", "DestroyGameObjects" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Tarkin.Data.UpdateStateRequest), global::Tarkin.Data.UpdateStateRequest.Parser, new[]{ "SystemCommands", "CreateGameObjects", "UpdateGameObjects", "DestroyGameObjects" }, null, null, null)
           }));
     }
     #endregion
@@ -6085,319 +6078,6 @@ namespace Tarkin.Data {
 
   }
 
-  public sealed partial class LoadAssetRequest : pb::IMessage<LoadAssetRequest> {
-    private static readonly pb::MessageParser<LoadAssetRequest> _parser = new pb::MessageParser<LoadAssetRequest>(() => new LoadAssetRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<LoadAssetRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[26]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoadAssetRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoadAssetRequest(LoadAssetRequest other) : this() {
-      assetPath_ = other.assetPath_;
-      switch (other.AssetCase) {
-        case AssetOneofCase.Prefab:
-          Prefab = other.Prefab.Clone();
-          break;
-        case AssetOneofCase.Sprite:
-          Sprite = other.Sprite.Clone();
-          break;
-        case AssetOneofCase.Material:
-          Material = other.Material.Clone();
-          break;
-        case AssetOneofCase.Font:
-          Font = other.Font.Clone();
-          break;
-      }
-
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LoadAssetRequest Clone() {
-      return new LoadAssetRequest(this);
-    }
-
-    /// <summary>Field number for the "asset_path" field.</summary>
-    public const int AssetPathFieldNumber = 1;
-    private string assetPath_ = "";
-    /// <summary>
-    /// Asset reference path
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string AssetPath {
-      get { return assetPath_; }
-      set {
-        assetPath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "prefab" field.</summary>
-    public const int PrefabFieldNumber = 2;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Tarkin.Data.ZPrefab Prefab {
-      get { return assetCase_ == AssetOneofCase.Prefab ? (global::Tarkin.Data.ZPrefab) asset_ : null; }
-      set {
-        asset_ = value;
-        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Prefab;
-      }
-    }
-
-    /// <summary>Field number for the "sprite" field.</summary>
-    public const int SpriteFieldNumber = 3;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Tarkin.Data.ZSprite Sprite {
-      get { return assetCase_ == AssetOneofCase.Sprite ? (global::Tarkin.Data.ZSprite) asset_ : null; }
-      set {
-        asset_ = value;
-        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Sprite;
-      }
-    }
-
-    /// <summary>Field number for the "material" field.</summary>
-    public const int MaterialFieldNumber = 4;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Tarkin.Data.ZMaterial Material {
-      get { return assetCase_ == AssetOneofCase.Material ? (global::Tarkin.Data.ZMaterial) asset_ : null; }
-      set {
-        asset_ = value;
-        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Material;
-      }
-    }
-
-    /// <summary>Field number for the "font" field.</summary>
-    public const int FontFieldNumber = 5;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Tarkin.Data.ZFont Font {
-      get { return assetCase_ == AssetOneofCase.Font ? (global::Tarkin.Data.ZFont) asset_ : null; }
-      set {
-        asset_ = value;
-        assetCase_ = value == null ? AssetOneofCase.None : AssetOneofCase.Font;
-      }
-    }
-
-    private object asset_;
-    /// <summary>Enum of possible cases for the "asset" oneof.</summary>
-    public enum AssetOneofCase {
-      None = 0,
-      Prefab = 2,
-      Sprite = 3,
-      Material = 4,
-      Font = 5,
-    }
-    private AssetOneofCase assetCase_ = AssetOneofCase.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public AssetOneofCase AssetCase {
-      get { return assetCase_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearAsset() {
-      assetCase_ = AssetOneofCase.None;
-      asset_ = null;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as LoadAssetRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(LoadAssetRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (AssetPath != other.AssetPath) return false;
-      if (!object.Equals(Prefab, other.Prefab)) return false;
-      if (!object.Equals(Sprite, other.Sprite)) return false;
-      if (!object.Equals(Material, other.Material)) return false;
-      if (!object.Equals(Font, other.Font)) return false;
-      if (AssetCase != other.AssetCase) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (AssetPath.Length != 0) hash ^= AssetPath.GetHashCode();
-      if (assetCase_ == AssetOneofCase.Prefab) hash ^= Prefab.GetHashCode();
-      if (assetCase_ == AssetOneofCase.Sprite) hash ^= Sprite.GetHashCode();
-      if (assetCase_ == AssetOneofCase.Material) hash ^= Material.GetHashCode();
-      if (assetCase_ == AssetOneofCase.Font) hash ^= Font.GetHashCode();
-      hash ^= (int) assetCase_;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (AssetPath.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(AssetPath);
-      }
-      if (assetCase_ == AssetOneofCase.Prefab) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Prefab);
-      }
-      if (assetCase_ == AssetOneofCase.Sprite) {
-        output.WriteRawTag(26);
-        output.WriteMessage(Sprite);
-      }
-      if (assetCase_ == AssetOneofCase.Material) {
-        output.WriteRawTag(34);
-        output.WriteMessage(Material);
-      }
-      if (assetCase_ == AssetOneofCase.Font) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Font);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (AssetPath.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(AssetPath);
-      }
-      if (assetCase_ == AssetOneofCase.Prefab) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Prefab);
-      }
-      if (assetCase_ == AssetOneofCase.Sprite) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sprite);
-      }
-      if (assetCase_ == AssetOneofCase.Material) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Material);
-      }
-      if (assetCase_ == AssetOneofCase.Font) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Font);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(LoadAssetRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.AssetPath.Length != 0) {
-        AssetPath = other.AssetPath;
-      }
-      switch (other.AssetCase) {
-        case AssetOneofCase.Prefab:
-          if (Prefab == null) {
-            Prefab = new global::Tarkin.Data.ZPrefab();
-          }
-          Prefab.MergeFrom(other.Prefab);
-          break;
-        case AssetOneofCase.Sprite:
-          if (Sprite == null) {
-            Sprite = new global::Tarkin.Data.ZSprite();
-          }
-          Sprite.MergeFrom(other.Sprite);
-          break;
-        case AssetOneofCase.Material:
-          if (Material == null) {
-            Material = new global::Tarkin.Data.ZMaterial();
-          }
-          Material.MergeFrom(other.Material);
-          break;
-        case AssetOneofCase.Font:
-          if (Font == null) {
-            Font = new global::Tarkin.Data.ZFont();
-          }
-          Font.MergeFrom(other.Font);
-          break;
-      }
-
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            AssetPath = input.ReadString();
-            break;
-          }
-          case 18: {
-            global::Tarkin.Data.ZPrefab subBuilder = new global::Tarkin.Data.ZPrefab();
-            if (assetCase_ == AssetOneofCase.Prefab) {
-              subBuilder.MergeFrom(Prefab);
-            }
-            input.ReadMessage(subBuilder);
-            Prefab = subBuilder;
-            break;
-          }
-          case 26: {
-            global::Tarkin.Data.ZSprite subBuilder = new global::Tarkin.Data.ZSprite();
-            if (assetCase_ == AssetOneofCase.Sprite) {
-              subBuilder.MergeFrom(Sprite);
-            }
-            input.ReadMessage(subBuilder);
-            Sprite = subBuilder;
-            break;
-          }
-          case 34: {
-            global::Tarkin.Data.ZMaterial subBuilder = new global::Tarkin.Data.ZMaterial();
-            if (assetCase_ == AssetOneofCase.Material) {
-              subBuilder.MergeFrom(Material);
-            }
-            input.ReadMessage(subBuilder);
-            Material = subBuilder;
-            break;
-          }
-          case 42: {
-            global::Tarkin.Data.ZFont subBuilder = new global::Tarkin.Data.ZFont();
-            if (assetCase_ == AssetOneofCase.Font) {
-              subBuilder.MergeFrom(Font);
-            }
-            input.ReadMessage(subBuilder);
-            Font = subBuilder;
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class CreateGameObjectRequest : pb::IMessage<CreateGameObjectRequest> {
     private static readonly pb::MessageParser<CreateGameObjectRequest> _parser = new pb::MessageParser<CreateGameObjectRequest>(() => new CreateGameObjectRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -6406,7 +6086,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6704,7 +6384,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6963,7 +6643,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7101,7 +6781,7 @@ namespace Tarkin.Data {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Tarkin.Data.DataReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7119,7 +6799,6 @@ namespace Tarkin.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public UpdateStateRequest(UpdateStateRequest other) : this() {
       systemCommands_ = other.systemCommands_.Clone();
-      loadAssets_ = other.loadAssets_.Clone();
       createGameObjects_ = other.createGameObjects_.Clone();
       updateGameObjects_ = other.updateGameObjects_.Clone();
       destroyGameObjects_ = other.destroyGameObjects_.Clone();
@@ -7142,19 +6821,6 @@ namespace Tarkin.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Tarkin.Data.SystemCommandRequest> SystemCommands {
       get { return systemCommands_; }
-    }
-
-    /// <summary>Field number for the "load_assets" field.</summary>
-    public const int LoadAssetsFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::Tarkin.Data.LoadAssetRequest> _repeated_loadAssets_codec
-        = pb::FieldCodec.ForMessage(18, global::Tarkin.Data.LoadAssetRequest.Parser);
-    private readonly pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest> loadAssets_ = new pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest>();
-    /// <summary>
-    /// Assets used by this update. Load should be completed before the below requests are processed.
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Tarkin.Data.LoadAssetRequest> LoadAssets {
-      get { return loadAssets_; }
     }
 
     /// <summary>Field number for the "create_game_objects" field.</summary>
@@ -7210,7 +6876,6 @@ namespace Tarkin.Data {
         return true;
       }
       if(!systemCommands_.Equals(other.systemCommands_)) return false;
-      if(!loadAssets_.Equals(other.loadAssets_)) return false;
       if(!createGameObjects_.Equals(other.createGameObjects_)) return false;
       if(!updateGameObjects_.Equals(other.updateGameObjects_)) return false;
       if(!destroyGameObjects_.Equals(other.destroyGameObjects_)) return false;
@@ -7221,7 +6886,6 @@ namespace Tarkin.Data {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= systemCommands_.GetHashCode();
-      hash ^= loadAssets_.GetHashCode();
       hash ^= createGameObjects_.GetHashCode();
       hash ^= updateGameObjects_.GetHashCode();
       hash ^= destroyGameObjects_.GetHashCode();
@@ -7239,7 +6903,6 @@ namespace Tarkin.Data {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
       systemCommands_.WriteTo(output, _repeated_systemCommands_codec);
-      loadAssets_.WriteTo(output, _repeated_loadAssets_codec);
       createGameObjects_.WriteTo(output, _repeated_createGameObjects_codec);
       updateGameObjects_.WriteTo(output, _repeated_updateGameObjects_codec);
       destroyGameObjects_.WriteTo(output, _repeated_destroyGameObjects_codec);
@@ -7252,7 +6915,6 @@ namespace Tarkin.Data {
     public int CalculateSize() {
       int size = 0;
       size += systemCommands_.CalculateSize(_repeated_systemCommands_codec);
-      size += loadAssets_.CalculateSize(_repeated_loadAssets_codec);
       size += createGameObjects_.CalculateSize(_repeated_createGameObjects_codec);
       size += updateGameObjects_.CalculateSize(_repeated_updateGameObjects_codec);
       size += destroyGameObjects_.CalculateSize(_repeated_destroyGameObjects_codec);
@@ -7268,7 +6930,6 @@ namespace Tarkin.Data {
         return;
       }
       systemCommands_.Add(other.systemCommands_);
-      loadAssets_.Add(other.loadAssets_);
       createGameObjects_.Add(other.createGameObjects_);
       updateGameObjects_.Add(other.updateGameObjects_);
       destroyGameObjects_.Add(other.destroyGameObjects_);
@@ -7285,10 +6946,6 @@ namespace Tarkin.Data {
             break;
           case 10: {
             systemCommands_.AddEntriesFrom(input, _repeated_systemCommands_codec);
-            break;
-          }
-          case 18: {
-            loadAssets_.AddEntriesFrom(input, _repeated_loadAssets_codec);
             break;
           }
           case 26: {
