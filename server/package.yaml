@@ -9,6 +9,8 @@ library:
     - proto-lens
     - proto-lens-runtime
     - scotty
+    - text
+    - websockets
 
   exposed-modules:
     - Core
