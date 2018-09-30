@@ -5,6 +5,6 @@ namespace Tarkin
   public class CodeGenerator : MonoBehaviour
   {
     public string ConstantsPath;
-    public string ModuleName;
+    public string ModulePrefix;
   }
 }

@@ -487,12 +487,6 @@ MonoBehaviour:
   - {fileID: 21300114, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
   - {fileID: 21300116, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
   - {fileID: 21300118, guid: e923c6082eef89646b87f3cce6960c60, type: 3}
-  - {fileID: 21300000, guid: 4dfd3f5da88944ec6ac5977d676c30c6, type: 3}
-  - {fileID: 21300000, guid: acc34040a66fe4170bc8885268860cfe, type: 3}
-  - {fileID: 21300000, guid: 3cf132d4fa07f4f0cb2883499c5c7dd0, type: 3}
-  - {fileID: 21300000, guid: f8eca3a711f4842eba0c52ea9885ef7f, type: 3}
-  - {fileID: 21300000, guid: 4c433abcdb28444ebb7bd395ba5c76fc, type: 3}
-  - {fileID: 21300000, guid: 01e02995805eb483690380a911a657e2, type: 3}
   Materials: []
   Fonts: []
 --- !u!114 &1398929286
@@ -508,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObjects:
+  - {fileID: 0}
   - {fileID: 917074277}
   - {fileID: 922385735}
   - {fileID: 1145651412}
@@ -534,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3426685830bbbb24c930a6549adb3f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConstantsPath: ../server/src/generated/GameObjects.hs
-  ModuleName: Generated.GameObjects
+  ConstantsPath: ../server/src/generated
+  ModulePrefix: Generated
 --- !u!1 &7037400244347440348
 GameObject:
   m_ObjectHideFlags: 0

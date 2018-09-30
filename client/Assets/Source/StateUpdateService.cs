@@ -16,7 +16,8 @@ namespace Tarkin
     public void Awake()
     {
       _updateQueue = new Queue<UpdateStateRequest>();
-      _assetService = new AssetService();
+      var assetReferences = GetComponent<AssetReferences>();
+      _assetService = new AssetService(assetReferences);
       _systemCommandService = new SystemCommandService();
       var objects = GetComponent<SceneObjects>();
       _gameObjectService = new GameObjectService(objects.GameObjects, _assetService);

@@ -7,7 +7,7 @@ namespace Tarkin
   {
     public async Task<TaskResult> RunCommand(SystemCommandRequest request)
     {
-      return TaskResult.Success();
+      return await Task.FromResult(TaskResult.Success());
     }
   }
 }

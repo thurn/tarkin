@@ -8,7 +8,7 @@ import hashlib
 
 COMMANDS = [
   "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos",
-  "lock", "unlock", "updateChecksum"
+  "lock", "unlock", "checksum", "updateChecksum"
 ]
 
 EXPECTED_PROGRAMS = [
@@ -152,7 +152,19 @@ elif command == "unlock":
   gid = pwd.getpwnam(os.getlogin()).pw_gid
   print("Unlocking ThirdParty for user " + str(uid))
   chown(THIRD_PARTY, uid, gid)
+elif command == "checksum":
+  file = open(CHECKSUM_FILE, "r")
+  stored = "\n".join(file.readlines())
+  print("Stored: " + stored)
+  computed = hash_third_party()
+  print("Computed: " + computed)
+  if (stored == computed):
+    print("MATCH")
+  else:
+    print("ERROR: NO MATCH")
+    exit(1)
 elif command == "updateChecksum":
   # TODO check git status
   file = open(CHECKSUM_FILE, "w")
   file.write(hash_third_party())
+  file.close()
