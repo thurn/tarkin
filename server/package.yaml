@@ -5,6 +5,7 @@ library:
   dependencies:
     - base
     - bytestring
+    - http-conduit
     - lens
     - proto-lens
     - proto-lens-runtime
@@ -13,7 +14,7 @@ library:
     - websockets
 
   exposed-modules:
-    - Core
+    - Core.Main
 
 executables:
   tarkin-exe:

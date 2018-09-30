@@ -1,6 +1,6 @@
 module Main where
 
-import qualified Core
+import qualified Core.Main
 
 main :: IO ()
-main = Core.main
+main = Core.Main.main

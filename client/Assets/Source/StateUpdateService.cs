@@ -30,7 +30,10 @@ namespace Tarkin
 
     void Update()
     {
-      if (_updateQueue.Count != 0 && _runningStateUpdate == null)
+      if (_updateQueue == null)
+      {
+        Debug.Log("Error: Update Queue is null");
+      } else if (_updateQueue.Count != 0 && _runningStateUpdate == null)
       {
         _runningStateUpdate = HandleStateUpdateAsync(_updateQueue.Dequeue());
       }

@@ -194,20 +194,6 @@ fillCenter ::
 fillCenter
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "fillCenter")
-firstName ::
-          forall f s a .
-            (Prelude.Functor f, Lens.Labels.HasLens' s "firstName" a) =>
-            Lens.Family2.LensLike' f s a
-firstName
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "firstName")
-firstNumber ::
-            forall f s a .
-              (Prelude.Functor f, Lens.Labels.HasLens' s "firstNumber" a) =>
-              Lens.Family2.LensLike' f s a
-firstNumber
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "firstNumber")
 firstSelectedGameObject ::
                         forall f s a .
                           (Prelude.Functor f,
@@ -333,13 +319,6 @@ interactable ::
 interactable
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "interactable")
-lastName ::
-         forall f s a .
-           (Prelude.Functor f, Lens.Labels.HasLens' s "lastName" a) =>
-           Lens.Family2.LensLike' f s a
-lastName
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "lastName")
 lineSpacing ::
             forall f s a .
               (Prelude.Functor f, Lens.Labels.HasLens' s "lineSpacing" a) =>
@@ -892,13 +871,6 @@ newObjectId ::
 newObjectId
   = Lens.Labels.lensOf'
       ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "newObjectId")
-otherNumber ::
-            forall f s a .
-              (Prelude.Functor f, Lens.Labels.HasLens' s "otherNumber" a) =>
-              Lens.Family2.LensLike' f s a
-otherNumber
-  = Lens.Labels.lensOf'
-      ((Lens.Labels.proxy#) :: (Lens.Labels.Proxy#) "otherNumber")
 parentGameObject ::
                  forall f s a .
                    (Prelude.Functor f, Lens.Labels.HasLens' s "parentGameObject" a) =>

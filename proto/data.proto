@@ -4,16 +4,6 @@ package tarkin.data;
 
 import "google/protobuf/wrappers.proto";
 
-message Request {
-  int32 first_number = 1;
-  string first_name = 2;
-}
-
-message Response {
-  int32 other_number = 1;
-  string last_name = 2;
-}
-
 message ZVector2 {
   // X component of the vector:
   float x = 1;
@@ -395,7 +385,7 @@ message CreateGameObjectRequest {
   // allocated sequentially for maximum performance):
   uint32 new_object_id = 1;
 
-  // Name for this GameObject. Cannot containin '/' characters.
+  // Name for this GameObject. Cannot contain '/' characters.
   string name = 2;
 
   // Optionally, a prefab from which this GameObject should be instantiated:
@@ -415,7 +405,7 @@ message UpdateGameObjectRequest {
   // GameObject to update:
   ZGameObject game_object = 1;
 
-  // The new parent of this GameObject's transform, if any:
+  // Optionally, the new parent of this GameObject's transform:
   ZGameObject parent_game_object = 2;
 
   // Added and updated components for this GameObject:
