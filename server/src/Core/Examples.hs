@@ -2,8 +2,8 @@
 
 module Core.Examples where
 
-import Proto.Data as P
-import Proto.Data_Fields as P
+import qualified Proto.Data as P
+import qualified Proto.Data_Fields as P
 import Data.ProtoLens (defMessage)
 import Control.Lens.Operators
 

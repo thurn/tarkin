@@ -1,11 +1,29 @@
-module Game.Card () where
+module Game.Cards () where
 
 import qualified Generated.Assets as A
+-- import System.Random (RandomGen)
 
 data Suit = Clubs | Diamonds | Hearts | Spades deriving (Show, Eq, Ord, Enum)
 data Rank = Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten |
             Jack | Queen | King | Ace deriving (Show, Eq, Ord, Enum)
 data Card = Card Rank Suit deriving (Show, Eq, Ord)
+
+newtype Deck = Deck [Card]
+
+newtype Hand = Hand [Card] deriving (Show, Eq)
+
+data Game = Game
+  {
+    bottomHand :: Hand,
+    leftHand :: Hand,
+    topHand :: Hand,
+    rightHand :: Hand
+  } deriving (Show, Eq)
+
+deck :: Deck
+deck = Deck [Card rank suit | rank <- [Two ..], suit <- [Clubs ..]]
+
+-- dealCards :: RandomGen gen => gen -> Game
 
 spriteForCard :: Card -> A.Sprite
 spriteForCard (Card Ace Spades) = A.cardList0

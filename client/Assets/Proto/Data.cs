@@ -5818,7 +5818,7 @@ namespace Tarkin.Data {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    /// Name for this GameObject. Cannot containin '/' characters.
+    /// Name for this GameObject. Cannot contain '/' characters.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -6114,7 +6114,7 @@ namespace Tarkin.Data {
     public const int ParentGameObjectFieldNumber = 2;
     private global::Tarkin.Data.ZGameObject parentGameObject_;
     /// <summary>
-    /// The new parent of this GameObject's transform, if any:
+    /// Optionally, the new parent of this GameObject's transform:
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Tarkin.Data.ZGameObject ParentGameObject {

@@ -2,49 +2,47 @@ module Generated.SceneObjects where
 
 newtype SceneObject = SceneObject Int
 
-cardList39 :: SceneObject
-cardList39 = SceneObject 0
-
 directionalLight :: SceneObject
-directionalLight = SceneObject 1
+directionalLight = SceneObject 0
 
 mainCamera :: SceneObject
-mainCamera = SceneObject 2
+mainCamera = SceneObject 1
 
 eventSystem :: SceneObject
-eventSystem = SceneObject 3
+eventSystem = SceneObject 2
 
 root :: SceneObject
-root = SceneObject 4
+root = SceneObject 3
 
 center :: SceneObject
-center = SceneObject 5
+center = SceneObject 4
 
 topTrick :: SceneObject
-topTrick = SceneObject 6
+topTrick = SceneObject 5
 
 rightTrick :: SceneObject
-rightTrick = SceneObject 7
+rightTrick = SceneObject 6
 
 bottomHand :: SceneObject
-bottomHand = SceneObject 8
+bottomHand = SceneObject 7
 
 leftTrick :: SceneObject
-leftTrick = SceneObject 9
+leftTrick = SceneObject 8
 
 canvas :: SceneObject
-canvas = SceneObject 10
+canvas = SceneObject 9
 
 rightHand :: SceneObject
-rightHand = SceneObject 11
+rightHand = SceneObject 10
 
 topHand :: SceneObject
-topHand = SceneObject 12
+topHand = SceneObject 11
 
 bottomTrick :: SceneObject
-bottomTrick = SceneObject 13
+bottomTrick = SceneObject 12
 
 leftHand :: SceneObject
-leftHand = SceneObject 14
+leftHand = SceneObject 13
 
-nextFreeId = 15
+nextFreeId :: Int
+nextFreeId = 14

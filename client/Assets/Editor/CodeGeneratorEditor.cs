@@ -119,6 +119,7 @@ namespace Tarkin
           stream.WriteLine(name + " = SceneObject " + i + "\n");
         }
 
+        stream.WriteLine("nextFreeId :: Int");
         stream.WriteLine("nextFreeId = " + gameObjects.Length);
       }
     }

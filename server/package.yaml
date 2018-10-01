@@ -9,9 +9,24 @@ library:
     - lens
     - proto-lens
     - proto-lens-runtime
+    - random-shuffle
+    - random
     - scotty
     - text
-    - websockets
+  ghc-options:
+    # https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+    - -Werror
+    - -Wall
+    - -Wcompat
+    - -Wincomplete-record-updates
+    - -Wincomplete-uni-patterns
+    - -Wredundant-constraints
+    - -Wpartial-fields
+    - -Wmissing-home-modules
+    - -Widentities
+    - -Wredundant-constraints
+    - -Wmonomorphism-restriction
+    - -Wno-unused-top-binds
 
   exposed-modules:
     - Core.Main
@@ -21,6 +36,8 @@ executables:
     main: Main.hs
     source-dirs: app
     ghc-options:
+      - -Wall
+      - -Werror
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
@@ -33,6 +50,8 @@ tests:
     main: Spec.hs
     source-dirs: test
     ghc-options:
+      - -Wall
+      - -Werror
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
