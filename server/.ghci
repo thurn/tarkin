@@ -1,0 +1,10 @@
+:set prompt  "\x03BB: "
+:cd src
+:set +t
+:def init (\_ -> return "gen <- System.Random.getStdGen")
+:def l (\name -> return (":load " ++ name ++ "\n:init"))
+:def lc (\_ -> return ":l Game/Cards.hs")
+
+import qualified System.Random
+
+:init

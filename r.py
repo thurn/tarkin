@@ -3,7 +3,6 @@
 import argparse
 import subprocess
 import os
-import pwd
 import hashlib
 
 COMMANDS = [
@@ -13,19 +12,11 @@ COMMANDS = [
 
 EXPECTED_PROGRAMS = [
   "stack",
-  "protoc" # sudo apt-get install protobuf-compiler
+
+  # Windows: Download from https://github.com/protocolbuffers/protobuf/releases and add to %PATH%
+  # Linux:  sudo apt-get install protobuf-compiler
+  "protoc"
 ]
-
-parser = argparse.ArgumentParser()
-parser.add_argument("command", choices=COMMANDS)
-args = parser.parse_args()
-command = args.command
-
-DIR = os.path.dirname(os.path.realpath(__file__))
-SERVER_DIR = os.path.join(DIR, "server")
-CLIENT_DIR = os.path.join(DIR, "client")
-THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
-CHECKSUM_FILE = os.path.join(CLIENT_DIR, "third_party.sha1")
 
 def which(program):
   """Returns the location of a program on the PATH if it can be found, or None
@@ -99,36 +90,54 @@ def hash_third_party():
       f.close()
   return sha_hash.hexdigest()
 
+parser = argparse.ArgumentParser()
+parser.add_argument("command", choices=COMMANDS)
+args = parser.parse_args()
+command = args.command
+
+DIR = os.path.dirname(os.path.realpath(__file__))
+SERVER_DIR = os.path.join(DIR, "server")
+CLIENT_DIR = os.path.join(DIR, "client")
+THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
+CHECKSUM_FILE = os.path.join(CLIENT_DIR, "third_party.sha1")
+
 os.chdir(DIR)
 
 for program in EXPECTED_PROGRAMS:
-  if not which(program):
+  if not (which(program) or which(program + ".exe")):
     print("Program " + program + " not found on path. Please install.")
     exit(1)
 
 if command == "protos":
   protos()
+
 elif command == "build":
   build()
+
 elif command == "run":
   build()
   print("Running")
   stack(["exec", "tarkin-exe"])
+
 elif command == "test":
   print("Testing")
   protos()
   stack(["test"])
+
 elif command == "clean":
   print("Cleaning")
   stack(["clean"])
+
 elif command == "docs":
   print("Generating Haddock")
   stack(["haddock"])
   print("Generating Hoogle")
   stack(["hoogle", "--", "generate", "--local"])
+
 elif command == "hoogle":
   print("Running Hoogle Server")
   stack(["hoogle", "--", "server", "--local", "--port=8080"])
+
 elif command == "fixgmp":
   # This works around a crazy bug in GHC OSX, see the README at
   # https://github.com/haskell/haskell-ide-engine
@@ -137,21 +146,33 @@ elif command == "fixgmp":
     "mv",
     os.path.expanduser("~/.stack/programs/x86_64-osx/ghc-8.4.3/lib/ghc-8.4.3/integer-gmp-1.0.2.0/HSinteger-gmp-1.0.2.0.o"),
     os.path.expanduser("~/.stack/programs/x86_64-osx/ghc-8.4.3/lib/ghc-8.4.3/integer-gmp-1.0.2.0/HSinteger-gmp-1.0.2.0_RENAMED.o")])
+
 elif command == "commands":
   print("Commands:")
   print(COMMANDS)
+
 elif command == "lock":
-  # TODO check git status
-  require_sudo()
-  print("Locking ThirdParty")
-  chown(THIRD_PARTY, 0, 0)
+  if os.name == "nt":
+    call(["attrib", "+R", os.path.join(THIRD_PARTY, "*"), "/s", "/d"])
+  else:
+    import pwd
+    # TODO check git status
+    require_sudo()
+    print("Locking ThirdParty")
+    chown(THIRD_PARTY, 0, 0)
+
 elif command == "unlock":
-  # TODO check git status
-  require_sudo()
-  uid = pwd.getpwnam(os.getlogin()).pw_uid
-  gid = pwd.getpwnam(os.getlogin()).pw_gid
-  print("Unlocking ThirdParty for user " + str(uid))
-  chown(THIRD_PARTY, uid, gid)
+  if os.name == "nt":
+    call(["attrib", "-R", os.path.join(THIRD_PARTY, "*"), "/s", "/d"])
+  else:
+    import pwd
+    # TODO check git status
+    require_sudo()
+    uid = pwd.getpwnam(os.getlogin()).pw_uid
+    gid = pwd.getpwnam(os.getlogin()).pw_gid
+    print("Unlocking ThirdParty for user " + str(uid))
+    chown(THIRD_PARTY, uid, gid)
+
 elif command == "checksum":
   file = open(CHECKSUM_FILE, "r")
   stored = "\n".join(file.readlines())
@@ -163,6 +184,7 @@ elif command == "checksum":
   else:
     print("ERROR: NO MATCH")
     exit(1)
+
 elif command == "updateChecksum":
   # TODO check git status
   file = open(CHECKSUM_FILE, "w")

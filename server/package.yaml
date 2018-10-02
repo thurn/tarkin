@@ -12,6 +12,7 @@ library:
     - random-shuffle
     - random
     - scotty
+    - split
     - text
   ghc-options:
     # https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
