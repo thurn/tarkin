@@ -30,7 +30,7 @@ library:
     - -Wno-unused-top-binds
 
   exposed-modules:
-    - Core.Main
+    - Core
 
 executables:
   tarkin-exe:

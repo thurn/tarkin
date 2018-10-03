@@ -1,6 +1,6 @@
 module Main where
 
-import Core.Main (two)
+import Core (two)
 
 main :: IO ()
 main = putStrLn $ "Value of two is: " ++ (show two)

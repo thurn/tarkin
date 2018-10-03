@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Core.Examples where
+module Examples where
 
 import qualified Proto.Data as P
 import qualified Proto.Data_Fields as P

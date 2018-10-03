@@ -1,4 +1,4 @@
-module Core.Http (sendRequest) where
+module Http (sendRequest) where
 
 import Network.HTTP.Simple (httpBS, parseRequest, setRequestBody)
 import Network.HTTP.Client.Conduit (RequestBody(..))
