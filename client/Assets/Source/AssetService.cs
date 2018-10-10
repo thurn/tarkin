@@ -1,4 +1,4 @@
-﻿using Tarkin.Data;
+using Tarkin.Data;
 using UnityEngine;
 
 namespace Tarkin

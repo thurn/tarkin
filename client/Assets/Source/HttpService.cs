@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Unosquare.Labs.EmbedIO;
 using Unosquare.Labs.EmbedIO.Modules;
 using Unosquare.Labs.EmbedIO.Constants;

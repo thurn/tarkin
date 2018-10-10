@@ -1,4 +1,4 @@
-﻿namespace Tarkin
+namespace Tarkin
 {
   public sealed class TaskResult
   {

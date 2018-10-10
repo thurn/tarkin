@@ -7,7 +7,7 @@ import hashlib
 
 COMMANDS = [
   "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos",
-  "lock", "unlock", "checksum", "updateChecksum"
+  "lock", "unlock", "checksum", "updateChecksum", "ghci"
 ]
 
 EXPECTED_PROGRAMS = [
@@ -190,3 +190,5 @@ elif command == "updateChecksum":
   file = open(CHECKSUM_FILE, "w")
   file.write(hash_third_party())
   file.close()
+elif command == "ghci":
+  os.execlp("stack", "stack", "ghci")
