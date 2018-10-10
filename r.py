@@ -1,14 +1,25 @@
 #!/usr/bin/env python3
 
-import argparse
 import subprocess
 import os
 import hashlib
+import sys
 
-COMMANDS = [
-  "build", "run", "test", "clean", "docs", "hoogle", "fixgmp", "commands", "protos",
-  "lock", "unlock", "checksum", "updateChecksum", "ghci"
-]
+COMMANDS = {
+  "build": "Builds the server",
+  "run": "Runs the server",
+  "test": "Runs server tests",
+  "clean": "Removes compliation artifacts",
+  "docs": "Generates haskell documentation",
+  "hoogle": "Runs a Hoogle server",
+  "fixgmp": "Fixes a bug with haskell-ide-engine on OSX",
+  "protos": "Generates protocol buffer code",
+  "lock": "Locks the ThirdParty directory to prevent modification",
+  "unlock": "Unlocks the ThirdParty directory to allow modification",
+  "checksum": "Hashes the contents of the ThirdParty directory and compares to stored checksum value",
+  "updateChecksum": "Updates the stored checksum value for ThirdParty when it changes",
+  "symlink": "Creates symlinks to project files to a target dir, e.g. in dropbox"
+}
 
 EXPECTED_PROGRAMS = [
   "stack",
@@ -17,6 +28,36 @@ EXPECTED_PROGRAMS = [
   # Linux:  sudo apt-get install protobuf-compiler
   "protoc"
 ]
+
+SYMLINK_EXCLUDE = [
+  ".git",
+  ".vscode",
+  "client",
+  "server",
+]
+
+CLIENT_SYMLINK_EXCLUDE = [
+  ".vs",
+  "Library",
+  "Logs",
+  "Packages",
+  "Temp",
+  "obj",
+  "out",
+  "client.sln",
+  "Assembly-CSharp.csproj",
+  "Assembly-CSharp-Editor.csproj"
+]
+
+SERVER_SYMLINK_EXCLUDE = [
+  ".stack-work"
+]
+
+DIR = os.path.dirname(os.path.realpath(__file__))
+SERVER_DIR = os.path.join(DIR, "server")
+CLIENT_DIR = os.path.join(DIR, "client")
+THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
+CHECKSUM_FILE = os.path.join(CLIENT_DIR, "third_party.sha1")
 
 def which(program):
   """Returns the location of a program on the PATH if it can be found, or None
@@ -90,16 +131,13 @@ def hash_third_party():
       f.close()
   return sha_hash.hexdigest()
 
-parser = argparse.ArgumentParser()
-parser.add_argument("command", choices=COMMANDS)
-args = parser.parse_args()
-command = args.command
+if len(sys.argv) < 2:
+  print("Usage:")
+  for k, v in COMMANDS.items():
+    print("'r.py " + k + "': " + v)
+  exit(0)
 
-DIR = os.path.dirname(os.path.realpath(__file__))
-SERVER_DIR = os.path.join(DIR, "server")
-CLIENT_DIR = os.path.join(DIR, "client")
-THIRD_PARTY = os.path.join(CLIENT_DIR, "Assets", "ThirdParty")
-CHECKSUM_FILE = os.path.join(CLIENT_DIR, "third_party.sha1")
+command = sys.argv[1]
 
 os.chdir(DIR)
 
@@ -190,5 +228,38 @@ elif command == "updateChecksum":
   file = open(CHECKSUM_FILE, "w")
   file.write(hash_third_party())
   file.close()
-elif command == "ghci":
-  os.execlp("stack", "stack", "ghci")
+
+elif command == "symlink":
+    if os.name == "nt":
+      print("Not yet implemented.")
+      exit(0)
+    else:
+      if len(sys.argv) < 3:
+        print("Usage: r.py symlink <path/to/target/directory>")
+        exit(1)
+      target = sys.argv[2]
+      if os.path.exists(target):
+        print("Error: " + target + " already exists")
+        exit(1)
+
+      server_target = os.path.join(target, "server")
+      client_target = os.path.join(target, "client")
+      os.mkdir(target)
+      os.mkdir(server_target)
+      os.mkdir(client_target)
+
+      for entry in os.listdir(DIR):
+        if entry not in SYMLINK_EXCLUDE:
+          print("linking " + os.path.join(SERVER_DIR, entry) + " to " + os.path.join(server_target, entry))
+          os.symlink(os.path.join(DIR, entry), os.path.join(target, entry))
+      for entry in os.listdir(SERVER_DIR):
+        if entry not in SERVER_SYMLINK_EXCLUDE:
+          print("linking " + os.path.join(SERVER_DIR, entry) + " to " + os.path.join(server_target, entry))
+          os.symlink(os.path.join(SERVER_DIR, entry), os.path.join(server_target, entry))
+      for entry in os.listdir(CLIENT_DIR):
+        if entry not in CLIENT_SYMLINK_EXCLUDE:
+          print("linking " + os.path.join(CLIENT_DIR, entry) + " to " + os.path.join(client_target, entry))
+          os.symlink(os.path.join(CLIENT_DIR, entry), os.path.join(client_target, entry))
+
+else:
+  print("Command not recognized: " + command)
