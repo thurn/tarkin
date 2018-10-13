@@ -8,3 +8,4 @@ two = 2
 
 main :: IO ()
 main = sendRequest $ E.createGameObject E.empty
+

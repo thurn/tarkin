@@ -1,4 +1,4 @@
-{- This file was auto-generated from google/protobuf/wrappers.proto by the proto-lens-protoc.exe program. -}
+{- This file was auto-generated from google/protobuf/wrappers.proto by the proto-lens-protoc program. -}
 {-# LANGUAGE ScopedTypeVariables, DataKinds, TypeFamilies,
   UndecidableInstances, GeneralizedNewtypeDeriving,
   MultiParamTypeClasses, FlexibleContexts, FlexibleInstances,

@@ -24,8 +24,9 @@ COMMANDS = {
 EXPECTED_PROGRAMS = [
   "stack",
 
+  # OSX: brew install protobuf
   # Windows: Download from https://github.com/protocolbuffers/protobuf/releases and add to %PATH%
-  # Linux:  sudo apt-get install protobuf-compiler
+  # Linux: sudo apt-get install protobuf-compiler
   "protoc"
 ]
 
